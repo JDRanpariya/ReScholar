@@ -2,5 +2,5 @@
 A client for browsing and reading research papers.
 
 ## Blueprint
-![img](https://github.com/pranavAbe/ReScholar/blob/main/rescholar.drawio.svg)
+![img1](https://github.com/pranavAbe/ReScholar/blob/main/rescholar.drawio.svg)
 
