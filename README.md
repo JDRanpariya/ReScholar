@@ -9,3 +9,6 @@ The app comes with a built-in reader and integration with other reader apps like
 ## Blueprint
 ![img2](https://github.com/pranavAbe/ReScholar/blob/main/rescholar.drawio.svg)
 
+## Workshop
+Discord: https://discord.gg/Mqs4ED3WVk
+
