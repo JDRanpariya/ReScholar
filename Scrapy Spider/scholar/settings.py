@@ -60,7 +60,7 @@ RETRY_TIMES = 5
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-CLOSESPIDER_ITEMCOUNT = 100
+CLOSESPIDER_ITEMCOUNT = 10
 EXTENSIONS = {
    'scrapy.extensions.telnet.TelnetConsole': None,
    'scrapy.extensions.closespider.CloseSpider': CLOSESPIDER_ITEMCOUNT
