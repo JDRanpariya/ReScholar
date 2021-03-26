@@ -5,8 +5,8 @@ from urllib.parse import urlparse
 import json
 from datetime import datetime
 
-class RescholarSpider(scrapy.Spider):
-    name = 'scholar'
+class ReScholarSpider(scrapy.Spider):
+    name = 'ReScholarSpider'
     allowed_domains = ['scholar.google.com']
 
     def start_requests(self):
@@ -38,7 +38,6 @@ class RescholarSpider(scrapy.Spider):
                     'numOfVersions': num_versions,'numOfVersionsLink': num_versions_link , 'publishedData': published_data, 'snippet': snippet}
             yield item
         next_page = response.xpath('//td[@align="left"]/a/@href').extract_first()
-        # print(next_page)
         if next_page:
             url = "https://scholar.google.com" + next_page
             yield scrapy.Request(url, callback=self.parse,meta={'position': position})
