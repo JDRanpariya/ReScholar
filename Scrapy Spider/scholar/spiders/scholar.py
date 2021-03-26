@@ -5,15 +5,7 @@ from urllib.parse import urlparse
 import json
 from datetime import datetime
 
-# API_KEY = '2e2d79e9d8b5d22114ae3b4b4ba6b507'
-
-# def get_url(url):
-#     payload = {'api_key': API_KEY, 'url': url, 'country_code': 'us'}
-#     proxy_url = 'http://api.scraperapi.com/?' + urlencode(payload)
-#     return proxy_url
-
-
-class ExampleSpider(scrapy.Spider):
+class RescholarSpider(scrapy.Spider):
     name = 'scholar'
     allowed_domains = ['scholar.google.com']
 
@@ -37,11 +29,13 @@ class ExampleSpider(scrapy.Spider):
             cited = res.xpath('.//a[starts-with(text(),"Cited")]/text()').extract_first()
             temp = res.xpath('.//a[starts-with(text(),"Related")]/@href').extract_first()
             related = "https://scholar.google.com" + temp if temp else ""
+            temp = res.xpath(".//a[@class='gs_nph']/@href").extract_first()
+            num_versions_link = "https://scholar.google.com" + temp if temp else ""
             num_versions = res.xpath('.//a[contains(text(),"version")]/text()').extract_first()
-            published_data = "".join(res.xpath('.//div[@class="gs_a"]//text()').extract())
+            published_data = "".join(res.xpath('.//div[@class="gs_a"]//text()').extract()).replace('Â â€¦', '... ')
             position += 1
             item = {'title': title, 'link': link, 'cited': cited, 'relatedLink': related, 'position': position,
-                    'numOfVersions': num_versions, 'publishedData': published_data, 'snippet': snippet}
+                    'numOfVersions': num_versions,'numOfVersionsLink': num_versions_link , 'publishedData': published_data, 'snippet': snippet}
             yield item
         next_page = response.xpath('//td[@align="left"]/a/@href').extract_first()
         # print(next_page)
