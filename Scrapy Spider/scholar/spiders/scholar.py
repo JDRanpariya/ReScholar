@@ -32,7 +32,7 @@ class ReScholarSpider(scrapy.Spider):
             temp = res.xpath(".//a[@class='gs_nph']/@href").extract_first()
             num_versions_link = "https://scholar.google.com" + temp if temp else ""
             num_versions = res.xpath('.//a[contains(text(),"version")]/text()').extract_first()
-            published_data = "".join(res.xpath('.//div[@class="gs_a"]//text()').extract()).replace('Â â€¦', '... ')
+            published_data = "".join(res.xpath('.//div[@class="gs_a"]//text()').extract())
             position += 1
             item = {'title': title, 'link': link, 'cited': cited, 'relatedLink': related, 'position': position,
                     'numOfVersions': num_versions,'numOfVersionsLink': num_versions_link , 'publishedData': published_data, 'snippet': snippet}
