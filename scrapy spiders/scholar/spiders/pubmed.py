@@ -5,8 +5,8 @@ from urllib.parse import urlparse
 import json
 from datetime import datetime
 
-class PubMadSpider(scrapy.Spider):
-    name = 'PubMadSpider'
+class PubMedSpider(scrapy.Spider):
+    name = 'pubmed'
     allowed_domains = ['pubmed.ncbi.nlm.nih.gov']
 
     def start_requests(self):
@@ -17,7 +17,7 @@ class PubMadSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        for res in response.xpath('//div[@class='search-results-chunks']'):
+        for res in response.xpath("//div[@class='search-results-chunks']"):
             
             link = res.xpath('.//h3/a/@href').extract_first()
             
@@ -27,7 +27,7 @@ class PubMadSpider(scrapy.Spider):
             else:
                 title = "".join(temp)
                 
-            snippet = "".join(res.xpath('.//*[@class="gs_rs"]//text()').extract()).replace('Â â€¦', '... ')
+            snippet = "".join(res.xpath('.//*[@class="gs_rs"]//text()').extract())
             cited = res.xpath('.//a[starts-with(text(),"Cited")]/text()').extract_first()
             temp = res.xpath('.//a[starts-with(text(),"Related")]/@href').extract_first()
             related = "https://scholar.google.com" + temp if temp else ""
