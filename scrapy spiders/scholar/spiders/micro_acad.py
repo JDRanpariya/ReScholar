@@ -47,7 +47,7 @@ class microacadSpider(scrapy.Spider):
 
             cited = i["CC"]
 
-            yearofpub = i["Y"]
+            year = i["Y"]
 
             authors = []
             for author in i['AA']:
