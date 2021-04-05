@@ -24,7 +24,6 @@ class microacadSpider(scrapy.Spider):
     def parse(self, response):
 
         res = json.loads(response.body)
-
         api_key = os.getenv("MICROSOFT_RESEARCH_API_KEY")
         expr1 = str(res['interpretations'][0]['rules'][0]
                     ['output']['value']).replace("//", "")
@@ -36,7 +35,6 @@ class microacadSpider(scrapy.Spider):
     def parse_expr(self, response):
 
         res = json.loads(response.body)
-        print(response.body, "what the hell")
 
         for i in res['entities']:
 
@@ -49,7 +47,7 @@ class microacadSpider(scrapy.Spider):
 
             cited = i["CC"]
 
-            year = i["Y"]
+            yearofpub = i["Y"]
 
             authors = []
             for author in i['AA']:
