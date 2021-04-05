@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_icons/fluentui_icons.dart'; //flutent icons
+import 'package:frontend/Cards.dart';
 
 class LibraryScreen extends StatefulWidget {
   LibraryScreen({Key key}) : super(key: key);
@@ -77,8 +78,10 @@ class _LibraryScreenState extends State<LibraryScreen> {
             )
           ],
         ),
-        body: Center(
-          child: Text("textt"),
+        body: Column(
+          children: [
+            feed(),
+          ],
         ),
       ),
     );
