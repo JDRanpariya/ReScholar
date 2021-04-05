@@ -6,7 +6,7 @@ import json
 from datetime import datetime
 
 class ReScholarSpider(scrapy.Spider):
-    name = 'ReScholarSpider'
+    name = 'scholar'
     allowed_domains = ['scholar.google.com']
 
     def start_requests(self):
