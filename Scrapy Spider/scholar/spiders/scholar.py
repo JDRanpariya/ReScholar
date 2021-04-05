@@ -25,7 +25,7 @@ class ReScholarSpider(scrapy.Spider):
                 title = "[C] " + "".join(res.xpath('.//h3/span[@id]//text()').extract())
             else:
                 title = "".join(temp)
-            snippet = "".join(res.xpath('.//*[@class="gs_rs"]//text()').extract()).replace('Â â€¦', '... ')
+            snippet = "".join(res.xpath('.//*[@class="gs_rs"]//text()').extract())
             cited = res.xpath('.//a[starts-with(text(),"Cited")]/text()').extract_first()
             temp = res.xpath('.//a[starts-with(text(),"Related")]/@href').extract_first()
             related = "https://scholar.google.com" + temp if temp else ""

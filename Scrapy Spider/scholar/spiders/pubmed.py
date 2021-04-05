@@ -27,7 +27,7 @@ class PubMadSpider(scrapy.Spider):
             else:
                 title = "".join(temp)
                 
-            snippet = "".join(res.xpath('.//*[@class="gs_rs"]//text()').extract()).replace('Â â€¦', '... ')
+            snippet = "".join(res.xpath('.//*[@class="gs_rs"]//text()').extract())
             cited = res.xpath('.//a[starts-with(text(),"Cited")]/text()').extract_first()
             temp = res.xpath('.//a[starts-with(text(),"Related")]/@href').extract_first()
             related = "https://scholar.google.com" + temp if temp else ""
