@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 import json
 from datetime import datetime
 
-class ReScholarSpider(scrapy.Spider):
+class ScholarSpider(scrapy.Spider):
     name = 'scholar'
     allowed_domains = ['scholar.google.com']
 

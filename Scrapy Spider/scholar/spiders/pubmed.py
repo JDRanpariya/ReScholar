@@ -5,8 +5,8 @@ from urllib.parse import urlparse
 import json
 from datetime import datetime
 
-class PubMadSpider(scrapy.Spider):
-    name = 'PubMadSpider'
+class PubMedSpider(scrapy.Spider):
+    name = 'pubmed'
     allowed_domains = ['pubmed.ncbi.nlm.nih.gov']
 
     def start_requests(self):
