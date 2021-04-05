@@ -17,7 +17,7 @@ class PubMadSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        for res in response.xpath('//div[@class='search-results-chunks']'):
+        for res in response.xpath("//div[@class='search-results-chunks']"):
             
             link = res.xpath('.//h3/a/@href').extract_first()
             
