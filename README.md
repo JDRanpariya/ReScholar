@@ -15,9 +15,5 @@ SOA/NASA Astrophysics Data System (adswww.harvard.edu/) - Astronomy, Physics
 :one: Powerful Search Engine to various sources to find the papers you need.  
 :two: Library with great organizational support to curate papers in an orderly manner.  
 
-## Blueprint
-![img2](https://github.com/pranavAbe/ReScholar/blob/main/rescholar.drawio.svg)
-
 ## Workshop
-Discord: https://discord.gg/Mqs4ED3WVk
-
+Discord: https://discord.gg/Mqs4ED3WVk  
