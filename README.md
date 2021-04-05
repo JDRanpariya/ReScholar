@@ -7,6 +7,8 @@ The app comes with a built-in reader and integration with other reader apps like
 ## Data Source and Scrapers
  - [ ] add following sources
      - [x] Google Scholar - Multi-disciplinary
+     - [ ] Microsoft Academic
+     - future
      - [ ] [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/) - Life Sciences
      - [ ] [NASA STI](www.sti.nasa.gov/STI-public-homepage.html) - Aerospace
      - [ ] [CiteSeerX](https://citeseerx.ist.psu.edu) - Computer Science
