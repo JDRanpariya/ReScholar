@@ -26,8 +26,9 @@ class ScholarSpider(scrapy.Spider):
                 title = "[C] " + "".join(res.xpath('.//h3/span[@id]//text()').extract())
             else:
                 title = "".join(temp)
+
             # Review: Snippet and Publishers contain mangled UTF-8 encoding. Fix this using some form of UTF-8 unmangling. 
-            snippet = "".join(res.xpath('.//*[@class="gs_rs"]//text()').extract()).replace("\u2026","").replace("\u00a0","")
+            snippet = "".join(res.xpath('.//*[@class="gs_rs"]//text()').extract()).replace("\u2026","...").replace("\u00a0","")
             citations = res.xpath('.//a[starts-with(text(),"Cited")]/text()').extract_first().replace("Cited by ", "")
             
             # Review: Implement CitationLink
@@ -41,18 +42,19 @@ class ScholarSpider(scrapy.Spider):
             versions_link = "https://scholar.google.com" + temp if temp else ""
             
             versions_count = res.xpath('.//a[contains(text(),"version")]/text()').extract_first().replace("All ", "").replace(" versions", "")
-            # Review: Seperate Authors, Year, Publisher
-            publishers = "".join(res.xpath('.//div[@class="gs_a"]//text()').extract()).replace("\u2026","").replace("\u00a0","")
             
-            yearofpub = re.search("\d+", publishers)[0]
+            # Review: Seperate Authors, Year, Publisher
+            publishers = "".join(res.xpath('.//div[@class="gs_a"]//text()').extract()).replace("\u2026","...").replace("\u00a0","")
+            
+            year = re.search("\d+", publishers)[0]
             journal = publishers.split("-")[1].split(",")[0].strip()
             authors = publishers.split("-")[0]
-            publisher = publishers.split("-")[-1]
+            publisher = publishers.split("-")[-1].strip()
             
             position += 1
-            item = {'position': position, 'title': title, 'journal':journal, 'yearofpub': yearofpub, 'authors': authors, 'publisher': publisher, 'snippet': snippet, 'link': link, 
-                    'citations': citations, 'citation_link': citation_link, 'relatedLink': related_link, 'versionsCount': versions_count,
-                    'versionsLink': versions_link, }
+            item = {'position': position, 'title': title,  'authors': authors, 'journal':journal, 'year': year, 
+                    'publisher': publisher, 'snippet': snippet, 'link': link, 'citations': citations, 'citationLink': citation_link,
+                    'relatedLink': related_link, 'versionsCount': versions_count, 'versionsLink': versions_link,}
             yield item
             
         next_page = response.xpath('//td[@align="left"]/a/@href').extract_first()
