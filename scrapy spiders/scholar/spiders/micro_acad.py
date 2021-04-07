@@ -40,7 +40,7 @@ class microacadSpider(scrapy.Spider):
 
             links = []
             for link in i["S"]:
-                links.append(link[""])
+                links.append(link["U"])
             link = links
 
             title = i["Ti"]
