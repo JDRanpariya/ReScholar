@@ -49,9 +49,9 @@ class ScholarSpider(scrapy.Spider):
             publisher = publishers.split("-")[-1]
             
             position += 1
-            item = {'position': position, 'title': title, 'publishers': publishers, 'snippet': snippet, 'link': link, 
-                    'citations': citations, 'relatedLink': related_link, 'versionsCount': versions_count,
-                    'versionsLink': versions_link, 'yearofpub': yearofpub, 'citation_link': citation_link,}
+            item = {'position': position, 'title': title, 'yearofpub': yearofpub, 'authors': authors, 'publisher': publisher, 'snippet': snippet, 'link': link, 
+                    'citations': citations, 'citation_link': citation_link, 'relatedLink': related_link, 'versionsCount': versions_count,
+                    'versionsLink': versions_link, }
             yield item
             
         next_page = response.xpath('//td[@align="left"]/a/@href').extract_first()
