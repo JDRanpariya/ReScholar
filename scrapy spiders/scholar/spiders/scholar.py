@@ -32,7 +32,7 @@ class ScholarSpider(scrapy.Spider):
             
             # Review: Implement CitationLink
             temp = res.xpath("//div[@class='gs_fl']/a[3]/@href").extract_first()
-            related_link = "https://scholar.google.com" + temp if temp else ""
+            citation_link = "https://scholar.google.com" + temp if temp else ""
             
             temp = res.xpath('.//a[starts-with(text(),"Related")]/@href').extract_first()
             related_link = "https://scholar.google.com" + temp if temp else ""
@@ -51,7 +51,7 @@ class ScholarSpider(scrapy.Spider):
             position += 1
             item = {'position': position, 'title': title, 'publishers': publishers, 'snippet': snippet, 'link': link, 
                     'citations': citations, 'relatedLink': related_link, 'versionsCount': versions_count,
-                    'versionsLink': versions_link}
+                    'versionsLink': versions_link, 'yearofpub': yearofpub, 'citation_link': citation_link,}
             yield item
             
         next_page = response.xpath('//td[@align="left"]/a/@href').extract_first()
