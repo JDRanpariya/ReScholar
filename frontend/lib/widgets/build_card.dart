@@ -56,7 +56,13 @@ class _BuildCardState extends State<BuildCard> {
               Padding(
                 padding: EdgeInsets.only(bottom: 2),
                 child: Text(
-                  widget.data[widget.index]['publishers'],
+                  widget.data[widget.index]['authors'] +
+                      " - " +
+                      widget.data[widget.index]['journal'] +
+                      " - " +
+                      widget.data[widget.index]['year'] +
+                      " - " +
+                      widget.data[widget.index]['publisher'],
                   style: TextStyle(
                     fontFamily: 'OpenSans',
                     fontWeight: FontWeight.w600,
