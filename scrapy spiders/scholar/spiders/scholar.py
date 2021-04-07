@@ -45,11 +45,12 @@ class ScholarSpider(scrapy.Spider):
             publishers = "".join(res.xpath('.//div[@class="gs_a"]//text()').extract()).replace("\u2026","").replace("\u00a0","")
             
             yearofpub = re.search("\d+", publishers)[0]
+            journal = publishers.split("-")[1].split(",")[0].strip()
             authors = publishers.split("-")[0]
             publisher = publishers.split("-")[-1]
             
             position += 1
-            item = {'position': position, 'title': title, 'yearofpub': yearofpub, 'authors': authors, 'publisher': publisher, 'snippet': snippet, 'link': link, 
+            item = {'position': position, 'title': title, 'journal':journal, 'yearofpub': yearofpub, 'authors': authors, 'publisher': publisher, 'snippet': snippet, 'link': link, 
                     'citations': citations, 'citation_link': citation_link, 'relatedLink': related_link, 'versionsCount': versions_count,
                     'versionsLink': versions_link, }
             yield item
