@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "937566491439",
+    "project_id": "rescholar-ltwk",
+    "storage_bucket": "rescholar-ltwk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937566491439:android:e53ae5e7a822bd1d5ec7da",
+        "android_client_info": {
+          "package_name": "com.teamlightwork.rescholar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937566491439-ojcld5e3ul6i8gpjqeqbvs69r4623lp6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teamlightwork.rescholar",
+            "certificate_hash": "b4785b9b1e565de696ecd212ae24e4aa94640c1c"
+          }
+        },
+        {
+          "client_id": "937566491439-ltsip6eme26u9e8p5c532l0msua85u4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhfHjhhcOacPeRfovnFPMM24x7QgvgcpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937566491439-ltsip6eme26u9e8p5c532l0msua85u4q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
