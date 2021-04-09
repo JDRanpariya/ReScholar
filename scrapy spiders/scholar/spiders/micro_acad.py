@@ -12,7 +12,7 @@ load_dotenv()
 
 class microacadSpider(scrapy.Spider):
     name = 'microacad'
-    allowed_domains = ['scholar.google.com']
+    allowed_domains = ['api.labs.cognitive.microsoft.com']
 
     def start_requests(self):
         query = 'residual learning'
