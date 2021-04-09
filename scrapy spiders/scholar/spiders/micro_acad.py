@@ -54,6 +54,11 @@ class microacadSpider(scrapy.Spider):
                 authors.append(author["AuN"])
             published_data = authors
 
-            item = {'title': title, 'link': link, 'cited': cited,
-                    'publishedData': published_data, 'yearofpub': year}
+            item = {
+                'title': title,
+                'link': link,
+                'cited': cited,
+                'authors': authors,
+                'year': year
+            }
             yield item
