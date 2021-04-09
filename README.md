@@ -3,15 +3,15 @@ ReScholar is a research curation client built to help you find and read the scie
 The app comes with a built-in reader and integration with other reader apps like Google Play Books, to curate research papers from a wide variety of sources. ReScholar hopes to be the one-stop shop for academics and researchers alike to all the tools necessary to discover and explore relevant scientific literature.
 
 ## Data Source and Scrapers
-Google Scholar
+Google Scholar <br>
 Microsoft Academic<br>
-NASA STI - [GO TO SITE](https://www.sti.nasa.gov/STI-public-homepage.html)
+NASA STI - [Source](https://www.sti.nasa.gov/STI-public-homepage.html)
 
 ### To be added: 
-Semantic Scholar - [GO TO SITE](https://www.semanticscholar.org/) <br>
-PubMed (http://www.ncbi.nlm.nih.gov/pubmed/) - Life Sciences    
-CiteSeerX (https://citeseerx.ist.psu.edu) - Computer Science  
-SOA/NASA Astrophysics Data System (adswww.harvard.edu/) - Astronomy, Physics  
+Semantic Scholar - [Source](https://www.semanticscholar.org/) <br>
+PubMed - [Source](http://www.ncbi.nlm.nih.gov/pubmed/)   
+CiteSeerX - [Source](https://citeseerx.ist.psu.edu)  
+SOA/NASA Astrophysics Data System - [Source](https://adswww.harvard.edu/)
 
 ## Features  
 :one: Powerful Search Engine to various sources to find the papers you need.  
