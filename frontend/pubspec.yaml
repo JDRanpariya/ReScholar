@@ -25,6 +25,11 @@ dependencies:
     sdk: flutter
   persistent_bottom_nav_bar: any
 
+  firebase_core: ^1.0.3
+  firebase_analytics: ^7.1.1
+  cloud_functions: ^1.0.3
+  firebase_auth: ^1.0.2
+
   fluentui_icons: any
 
 dev_dependencies:
