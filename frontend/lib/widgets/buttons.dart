@@ -83,7 +83,7 @@ class _ToFolderState extends State<ToFolder> {
           color: Color(0xFF9DD0FF),
           size: 30,
         ),
-        onPressed: () => _pressed());
+        onPressed: _pressed);
   }
 }
 
@@ -111,6 +111,6 @@ class _ToFavouritesState extends State<ToFavourites> {
           color: Color(0xFFFFC000),
           size: 36,
         ),
-        onPressed: () => pressed());
+        onPressed: pressed);
   }
 }

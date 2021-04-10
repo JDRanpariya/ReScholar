@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
+import 'package:flutter/material.dart';
 
-import 'build_card.dart';
+import 'package:rescholar/widgets/build_card.dart';
 
 class BuildCardList extends StatefulWidget {
   @override

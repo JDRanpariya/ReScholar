@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'buttons.dart';
+import 'package:rescholar/widgets/buttons.dart';
 
 class BuildCard extends StatefulWidget {
   final int index;
@@ -23,12 +23,12 @@ class _BuildCardState extends State<BuildCard> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    var screenWidth = MediaQuery.of(context).size.width;
     return Card(
       margin: EdgeInsets.all(0),
       color: Colors.transparent,
       child: InkWell(
-        onTap: () => _pressed(),
+        onTap: _pressed,
         onLongPress: () {},
         child: Padding(
           padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0.0),

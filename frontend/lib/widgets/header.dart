@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'buttons.dart';
+import 'package:rescholar/widgets/buttons.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
   final Icon leadingIcon;
@@ -14,7 +14,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
       this.titleGradient, this.withSearch, this.searchGradient);
 
   @override
-  Size get preferredSize => new Size.fromHeight(75);
+  Size get preferredSize => Size.fromHeight(75);
 
   @override
   Widget build(BuildContext context) {

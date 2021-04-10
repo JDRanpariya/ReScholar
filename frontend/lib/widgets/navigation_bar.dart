@@ -1,11 +1,11 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:fluentui_icons/fluentui_icons.dart';
 
-import '../screens/library.dart';
-import '../screens/re_search.dart';
-import '../screens/app_profile.dart';
-import '../models/customIcons.dart';
+import 'package:rescholar/models/customIcons.dart';
+import 'package:rescholar/screens/app_profile.dart';
+import 'package:rescholar/screens/library.dart';
+import 'package:rescholar/screens/re_search.dart';
 
 class NavigationBar extends StatefulWidget {
   @override
@@ -20,6 +20,7 @@ class _NavigationBarState extends State<NavigationBar> {
     _controller = PersistentTabController(initialIndex: 0);
   }
 
+  @override
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
@@ -74,7 +75,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       inactiveColorPrimary: Colors.white70,
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(CustomIcons.heroicons_solid_search_circle),
+      icon: Icon(CustomIcons.heroiconsSolidSearchCircle),
       title: ("ReSearch"),
       activeColorPrimary: Color(0xFF4880DE),
       inactiveColorPrimary: Colors.white70,

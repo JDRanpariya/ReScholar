@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'widgets/navigation_bar.dart';
+
+import 'package:rescholar/widgets/navigation_bar.dart';
 
 void main() {
   runApp(MaterialApp(
