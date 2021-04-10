@@ -5,10 +5,10 @@ The app comes with a built-in reader and integration with other reader apps like
 ## Data Source and Scrapers
 Google Scholar <br>
 Microsoft Academic<br>
+Semantic Scholar - [Source](https://www.semanticscholar.org/) <br>
 NASA STI - [Source](https://www.sti.nasa.gov/STI-public-homepage.html)
 
 ### To be added: 
-Semantic Scholar - [Source](https://www.semanticscholar.org/) <br>
 PubMed - [Source](http://www.ncbi.nlm.nih.gov/pubmed/)   
 CiteSeerX - [Source](https://citeseerx.ist.psu.edu)  
 SOA/NASA Astrophysics Data System - [Source](https://adswww.harvard.edu/)
