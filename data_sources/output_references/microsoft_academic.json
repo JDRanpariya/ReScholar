@@ -1,0 +1,215 @@
+[
+    {
+      "title": "deep residual learning for image recognition",
+      "link": [
+        "https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf",
+        "http://doi.ieeecomputersociety.org/10.1109/CVPR.2016.90",
+        "http://www.robots.ox.ac.uk/~vgg/rg/papers/deepres.pdf",
+        "https://arxiv.org/pdf/1512.03385",
+        "https://dblp.uni-trier.de/db/conf/cvpr/cvpr2016.html#HeZRS16",
+        "https://doi.org/10.1109/CVPR.2016.90",
+        "https://dx.doi.org/10.1109/CVPR.2016.90",
+        "https://ieeexplore.ieee.org/document/7780459/",
+        "https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html",
+        "https://www.arxiv-vanity.com/papers/1512.03385/",
+        "https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html",
+        "https://www.mysciencework.com/publication/show/deep-residual-learning-image-recognition-608052f3",
+        "https://xplqa30.ieee.org/document/7780459",
+        "http://doi.org/10.1109/CVPR.2016.90",
+        "http://dx.doi.org/10.1109/CVPR.2016.90",
+        "http://ieeexplore.ieee.org/document/7780459/",
+        "http://www.mysciencework.com/publication/show/deep-residual-learning-image-recognition-608052f3"
+      ],
+      "cited": 53506,
+      "authors": [
+        "kaiming he",
+        "xiangyu zhang",
+        "shaoqing ren",
+        "jian sun"
+      ],
+      "year": 2016
+    },
+    {
+      "title": "deep residual learning for image recognition",
+      "link": [
+        "http://export.arxiv.org/pdf/1512.03385",
+        "https://arxiv.org/pdf/1512.03385v1",
+        "https://arxiv.org/abs/1512.03385v1",
+        "https://export.arxiv.org/abs/1512.03385v1",
+        "https://ui.adsabs.harvard.edu/abs/2015arXiv151203385H/abstract"
+      ],
+      "cited": 3185,
+      "authors": [
+        "kaiming he",
+        "xiangyu zhang",
+        "shaoqing ren",
+        "jian sun"
+      ],
+      "year": 2015
+    },
+    {
+      "title": "inception v4 inception resnet and the impact of residual connections on learning",
+      "link": [
+        "http://export.arxiv.org/pdf/1602.07261",
+        "https://arxiv.org/pdf/1602.07261.pdf",
+        "http://export.arxiv.org/abs/1602.07261",
+        "http://ui.adsabs.harvard.edu/abs/2016arXiv160207261S/abstract",
+        "https://128.84.21.199/abs/1602.07261",
+        "https://aps.arxiv.org/abs/1602.07261",
+        "https://arxiv.org/abs/1602.07261v2",
+        "https://ru.arxiv.org/abs/1602.07261",
+        "https://scinapse.io/papers/2274287116",
+        "https://uk.arxiv.org/abs/1602.07261?context=cs"
+      ],
+      "cited": 2557,
+      "authors": [
+        "christian szegedy",
+        "sergey ioffe",
+        "vincent vanhoucke",
+        "alexander a alemi"
+      ],
+      "year": 2016
+    },
+    {
+      "title": "inception v4 inception resnet and the impact of residual connections on learning",
+      "link": [
+        "https://arxiv.org/pdf/1602.07261",
+        "https://openreview.net/pdf?id=q7kqBkL33f8LEkD3t7X9",
+        "http://research.google.com/pubs/pub45169.html",
+        "http://www.arxiv-vanity.com/papers/1602.07261/",
+        "https://dblp.uni-trier.de/db/conf/aaai/aaai2017.html#SzegedyIVA17",
+        "https://openreview.net/forum?id=q7kqBkL33f8LEkD3t7X9",
+        "https://research.google/pubs/pub45169/",
+        "https://ai.google/research/pubs/pub45169",
+        "https://dl.acm.org/citation.cfm?id=3298188"
+      ],
+      "cited": 1646,
+      "authors": [
+        "christian szegedy",
+        "sergey ioffe",
+        "vincent vanhoucke",
+        "alexander a alemi"
+      ],
+      "year": 2016
+    },
+    {
+      "title": "beyond a gaussian denoiser residual learning of deep cnn for image denoising",
+      "link": [
+        "https://arxiv.org/pdf/1608.03981.pdf",
+        "https://aps.arxiv.org/abs/1608.03981",
+        "https://arxiv.org/abs/1608.03981",
+        "https://export.arxiv.org/abs/1608.03981"
+      ],
+      "cited": 41,
+      "authors": [
+        "kai zhang",
+        "wangmeng zuo",
+        "yunjin chen",
+        "deyu meng",
+        "lei zhang"
+      ],
+      "year": 2016
+    },
+    {
+      "title": "learning structured sparsity in deep neural networks",
+      "link": [
+        "http://export.arxiv.org/pdf/1608.03665",
+        "https://arxiv.org/pdf/1608.03665.pdf",
+        "https://aps.arxiv.org/abs/1608.03665",
+        "https://arxiv.org/abs/1608.03665v3",
+        "https://export.arxiv.org/abs/1608.03665"
+      ],
+      "cited": 13,
+      "authors": [
+        "wei wen",
+        "chunpeng wu",
+        "yandan wang",
+        "yiran chen",
+        "hai li"
+      ],
+      "year": 2016
+    },
+    {
+      "title": "learning structured sparsity in deep neural networks",
+      "link": [
+        "https://papers.nips.cc/paper/2016/file/41bfd20a38bb1b0bec75acf0845530a7-Paper.pdf",
+        "https://proceedings.neurips.cc/paper/2016/file/41bfd20a38bb1b0bec75acf0845530a7-Paper.pdf",
+        "http://papers.nips.cc/paper/6504-learning-structured-sparsity-in-deep-neural-networks.pdf",
+        "http://ui.adsabs.harvard.edu/abs/2016arXiv160803665W/abstract",
+        "https://dblp.uni-trier.de/db/conf/nips/nips2016.html#WenWWCL16",
+        "https://hgpu.org/?p=16419",
+        "https://proceedings.neurips.cc/paper/6504-learning-structured-sparsity-in-deep-neural-networks",
+        "https://dl.acm.org/citation.cfm?id=3157329"
+      ],
+      "cited": 1116,
+      "authors": [
+        "wei wen",
+        "chunpeng wu",
+        "yandan wang",
+        "yiran chen",
+        "hai li"
+      ],
+      "year": 2016
+    },
+    {
+      "title": "mean teachers are better role models weight averaged consistency targets improve semi supervised deep learning results",
+      "link": [
+        "https://openreview.net/pdf?id=ry8u21rtl",
+        "https://papers.nips.cc/paper/2017/file/68053af2923e00204c3ca7c6a3150cf7-Paper.pdf",
+        "https://proceedings.neurips.cc/paper/2017/file/68053af2923e00204c3ca7c6a3150cf7-Paper.pdf",
+        "http://papers.nips.cc/paper/6719-mean-teachers-are-better-role-models-weight-averaged-consistency-targets-improve-semi-supervised-deep-learning-results.pdf",
+        "https://dblp.uni-trier.de/db/conf/nips/nips2017.html#TarvainenV17",
+        "https://openreview.net/forum?id=ry8u21rtl",
+        "https://proceedings.neurips.cc/paper/2017/hash/68053af2923e00204c3ca7c6a3150cf7-Abstract.html"
+      ],
+      "cited": 567,
+      "authors": [
+        "antti tarvainen",
+        "harri valpola"
+      ],
+      "year": 2017
+    },
+    {
+      "title": "mean teachers are better role models weight averaged consistency targets improve semi supervised deep learning results",
+      "link": [
+        "https://arxiv.org/pdf/1703.01780",
+        "https://export.arxiv.org/pdf/1703.01780",
+        "https://arxiv.org/abs/1703.01780",
+        "https://export.arxiv.org/abs/1703.01780",
+        "https://tw.arxiv.org/abs/1703.01780",
+        "https://ui.adsabs.harvard.edu/abs/2017arXiv170301780T/abstract"
+      ],
+      "cited": 201,
+      "authors": [
+        "antti tarvainen",
+        "harri valpola"
+      ],
+      "year": 2017
+    },
+    {
+      "title": "learning a variational network for reconstruction of accelerated mri data",
+      "link": [
+        "http://export.arxiv.org/pdf/1704.00447",
+        "https://arxiv.org/pdf/1704.00447.pdf",
+        "https://uk.arxiv.org/pdf/1704.00447",
+        "http://ui.adsabs.harvard.edu/abs/2017arXiv170400447H/abstract",
+        "https://aps.arxiv.org/abs/1704.00447",
+        "https://arxiv.org/abs/1704.00447v1",
+        "https://au.arxiv.org/abs/1704.00447",
+        "https://export.arxiv.org/pdf/1704.00447",
+        "https://uk.arxiv.org/abs/1704.00447"
+      ],
+      "cited": 23,
+      "authors": [
+        "kerstin hammernik",
+        "teresa klatzer",
+        "erich kobler",
+        "michael p recht",
+        "daniel k sodickson",
+        "thomas pock",
+        "thomas pock",
+        "florian knoll"
+      ],
+      "year": 2017
+    }
+  ]

@@ -13,7 +13,7 @@ class _BuildCardListState extends State<BuildCardList> {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: DefaultAssetBundle.of(context)
-            .loadString('assets/data/reference3.json'),
+            .loadString('assets/data/google_scholar.json'),
         builder: (context, snapshot) {
           // Decode the JSON
           var data = json.decode(snapshot.data.toString());
