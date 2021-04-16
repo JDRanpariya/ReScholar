@@ -18,6 +18,7 @@ def GoogleScholar(request):
 
             class GoogleScholarSpider(scrapy.Spider):
                 name = 'GoogleScholarSpider'
+                
                 # allowed_domains = ['scholar.google.com']
                 allowed_domains = ['api.scraperapi.com']
                 
