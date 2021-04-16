@@ -1,7 +1,6 @@
 from multiprocessing import Process, Queue, Manager
 import scrapy.spiders
 from scrapy.crawler import CrawlerProcess
-from scrapy.utils.project import get_project_settings
 from urllib.parse import urlencode
 import re
 import json
