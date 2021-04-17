@@ -11,6 +11,9 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    String email = "";
+    String password = "";
+
     return Scaffold(
       backgroundColor: Colors.black87,
       appBar: AppBar(
@@ -20,20 +23,54 @@ class _SignInState extends State<SignIn> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: Container(
-          child: TextButton(
-            onPressed: () async {
-              dynamic user = await _auth.signInAnon();
-              if (user == null) {
-                print("error signing in");
-              } else {
-                print("User Signed In");
-                print(user);
-              }
-            },
-            child: Text("Sign In as Guest"),
-          ),
-        ),
+        child: Form(
+            child: Column(
+          children: [
+            SizedBox(height: 20.0),
+            TextFormField(
+              onChanged: (val) {
+                setState(() => email = val);
+              },
+            ),
+            SizedBox(height: 20.0),
+            TextFormField(
+              obscureText: true,
+              onChanged: (val) {
+                setState(() => password = val);
+              },
+            ),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+                child: Text(
+                  "Login",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () async {
+                  dynamic user = await _auth.signInAnon();
+                  if (user == null) {
+                    print("error signing in");
+                  } else {
+                    print("User Signed In");
+                    print(user);
+                  }
+                }),
+            SizedBox(height: 20.0),
+            Text("OR"),
+            SizedBox(height: 20.0),
+            TextButton(
+              onPressed: () async {
+                dynamic user = await _auth.signInAnon();
+                if (user == null) {
+                  print("error signing in");
+                } else {
+                  print("User Signed In");
+                  print(user);
+                }
+              },
+              child: Text("Sign In as Guest"),
+            ),
+          ],
+        )),
       ),
     );
   }
