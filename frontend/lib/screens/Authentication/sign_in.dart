@@ -11,9 +11,6 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    String email = "";
-    String password = "";
-
     return Scaffold(
       backgroundColor: Colors.black87,
       appBar: AppBar(
@@ -27,26 +24,13 @@ class _SignInState extends State<SignIn> {
             child: Column(
           children: [
             SizedBox(height: 20.0),
-            TextFormField(
-              onChanged: (val) {
-                setState(() => email = val);
-              },
-            ),
-            SizedBox(height: 20.0),
-            TextFormField(
-              obscureText: true,
-              onChanged: (val) {
-                setState(() => password = val);
-              },
-            ),
-            SizedBox(height: 20.0),
             ElevatedButton(
                 child: Text(
-                  "Login",
+                  "Sign In using Google",
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  dynamic user = await _auth.signInAnon();
+                  dynamic user = await _auth.signInWithGoogle();
                   if (user == null) {
                     print("error signing in");
                   } else {
