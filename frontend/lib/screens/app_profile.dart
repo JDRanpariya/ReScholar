@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:rescholar/services/auth.dart';
 
-class AppProfile extends StatefulWidget {
-  AppProfile({Key key}) : super(key: key);
+class AppProfile extends StatelessWidget {
+  const AppProfile({Key key}) : super(key: key);
 
-  @override
-  _AppProfileState createState() => _AppProfileState();
-}
-
-class _AppProfileState extends State<AppProfile> {
   @override
   Widget build(BuildContext context) {
+    final AuthService _auth = AuthService();
+
     return Container(
-      child: Center(child: Text("App Profile Screen")),
+      child: Column(
+        children: [
+          Center(child: Text("App Profile Screen")),
+          TextButton(
+            onPressed: () async {
+              await _auth.signOut();
+            },
+            child: Text("Sign Out"),
+          )
+        ],
+      ),
     );
   }
 }
