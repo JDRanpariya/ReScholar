@@ -4,14 +4,14 @@ import 'package:provider/provider.dart';
 import 'package:rescholar/services/auth.dart';
 
 import './models/user.dart';
-import './screens/wrapper.dart';
+import 'screens/auth_wrapper.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ReScholar());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+class ReScholar extends StatelessWidget {
+  const ReScholar({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home:
-            Wrapper(), // wrapper checks for auth and decides where user should go login/register or homepage
+            AuthWrapper(), // wrapper checks for auth and decides where user should go login/register or homepage
         theme: ThemeData(
           brightness: Brightness.dark,
         ),
