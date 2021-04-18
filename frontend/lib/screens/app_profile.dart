@@ -11,14 +11,27 @@ class AppProfile extends StatelessWidget {
 
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text("App Profile Screen")),
-          TextButton(
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Text("App Profile Screen"),
+          ),
+          ElevatedButton(
             onPressed: () async {
               await _auth.signOut();
             },
-            child: Text("Sign Out"),
-          )
+            style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(Size(125, 50)),
+                backgroundColor: MaterialStateProperty.all(Color(0x40BD2B4B)),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(30))))),
+            child: Text(
+              "Sign Out",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Color(0xFFBD2B4B), fontSize: 16),
+            ),
+          ),
         ],
       ),
     );
