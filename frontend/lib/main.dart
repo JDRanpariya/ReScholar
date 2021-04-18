@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:rescholar/services/auth.dart';
-import 'package:rescholar/models/user.dart';
+import 'package:rescholar/models/rescholar_user.dart';
 import 'package:rescholar/screens/auth_wrapper.dart';
 
 void main() async {
@@ -17,7 +17,7 @@ class ReScholar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<UserR>.value(
+    return StreamProvider<ReScholarUser>.value(
       initialData: null,
       value: AuthService().user,
       child: MaterialApp(
