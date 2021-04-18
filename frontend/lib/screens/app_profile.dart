@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:rescholar/services/auth.dart';
 
 class AppProfile extends StatelessWidget {

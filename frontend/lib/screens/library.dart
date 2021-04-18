@@ -1,8 +1,8 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/build_card_list.dart';
-import '../widgets/header.dart';
+import 'package:rescholar/widgets/build_card_list.dart';
+import 'package:rescholar/widgets/header.dart';
 
 class Library extends StatefulWidget {
   Library({Key key}) : super(key: key);

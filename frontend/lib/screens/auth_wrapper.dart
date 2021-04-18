@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:rescholar/screens/Authentication/authenticate.dart';
-import '../models/user.dart';
-import 'library.dart';
+import 'package:rescholar/models/user.dart';
+import 'package:rescholar/screens/library.dart';
 
 class AuthWrapper extends StatelessWidget {
   @override

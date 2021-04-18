@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:rescholar/services/auth.dart';
+import 'package:rescholar/models/user.dart';
+import 'package:rescholar/screens/auth_wrapper.dart';
 
-import './models/user.dart';
-import 'screens/auth_wrapper.dart';
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(ReScholar());
 }
 
@@ -21,7 +23,7 @@ class ReScholar extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home:
-            AuthWrapper(), // wrapper checks for auth and decides where user should go login/register or homepage
+            AuthWrapper(), // Wrapper checks for auth and decides if the user should be directed to the login/register screen or home screen
         theme: ThemeData(
           brightness: Brightness.dark,
         ),
