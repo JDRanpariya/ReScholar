@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:rescholar/services/auth.dart';
-// import 'package:rescholar/assets/'
 
 class SignIn extends StatefulWidget {
   @override
