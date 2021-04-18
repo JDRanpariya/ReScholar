@@ -1,40 +1,53 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:rescholar/models/user.dart';
+
+import 'package:rescholar/models/rescholar_user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // create user obj based on User ( from firebase )
-  UserR _useFromFirebasUser(User user) {
+  // Create User object based on Firebase User
+  ReScholarUser _firebaseUser(User user) {
     if (user != null) {
       return user.isAnonymous == false
-          ? UserR(user.uid, user.displayName, user.email)
-          : UserR(user.uid, null, null);
+          ? ReScholarUser(user.uid, user.displayName, user.email)
+          : ReScholarUser(user.uid, null, null);
     } else {
       return null;
     }
   }
 
-  Stream<UserR> get user {
-    return _auth.authStateChanges().map(
-        _useFromFirebasUser); // (User user) => _useFromFirebasUser(user) it's calledd tear-off
+  // Return changes in Auth State
+  Stream<ReScholarUser> get user {
+    return _auth
+        .authStateChanges()
+        .map(_firebaseUser); // (User user) => _firebaseUser(user) [Tear-off]
   }
 
-  // sign in anon
-
-  Future signInAnon() async {
+  // Signing out
+  Future signOut() async {
     try {
-      UserCredential result = await _auth.signInAnonymously();
-      User user = result.user;
+      return await _auth.signOut();
     } catch (e) {
       print(e.toString());
       return null;
     }
   }
 
-  // sign in google
+  ////// ACCOUNTS //////
 
+  // -- Guest Account
+  Future signInAnon() async {
+    try {
+      UserCredential result = await _auth.signInAnonymously();
+      User guestUser = result.user;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  // -- Google Account
   Future signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
@@ -57,23 +70,12 @@ class AuthService {
       User googleUser = userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'account-exists-with-different-credential') {
-        print("account-exists-with-different-credential");
+        print("An account exists with a different credential!");
         return null;
       } else if (e.code == 'invalid-credential') {
-        print("Invalid Credentials");
+        print("Invalid Credentials!");
         return null;
       }
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
-  }
-
-  // sign out
-  //
-  Future signOut() async {
-    try {
-      return await _auth.signOut();
     } catch (e) {
       print(e.toString());
       return null;
