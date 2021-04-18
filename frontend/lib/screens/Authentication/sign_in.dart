@@ -19,6 +19,18 @@ class _SignInState extends State<SignIn> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  "ReScholar",
+                  style: TextStyle(
+                    fontSize: 36.0,
+                    color: Color(0xFF4880DE),
+                    fontFamily: 'OpenSans',
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
               InkWell(
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 onTap: () async {
@@ -32,7 +44,7 @@ class _SignInState extends State<SignIn> {
                 },
                 child: Container(
                     height: 50,
-                    width: 210,
+                    width: 215,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                         color: Color(0x404880DE)),
@@ -46,7 +58,8 @@ class _SignInState extends State<SignIn> {
                             width: 25.0,
                           ),
                           Text("Sign in using Google",
-                              style: TextStyle(fontSize: 16))
+                              style: TextStyle(
+                                  fontSize: 16, fontFamily: 'OpenSans'))
                         ])),
               ),
               Padding(
@@ -69,7 +82,7 @@ class _SignInState extends State<SignIn> {
                 },
                 child: Container(
                     height: 50,
-                    width: 190,
+                    width: 195,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                         color: Color(0x40FFFFFF)),
@@ -79,7 +92,8 @@ class _SignInState extends State<SignIn> {
                         children: [
                           Icon(Icons.account_circle_rounded, size: 25.0),
                           Text("Sign in as a Guest",
-                              style: TextStyle(fontSize: 16))
+                              style: TextStyle(
+                                  fontSize: 16, fontFamily: 'OpenSans'))
                         ])),
               ),
             ],
