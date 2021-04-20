@@ -10,7 +10,7 @@ class NavigationDrawerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {/* Write listener code here */},
+      onTap: () => Scaffold.of(context).openDrawer(),
       child: ShaderMask(
         shaderCallback: (rect) => LinearGradient(
           begin: Alignment.centerLeft,
@@ -32,7 +32,7 @@ class SearchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {/* Write listener code here */},
+      onTap: () {/* TODO: Implement Search Button logic */},
       child: ShaderMask(
         shaderCallback: (rect) => LinearGradient(
           begin: Alignment.centerLeft,
@@ -54,7 +54,7 @@ class PopUpMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
         icon: Icon(Icons.more_vert, size: 21),
-        onPressed: () {/* Write listener code here */});
+        onPressed: () {/* TODO: Implement Pop-up Menu */});
   }
 }
 
@@ -68,7 +68,7 @@ class _ToFolderState extends State<ToFolder> {
   bool onpress = false;
 
   _pressed() {
-    /* Write listener code here */
+    // TODO: Implement Add/Remove to/from folder menu
     setState(() {
       onpress = !onpress;
     });
@@ -96,7 +96,7 @@ class ToFavourites extends StatefulWidget {
 class _ToFavouritesState extends State<ToFavourites> {
   bool onpress = false;
   pressed() {
-    /* Write listener code here */
+    // TODO: Implement Add to Favourites button logic
     setState(() {
       onpress = !onpress;
     });
