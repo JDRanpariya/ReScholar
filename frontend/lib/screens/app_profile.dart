@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rescholar/models/rescholar_user.dart';
 import 'package:provider/provider.dart';
+
 import 'package:rescholar/services/auth.dart';
+import 'package:rescholar/models/rescholar_user.dart';
 
 class AppProfile extends StatelessWidget {
   const AppProfile({Key key}) : super(key: key);
@@ -19,20 +20,20 @@ class AppProfile extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: Text("App Profile Screen"),
           ),
-          SizedBox(height: 20.0),
           user.isAnonymous == false
               ? Column(children: [
                   Container(
-                    child: Image.network(user.profilePic),
+                    child: Image.network(user.profilePicture),
                     height: 50,
                     width: 50,
                   ),
+                  SizedBox(height: 15.0),
                   Text(user.username),
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 15.0),
                   Text(user.email),
                 ])
-              : Text("You are Logged in as Guest"),
-          SizedBox(height: 20.0),
+              : Text("You are logged in as a Guest"),
+          SizedBox(height: 15.0),
           ElevatedButton(
             onPressed: () async {
               await _auth.signOut();
