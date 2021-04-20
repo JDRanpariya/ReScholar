@@ -10,8 +10,10 @@ class AuthService {
   ReScholarUser _firebaseUser(User user) {
     if (user != null) {
       return user.isAnonymous == false
-          ? ReScholarUser(user.uid, user.displayName, user.email)
-          : ReScholarUser(user.uid, null, null);
+          ? ReScholarUser(user.uid, user.photoURL, user.displayName, user.email,
+              user.isAnonymous)
+          : ReScholarUser(
+              user.uid, user.uid, user.uid, user.uid, user.isAnonymous);
     } else {
       return null;
     }
@@ -41,6 +43,7 @@ class AuthService {
     try {
       UserCredential result = await _auth.signInAnonymously();
       User guestUser = result.user;
+      return _firebaseUser(guestUser);
     } catch (e) {
       print(e.toString());
       return null;
@@ -68,6 +71,7 @@ class AuthService {
           await _auth.signInWithCredential(credential);
 
       User googleUser = userCredential.user;
+      return _firebaseUser(googleUser);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'account-exists-with-different-credential') {
         print("An account exists with a different credential!");

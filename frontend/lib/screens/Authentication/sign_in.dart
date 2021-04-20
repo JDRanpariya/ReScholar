@@ -35,7 +35,7 @@ class _SignInState extends State<SignIn> {
                 onTap: () async {
                   dynamic user = await _auth.signInWithGoogle();
                   if (user == null) {
-                    print("Error signing in!");
+                    print("Error signing in google!");
                   } else {
                     print("User has signed in successfully!");
                     print(user);
@@ -72,10 +72,12 @@ class _SignInState extends State<SignIn> {
                 onTap: () async {
                   dynamic user = await _auth.signInAnon();
                   if (user == null) {
-                    print("Error signing in!");
+                    final snackBar = SnackBar(
+                      content: Text('Error signing in! anon'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   } else {
                     print("User has signed in successfully!");
-                    print(user);
                   }
                 },
                 child: Container(
