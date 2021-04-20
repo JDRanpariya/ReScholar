@@ -21,6 +21,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.black87,
       toolbarHeight: 75,
+      automaticallyImplyLeading: false,
       leading: Padding(
           padding: EdgeInsets.only(left: 15.0),
           child: NavigationDrawerButton(leadingIcon, leadingIconGradient)),
@@ -37,7 +38,6 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
             style: TextStyle(
               fontSize: 54,
               fontWeight: FontWeight.w700,
-              fontFamily: 'OpenSans',
             ),
           ),
         ),
