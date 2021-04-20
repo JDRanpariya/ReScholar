@@ -30,9 +30,9 @@ class AppProfile extends StatelessWidget {
               "Sign Out",
               textAlign: TextAlign.center,
               style: TextStyle(
-                  color: Color(0xFFBD2B4B),
-                  fontSize: 16,
-                  fontFamily: 'OpenSans'),
+                color: Color(0xFFBD2B4B),
+                fontSize: 16,
+              ),
             ),
           ),
         ],
