@@ -7,6 +7,7 @@ import 'package:rescholar/services/auth.dart';
 import 'package:rescholar/widgets/build_card_list.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/widgets/navigation_drawer.dart';
+import 'package:rescholar/widgets/option_bar.dart';
 
 class Library extends StatefulWidget {
   Library({Key key}) : super(key: key);
@@ -50,8 +51,7 @@ class _LibraryState extends State<Library> {
                     "What would you like to read about today, ${user.username}? ",
                     style: TextStyle(fontSize: 18, color: Color(0xFFFFC27A)),
                   ),
-                  Row(), // * TODO: Implement filters
-                  Row(), // * TODO: Implement Filters
+                  OptionBar(),
                   Expanded(child: BuildCardList()),
                 ],
               )
@@ -94,7 +94,7 @@ class _LibraryState extends State<Library> {
                                   ]),
                               SizedBox(height: 20.0),
                               Text(
-                                  "SignIn with google to add papers to library"),
+                                  "Sign in with Google to add papers to library"),
                             ],
                           )),
                     ),
