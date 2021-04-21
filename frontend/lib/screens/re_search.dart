@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:rescholar/models/paper.dart';
 import 'package:rescholar/services/search.dart';
 
@@ -18,24 +19,26 @@ class _ReSearchState extends State<ReSearch> {
     return Container(
       child: Center(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("ReSearch Screen"),
+          SizedBox(height: 15.0),
           ElevatedButton(
             onPressed: () async {
-              FutureBuilder<Paper>(
-                future: fetchFromGoogleScholar("osint", 5),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data.title);
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-                  // To show a spinner while loading
-                  return CircularProgressIndicator();
-                },
-              );
+              // FutureBuilder<Paper>(
+              //   future: fetchFromGoogleScholar("osint", 5),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       return Text(snapshot.data.title);
+              //     } else if (snapshot.hasError) {
+              //       return Text("${snapshot.error}");
+              //     }
+              //     // To show a spinner while loading
+              //     return CircularProgressIndicator();
+              //   },
+              // );
             },
-            child: Text("hi"),
+            child: Text("Test Button"),
           )
         ],
       )),
