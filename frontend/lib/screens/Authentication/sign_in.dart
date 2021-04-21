@@ -26,7 +26,6 @@ class _SignInState extends State<SignIn> {
                   style: TextStyle(
                     fontSize: 36.0,
                     color: Color(0xFF4880DE),
-                    fontFamily: 'OpenSans',
                     fontWeight: FontWeight.w900,
                   ),
                 ),
@@ -58,8 +57,7 @@ class _SignInState extends State<SignIn> {
                             width: 25.0,
                           ),
                           Text("Sign in using Google",
-                              style: TextStyle(
-                                  fontSize: 16, fontFamily: 'OpenSans'))
+                              style: TextStyle(fontSize: 16))
                         ])),
               ),
               Padding(
@@ -94,8 +92,7 @@ class _SignInState extends State<SignIn> {
                         children: [
                           Icon(Icons.account_circle_rounded, size: 25.0),
                           Text("Sign in as a Guest",
-                              style: TextStyle(
-                                  fontSize: 16, fontFamily: 'OpenSans'))
+                              style: TextStyle(fontSize: 16))
                         ])),
               ),
             ],

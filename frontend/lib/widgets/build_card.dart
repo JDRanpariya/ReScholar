@@ -16,6 +16,7 @@ class _BuildCardState extends State<BuildCard> {
   bool onpress = false;
 
   _pressed() {
+    // TODO: Implement research paper page logic
     setState(() {
       onpress = !onpress;
     });
@@ -29,7 +30,7 @@ class _BuildCardState extends State<BuildCard> {
       color: Colors.transparent,
       child: InkWell(
         onTap: _pressed,
-        onLongPress: () {},
+        onLongPress: () {/* TODO: Implement long press menu logic */},
         child: Padding(
           padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0.0),
           child: Column(
@@ -42,11 +43,9 @@ class _BuildCardState extends State<BuildCard> {
                     child: Container(
                       width: screenWidth - 80,
                       child: Text(
-                        widget.data[widget.index]['title'],
+                        widget.data[0]['items'][widget.index]['title'],
                         style: TextStyle(
-                            fontFamily: 'OpenSans',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 17),
+                            fontWeight: FontWeight.w600, fontSize: 17),
                       ),
                     ),
                   ),
@@ -56,25 +55,21 @@ class _BuildCardState extends State<BuildCard> {
               Padding(
                 padding: EdgeInsets.only(bottom: 2),
                 child: Text(
-                  widget.data[widget.index]['authors'] +
+                  widget.data[0]['items'][widget.index]['authors'] +
                       " - " +
-                      widget.data[widget.index]['journal'] +
+                      widget.data[0]['items'][widget.index]['journal'] +
                       " - " +
-                      widget.data[widget.index]['year'] +
+                      widget.data[0]['items'][widget.index]['year'] +
                       " - " +
-                      widget.data[widget.index]['publisher'],
+                      widget.data[0]['items'][widget.index]['publisher'],
                   style: TextStyle(
-                    fontFamily: 'OpenSans',
                     fontWeight: FontWeight.w600,
                     fontSize: 10,
                   ),
                 ),
               ),
-              Text(widget.data[widget.index]['snippet'],
-                  style: TextStyle(
-                      fontFamily: 'OpenSans',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 12)),
+              Text(widget.data[0]['items'][widget.index]['snippet'],
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 12)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -85,6 +80,7 @@ class _BuildCardState extends State<BuildCard> {
               Divider(
                 color: Color(0x2EFFFFFF),
                 height: 2,
+                thickness: 1.25,
               )
             ],
           ),

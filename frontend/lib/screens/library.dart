@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:rescholar/widgets/build_card_list.dart';
 import 'package:rescholar/widgets/header.dart';
+import 'package:rescholar/widgets/navigation_drawer.dart';
 
 class Library extends StatefulWidget {
   Library({Key key}) : super(key: key);
@@ -16,6 +17,7 @@ class _LibraryState extends State<Library> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black87,
+      drawer: NavigationDrawer(),
       appBar: Header(
           Icon(
             FluentSystemIcons.ic_fluent_library_filled,

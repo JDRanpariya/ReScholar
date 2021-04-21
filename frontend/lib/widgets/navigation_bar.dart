@@ -1,11 +1,13 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
 
 import 'package:rescholar/models/customIcons.dart';
 import 'package:rescholar/screens/app_profile.dart';
 import 'package:rescholar/screens/library.dart';
 import 'package:rescholar/screens/re_search.dart';
+import 'package:rescholar/models/rescholar_user.dart';
 
 class NavigationBar extends StatefulWidget {
   @override
@@ -22,11 +24,12 @@ class _NavigationBarState extends State<NavigationBar> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<ReScholarUser>(context);
     return PersistentTabView(
       context,
       controller: _controller,
       screens: _buildScreens(),
-      items: _navBarsItems(),
+      items: _navBarsItems(user),
       confineInSafeArea: true,
       backgroundColor: Color(0xFF1C1C1C),
       handleAndroidBackButtonPress: true,
@@ -64,7 +67,7 @@ List<Widget> _buildScreens() {
   ];
 }
 
-List<PersistentBottomNavBarItem> _navBarsItems() {
+List<PersistentBottomNavBarItem> _navBarsItems(user) {
   return [
     PersistentBottomNavBarItem(
       icon: Icon(
@@ -81,7 +84,9 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       inactiveColorPrimary: Colors.white70,
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(Icons.account_circle_rounded),
+      icon: user.isAnonymous == false
+          ? Container(child: Image.network(user.profilePicture))
+          : Icon(Icons.account_circle_rounded),
       title: ("App Profile"),
       activeColorPrimary: Color(0xFFFF9536),
       inactiveColorPrimary: Colors.white70,
