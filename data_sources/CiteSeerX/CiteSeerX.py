@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+import json
 
 def scrape_data_from_div(soup_div):
     result = {}
@@ -18,27 +18,24 @@ def scrape_data_from_div(soup_div):
         result["citationLink"] = "None"
         result["citation"] = "None"
     
-    # print(result["citationLink"])
-    # print(result)
     return result
 
 
+def CiteSeerX(search_term):
 
-base_url = "https://citeseerx.ist.psu.edu/search?q="
-search_term = "residual learning"
-search_url = base_url + search_term.replace(" ", "+")
+    search_url = "https://citeseerx.ist.psu.edu/search?q=" + search_term.replace(" ", "+")
 
-page = requests.get(search_url)
-soup = BeautifulSoup(page.content, 'html.parser')
-temp_soup = soup.find_all("div", class_="result")
+    page = requests.get(search_url)
 
-final_result = []
+    soup = BeautifulSoup(page.content, 'html.parser')
+    temp_soup = soup.find_all("div", class_="result")
 
-# scrape_data_from_div(temp_soup[1])
+    final_result = []
 
-for div in temp_soup:
-    div_data = scrape_data_from_div(div)
-    final_result.append(div_data)
+    for div in temp_soup:
+        div_data = scrape_data_from_div(div)
+        final_result.append(div_data)
+    return final_result
 
 
-print(final_result)
+print(json.dumps(CiteSeerX("residual learning")))
