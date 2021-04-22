@@ -7,11 +7,11 @@
 ### Common Attributes
 
 1) *title*  
-2) *publisherData: [authors, journal, year]*  
+2) *publisherData: [authors  `<ListOfStrings>`, journal, year]*  
 3) *snippet*  
 4) *citations*  
 5) *citationsLink*
-6) *deepLink `<NoneString>`*  
+6) *deepLink  `<NoneString>`*  
 
 ### Extra Attributes
 
@@ -27,11 +27,11 @@
 ### Common Attributes
 
 1) *title*  
-2) *publisherData: [authors, journal, year]*  
+2) *publisherData: [authors  `<ListOfStrings>`, journal, year]*  
 3) *snippet*  
 4) *citations*  
 5) *citationsLink*
-6) *deepLink `<NoneString>`*  
+6) *deepLink  `<NoneString>`*  
 
 ### Extra Attributes
 
@@ -54,11 +54,11 @@
 ### Common Attributes
 
 1) *title*  
-2) *publisherData: [authors, journal, year]*  
+2) *publisherData: [authors  `<ListOfStrings>`, journal, year]*  
 3) *snippet*  
 4) *citations*  
 5) citationsLink
-6) *deepLink `<NoneString>`*  
+6) *deepLink  `<NoneString>`*  
 
 ### Extra Attributes
 
@@ -77,11 +77,11 @@
 ### Common Attributes
 
 1) *title*  
-2) *publisherData: [authors, journal, year]*  
+2) *publisherData: [authors  `<ListOfStrings>`, journal, year]*  
 3) *snippet*  
 4) citations  
 5) citationsLink
-6) *deepLink `<NoneString>`*  
+6) *deepLink  `<NoneString>`*  
 
 ### Extra Attributes
 
