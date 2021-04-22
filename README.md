@@ -5,7 +5,7 @@ The app brings a powerful search engine with access to multiple popular research
 ReScholar hopes to be the one-stop shop for academics and researchers alike to all the tools necessary to discover and explore relevant scientific literature.  
 
 ## Data Sources
-- [Google Scholar](https://scholar.google.com/)
+:heavy_check_mark:  [Google Scholar](https://scholar.google.com/)
 - [Microsoft Academic](https://academic.microsoft.com/home)  **
 - [Semantic Scholar](https://www.semanticscholar.org/)
 - [CiteSeerX](https://citeseerx.ist.psu.edu)  
