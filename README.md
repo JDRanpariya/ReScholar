@@ -6,13 +6,13 @@ ReScholar hopes to be the one-stop shop for academics and researchers alike to a
 
 ## Data Sources
 - [Google Scholar](https://scholar.google.com/)
-- [Microsoft Academic](https://academic.microsoft.com/home)  
-- [Semantic Scholar](https://www.semanticscholar.org/)  
+- [Microsoft Academic](https://academic.microsoft.com/home)  **
+- [Semantic Scholar](https://www.semanticscholar.org/)
+- [CiteSeerX](https://citeseerx.ist.psu.edu)  
 - [NASA STI](https://www.sti.nasa.gov/STI-public-homepage.html)  
 
 ### To Be Added: 
-- [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/)   
-- [CiteSeerX](https://citeseerx.ist.psu.edu)  
+- [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/)     
 - [SOA/NASA Astrophysics Data System](https://adswww.harvard.edu/)  
 
 ## Features  
