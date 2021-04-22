@@ -64,8 +64,13 @@ def GoogleScholar(request):
                         # Publisher Data
                         publisher_data = "".join(res.xpath('.//div[@class="gs_a"]//text()').extract()).replace("\u2026","...").replace("\u00a0","")
                         year = re.search("\d+", publisher_data)[0]
-                        journal = publisher_data.split("-")[1].split(",")[0].strip()
-                        authors = publisher_data.split("-")[0]
+                        if (publisher_data.split("-")[1].split(",")[0].strip() != re.search("\d+", publisher_data)[0]):
+                            journal = publisher_data.split("-")[1].split(",")[0].strip()
+                        else:
+                            journal = ""
+                        authors = []
+                        for author in publisher_data.split("-")[0].split(","):
+                            authors.append(author) 
                         
                         position += 1
                         item = {'title': title,  'authors': authors, 'journal': journal, 'year': year, 
