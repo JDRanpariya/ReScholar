@@ -1,4 +1,3 @@
-
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
 url = request.args.get('url');
