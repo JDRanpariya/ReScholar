@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:rescholar/services/re_search_engine.dart';
-import 'package:rescholar/models/papers_list.dart'
+import 'package:rescholar/models/papers_list.dart';
 
 class ReSearch extends StatefulWidget {
   ReSearch({Key key}) : super(key: key);
