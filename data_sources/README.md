@@ -11,7 +11,7 @@
 3) *snippet*  
 4) *citations*  
 5) *citationsLink*
-6) *deepLink  `<NoneString>`*  
+6) *detailsLink  `<NoneString>`*  
 
 ### Extra Attributes
 
@@ -31,7 +31,7 @@
 3) *snippet*  
 4) *citations*  
 5) *citationsLink*
-6) *deepLink  `<NoneString>`*  
+6) *detailsLink*  
 
 ### Extra Attributes
 
@@ -58,7 +58,7 @@
 3) *snippet*  
 4) *citations*  
 5) citationsLink
-6) *deepLink  `<NoneString>`*  
+6) *detailsLink*  
 
 ### Extra Attributes
 
@@ -81,7 +81,7 @@
 3) *snippet*  
 4) citations  
 5) citationsLink
-6) *deepLink  `<NoneString>`*  
+6) *detailsLink*  
 
 ### Extra Attributes
 
