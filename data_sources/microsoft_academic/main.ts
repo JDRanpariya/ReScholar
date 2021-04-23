@@ -19,21 +19,23 @@ const puppeteer = require("puppeteer");
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
     const getResults = page.evaluate(() => {
-      let items = [];
-      const resultsNodeList = document.querySelectorAll(
-        "#mainArea > router-view > ma-serp > div > div.results > div > compose > div > div.results > ma-card > div > compose > div > div.primary_paper"
-      );
-      for (let div of [...resultsNodeList]) {
-        const title = div.children[0].innerText;
-        const link = div.children[0].href;
+      // * TODO
 
-        items.push({
-          title: title,
-          link: link,
-        });
-      }
+      // let items = [];
+      // const len = document.querySelectorAll(
+      //   "#mainArea > router-view > ma-serp > div > div.results > div > compose > div > div.results > ma-card > div > compose > div > div.primary_paper > a.title.au-target > span"
+      // ).length;
+      // for (let i=1;i<=len;i++) {
+      //   const title = div.children[0].innerText;
+      //   const link = div.children[0].href;
 
-      return JSON.stringify(getResults);
+      //   items.push({
+      //     title: title,
+      //     link: link,
+      //   });
+      //}
+
+      return; //JSON.stringify(getResults);
     });
   }
 
@@ -75,7 +77,7 @@ const puppeteer = require("puppeteer");
         authors.push(author.children[0].innerText);
       }
       // abstract
-      const abstract = document.querySelector(
+      const abstractText = document.querySelector(
         "#mainArea > router-view > div > div > div > div > p"
       ).innerText;
       // references, cited by and related links
@@ -94,7 +96,7 @@ const puppeteer = require("puppeteer");
         citations: citations,
         citationsLink: citationsLink,
         doi: doi,
-        abstract: abstract,
+        abstractText: abstractText,
         links: links,
         pdfLinks: pdfLinks,
         references: references,
