@@ -118,7 +118,7 @@ def GoogleScholar(request):
         if result is not None:
             raise result
 
-        return json.dumps({list(output)})
+        return json.dumps(list(output))
         
     service = request.args.get('svc')
     if service == 'search_results':
