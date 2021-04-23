@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:rescholar/models/paper.dart';
-import 'package:rescholar/services/search.dart';
+import 'package:rescholar/services/re_search_engine.dart';
+import 'package:rescholar/models/papers_list.dart'
 
 class ReSearch extends StatefulWidget {
   ReSearch({Key key}) : super(key: key);
@@ -25,7 +25,7 @@ class _ReSearchState extends State<ReSearch> {
           SizedBox(height: 15.0),
           ElevatedButton(
             onPressed: () async {
-              // FutureBuilder<Paper>(
+              // FutureBuilder<PapersList>(
               //   future: fetchFromGoogleScholar("osint", 5),
               //   builder: (context, snapshot) {
               //     if (snapshot.hasData) {
