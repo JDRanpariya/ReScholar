@@ -37,7 +37,7 @@
 
 1) doi  
 2) institutions  
-3) abstract  
+3) abstractText  
 4) links  `<ListOfStrings>`  
 5) pdfLinks  `<ListOfStrings>`  
 6) references  
@@ -63,7 +63,7 @@
 ### Extra Attributes
 
 1) doi  
-2) abstract  
+2) abstractText  
 3) *links  `<ListOfStrings>`*  
 4) pdfLinks  `<ListOfStrings>`  
 5) references  
@@ -85,7 +85,7 @@
 
 ### Extra Attributes
 
-1) abstract  
+1) abstractText  
 2) pdfLinks  `<ListOfStrings>`
 3) versions  
 4) versionsLink  
