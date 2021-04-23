@@ -6,9 +6,9 @@ ReScholar hopes to be the one-stop shop for academics and researchers alike to a
 
 ## Data Sources
 :heavy_check_mark: [Google Scholar](https://scholar.google.com/) <br>
-:construction: [Microsoft Academic](https://academic.microsoft.com/home)  **
-- [Semantic Scholar](https://www.semanticscholar.org/)
-- [CiteSeerX](https://citeseerx.ist.psu.edu)  
+:construction: [Microsoft Academic](https://academic.microsoft.com/home)  ** <br>
+:construction: [Semantic Scholar](https://www.semanticscholar.org/) <br>
+:construction: [CiteSeerX](https://citeseerx.ist.psu.edu)  
 - [NASA STI](https://www.sti.nasa.gov/STI-public-homepage.html)  
 
 ### To Be Added: 
