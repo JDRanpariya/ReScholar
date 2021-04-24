@@ -1,0 +1,26 @@
+name: GCF Deploy - CiteSeerX
+
+on:
+#   push:
+#     branches: [ main ]
+#     paths: 
+#       - data_sources/citeseerx/**
+
+  workflow_dispatch:
+
+jobs:
+  Deploy Function:
+    name: Deploy Function
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: google-github-actions/deploy-cloud-functions@v0.1.2
+        with:
+          credentials: ${{ secrets.GCF_ServiceAccount_Key }}
+          name: CiteSeerX
+          region: europe-west1
+          source_dir: data_sources/citeseerx/
+          entry_point: CiteSeerX
+          memory_mb: 512MB
+          runtime: python38
