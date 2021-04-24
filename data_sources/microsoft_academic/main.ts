@@ -58,6 +58,7 @@ async function MicrosoftAdademic() {
 
       return JSON.stringify({ items: items }); //JSON.stringify(getResults);
     });
+    return getResults;
   }
 
   // get paper details function
