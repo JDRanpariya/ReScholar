@@ -71,7 +71,7 @@ class _SignInState extends State<SignIn> {
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 onTap: () async {
                   dynamic user = await _auth.signInAnon();
-                  if (user == null) if (user == null) {
+                  if (user == null) {
                     print("DEBUG: Error signing in as Guest");
                   } else {
                     print("DEBUG: Guest user has signed in successfully");
