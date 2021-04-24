@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths: 
-      - data_sources/google_scholar/
+      - data_sources/google_scholar/**
 
   workflow_dispatch:
 
