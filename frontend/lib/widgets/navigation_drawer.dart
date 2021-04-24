@@ -122,7 +122,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             onTap: () {
                               if (user.isAnonymous == false) {
                                 setState(() {
-                                  _selection = 'Favourites';
+                                  _selection = 'Archive';
                                 });
                               } else {
                                 customToast(context,
@@ -157,7 +157,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             onTap: () {
                               if (user.isAnonymous == false) {
                                 setState(() {
-                                  _selection = 'Favourites';
+                                  _selection = 'Recycle Bin';
                                 });
                               } else {
                                 customToast(context,
