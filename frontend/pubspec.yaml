@@ -26,10 +26,9 @@ dependencies:
   provider: ^5.0.0
   persistent_bottom_nav_bar: any
   fluentui_icons: any
-  localstorage: ^4.0.0+1
-  expandable: ^5.0.1
   http: ^0.13.1
-  # fluttertoast: ^8.0.5
+  fluttertoast: ^8.0.6
+  expandable: ^5.0.1
 
   firebase_core: ^1.0.3
   firebase_analytics: ^7.1.1

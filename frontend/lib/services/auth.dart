@@ -31,7 +31,7 @@ class AuthService {
     try {
       return await _auth.signOut();
     } catch (e) {
-      print(e.toString());
+      print("DEBUG: " + e.toString());
       return null;
     }
   }
@@ -45,7 +45,7 @@ class AuthService {
       User guestUser = result.user;
       return _firebaseUser(guestUser);
     } catch (e) {
-      print(e.toString());
+      print("DEBUG: " + e.toString());
       return null;
     }
   }
@@ -74,14 +74,14 @@ class AuthService {
       return _firebaseUser(googleUser);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'account-exists-with-different-credential') {
-        print("An account exists with a different credential!");
+        print("DEBUG: An account exists with a different credential");
         return null;
       } else if (e.code == 'invalid-credential') {
-        print("Invalid Credentials!");
+        print("DEBUG: Invalid Credentials");
         return null;
       }
     } catch (e) {
-      print(e.toString());
+      print("DEBUG: " + e.toString());
       return null;
     }
   }

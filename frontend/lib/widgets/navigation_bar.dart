@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 
-import 'package:rescholar/models/customIcons.dart';
+import 'package:rescholar/models/custom_icons.dart';
 import 'package:rescholar/screens/app_profile.dart';
 import 'package:rescholar/screens/library.dart';
 import 'package:rescholar/screens/re_search.dart';
