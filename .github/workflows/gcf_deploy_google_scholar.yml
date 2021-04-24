@@ -1,4 +1,4 @@
-name: [GCF Deploy] Google Scholar
+name: GCF Deploy - Google Scholar
 
 on:
   push:
