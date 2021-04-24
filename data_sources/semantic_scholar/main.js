@@ -1,20 +1,19 @@
-const { request } = require("node:https");
-const puppeteer = require("puppeteer");
+import puppeteer from "puppeteer";
 
 async function SemanticScholarTS() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  const svc = request.args.get("svc");
+  const svc = req.query("svc");
 
   svc == "search_results" ? get_results(request) : get_paper_details(request);
 
-  async function get_results(request) {
-    const default_query: string = "residual_learning";
-    const query: string = request.args.get("q") ?? default_query;
-    const item_count: number = request.args.get("item_count") ?? 10;
-    // const sort_by: number = request.args.get("sort_by") ?? 0;
-    const url: string = `https://www.semanticscholar.org/search?q=${query}&sort=relevance`;
+  async function get_results() {
+    const default_query = "residual_learning";
+    const query = req.query("q") ?? default_query;
+    const item_count = req.query("item_count") ?? 10;
+    // const sort_by = req.query("sort_by") ?? 0;
+    const url = `https://www.semanticscholar.org/search?q=${query}&sort=relevance`;
 
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
@@ -57,9 +56,9 @@ async function SemanticScholarTS() {
   }
 
   // get paper details function
-  async function get_paper_details(request) {
-    const parse_url: String = request.args.get("url");
-    const url: String = parse_url;
+  async function get_paper_details() {
+    const parse_url = req.query("url");
+    const url = parse_url;
 
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
