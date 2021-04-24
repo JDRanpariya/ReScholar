@@ -1,7 +1,7 @@
 const { request } = require("node:https");
 const puppeteer = require("puppeteer");
 
-(async () => {
+async function MicrosoftAdademic() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
@@ -20,22 +20,43 @@ const puppeteer = require("puppeteer");
 
     const getResults = page.evaluate(() => {
       // * TODO
+      let items = [];
+      const results = document.querySelectorAll(
+        "#mainArea > router-view > ma-serp > div > div.results > div > compose > div > div.results > ma-card"
+      );
 
-      // let items = [];
-      // const len = document.querySelectorAll(
-      //   "#mainArea > router-view > ma-serp > div > div.results > div > compose > div > div.results > ma-card > div > compose > div > div.primary_paper > a.title.au-target > span"
-      // ).length;
-      // for (let i=1;i<=len;i++) {
-      //   const title = div.children[0].innerText;
-      //   const link = div.children[0].href;
+      for (let result of results) {
+        items.push({
+          title: result.querySelector("span")?.innerText ?? "",
+          authors:
+            result.querySelector("div.authors")?.innerText?.split(",") ?? "",
+          journal:
+            result
+              .querySelector("a.publication")
+              ?.innerText?.trim()
+              .split(" ")
+              .slice(1, -1)
+              .join(" ")
+              .trim() ?? "",
+          year:
+            result
+              .querySelector("a.publication")
+              ?.innerText?.trim()
+              ?.split(" ")[0] ?? "",
+          snippets:
+            result.querySelector("div.text > span > span.au-target")
+              ?.innerText ?? "",
+          citations:
+            result
+              .querySelector("div > div.citation > a > span")
+              ?.innerText?.split(" ")[0] ?? "",
+          citationsLink:
+            result.querySelector("div > div.citation > a")?.href ?? "",
+          detailsLink: result.querySelector("a")?.href ?? "",
+        });
+      }
 
-      //   items.push({
-      //     title: title,
-      //     link: link,
-      //   });
-      //}
-
-      return; //JSON.stringify(getResults);
+      return JSON.stringify({ items: items }); //JSON.stringify(getResults);
     });
   }
 
@@ -47,18 +68,22 @@ const puppeteer = require("puppeteer");
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
     const getDetail = page.evaluate(() => {
-      const title = document.querySelector(
-        "#mainArea > router-view > div > div > div > div > h1"
-      ).innerText;
-      const year = document.querySelector(
-        "#mainArea > router-view > div > div > div > div > a.au-target.publication > span.year"
-      ).innerText;
-      const references = document.querySelector(
-        "#mainArea > router-view > div > div > div > div > div.stats > ma-statistics-item:nth-child(1) > div.ma-statistics-item.au-target > div.data > div.count"
-      ).innerText;
-      const citations = document.querySelector(
-        "#mainArea > router-view > div > div > div > div > div.stats > ma-statistics-item:nth-child(2) > div.ma-statistics-item.au-target > div.data > div.count"
-      ).innerText;
+      const title =
+        document.querySelector(
+          "#mainArea > router-view > div > div > div > div > h1"
+        )?.innerText ?? "";
+      const year =
+        document.querySelector(
+          "#mainArea > router-view > div > div > div > div > a.au-target.publication > span.year"
+        )?.innerText ?? "";
+      const references =
+        document.querySelector(
+          "#mainArea > router-view > div > div > div > div > div.stats > ma-statistics-item:nth-child(1) > div.ma-statistics-item.au-target > div.data > div.count"
+        )?.innerText ?? "";
+      const citations =
+        document.querySelector(
+          "#mainArea > router-view > div > div > div > div > div.stats > ma-statistics-item:nth-child(2) > div.ma-statistics-item.au-target > div.data > div.count"
+        )?.innerText ?? "";
       const doi = document
         .querySelector(
           "#mainArea > router-view > div > div > div > div > a.doiLink.au-target"
@@ -67,23 +92,27 @@ const puppeteer = require("puppeteer");
       const journal =
         document.querySelector(
           "#mainArea > router-view > div > div > div > div > a.au-target.publication > span.pub-name.au-target"
-        ).innerText ?? "";
+        )?.innerText ??
+        "" ??
+        "";
       // get authors
       let authors = [];
       const authorsNodeList = document.querySelectorAll(
         "#mainArea > router-view > div > div > div > div > ma-author-string-collection > div > div > div"
       );
       for (let author of [...authorsNodeList]) {
-        authors.push(author.children[0].innerText);
+        authors.push(author?.children[0]?.innerText) ?? "";
       }
       // abstract
-      const abstractText = document.querySelector(
-        "#mainArea > router-view > div > div > div > div > p"
-      ).innerText;
+      const abstractText =
+        document.querySelector(
+          "#mainArea > router-view > div > div > div > div > p"
+        )?.innerText ?? "";
       // references, cited by and related links
-      const referencesLink = document.URL;
-      const citationsLink = referencesLink.replace("reference", "citedby");
-      const relatedLink = referencesLink.replace("reference", "related");
+      const referencesLink = document?.URL ?? "";
+      const citationsLink =
+        referencesLink?.replace("reference", "citedby") ?? "";
+      const relatedLink = referencesLink?.replace("reference", "related") ?? "";
       // * TODO
       const links = [];
       const pdfLinks = [];
@@ -109,4 +138,4 @@ const puppeteer = require("puppeteer");
   }
 
   await browser.close();
-})();
+}
