@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+const puppeteer = require('puppeteer')
 
 async function SemanticScholarTS() {
   const browser = await puppeteer.launch();

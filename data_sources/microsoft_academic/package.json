@@ -17,7 +17,7 @@
     }
   ],
   "dependencies": {
-    "https://www.npmjs.com/package/puppeteer": "9.0.0"
+    "puppeteer": "^9.0.0"
   },
   "repositories": [
     {
