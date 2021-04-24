@@ -38,7 +38,7 @@ class _SignInState extends State<SignIn> {
                     print("DEBUG: Error signing in with Google");
                   } else {
                     print("DEBUG: Google user has signed in successfully");
-                    print("DEBUG: " + user);
+                    print("DEBUG: $user");
                   }
                 },
                 child: Container(
@@ -75,7 +75,7 @@ class _SignInState extends State<SignIn> {
                     print("DEBUG: Error signing in as Guest");
                   } else {
                     print("DEBUG: Guest user has signed in successfully");
-                    print("DEBUG: " + user);
+                    print("DEBUG: $user");
                   }
                 },
                 child: Container(

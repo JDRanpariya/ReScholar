@@ -74,7 +74,7 @@ class _LibraryState extends State<Library> {
                       print("DEBUG: Error signing in with Google");
                     } else {
                       print("DEBUG: Google user has signed in successfully");
-                      print("DEBUG: " + user);
+                      print("DEBUG: $user");
                     }
                   },
                   child: Container(
