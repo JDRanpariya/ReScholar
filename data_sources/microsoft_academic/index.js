@@ -1,33 +1,47 @@
 const puppeteer = require('puppeteer')
 
 exports.MicrosoftAcademicTS = function MicrosoftAcademicTS(req, res) {
+
+  console.log(req.query.q)
+
+  MicrosoftAcademicTS(req, res);
   async function MicrosoftAcademicTS(req, res) {
-    const browser = await puppeteer.launch();
+
+    const browser = await puppeteer.launch({
+      headless: true,
+      // pipe: true, <-- delete this property
+      args: [
+        '--no-sandbox',
+        '--disable-dev-shm-usage', // <-- add this one
+      ],
+    });
     const page = await browser.newPage();
 
-    const svc = req.query("svc");
+    const svc = req.query.svc;
     console.log(svc);
-    svc == "search_results" ? get_results(request) : get_paper_details(request);
+    svc == "search_results" ? await getSearchResults() : await getPaperDetails();
 
-    async function get_results() {
+    async function getSearchResults() {
       const default_query = "residual_learning";
-      const query = req.query("q") ?? default_query;
+      const query = req.query.q ?? default_query;
       console.log(query);
       //const item_count = req.query("item_count") ?? 10;
-      const sort_by = req.query("sort_by") ?? 0;
+      const sort_by = req.query.sort_by ?? 0;
       const url = `https://academic.microsoft.com/search?q=${query}&f=&orderBy=${sort_by}&skip=0&take=10`;
       console.log(url);
       await page.goto(url, { waitUntil: "domcontentloaded" });
       console.log("Page downloaded");
-
-      const getResults = page.evaluate(() => {
+      let items = []
+      await page.evaluate(() => {
         // * TODO
-        let items = [];
+        //  let items = [];
         const results = document.querySelectorAll(
           "#mainArea > router-view > ma-serp > div > div.results > div > compose > div > div.results > ma-card"
         );
+        console.log(results);
 
         for (let result of results) {
+          console.log(result.querySelector("span")?.innerText ?? "");
           items.push({
             title: result.querySelector("span")?.innerText ?? "",
             authors:
@@ -58,14 +72,15 @@ exports.MicrosoftAcademicTS = function MicrosoftAcademicTS(req, res) {
           });
         }
 
-        return JSON.stringify({ items: items }); //JSON.stringify(getResults);
+        // res.status(200).send(JSON.stringify({ items: items })); //JSON.stringify(getResults);
       });
-      res.status(200).send(getResults);
+      res.status(200).send(JSON.stringify({ items: items }));
+      await browser.close();
     }
 
     // get paper details function
-    async function get_paper_details() {
-      const parse_url = req.query("url");
+    async function getPaperDetails() {
+      const parse_url = req.query.url;
       const url = parse_url;
       console.log(url);
       await page.goto(url, { waitUntil: "domcontentloaded" });
@@ -121,12 +136,12 @@ exports.MicrosoftAcademicTS = function MicrosoftAcademicTS(req, res) {
         const pdfLinks = [];
 
         return {
-          title: title,
-          authors: authors,
-          journal: journal,
-          year: year,
-          citations: citations,
-          citationsLink: citationsLink,
+          // title: title,
+          // authors: authors,
+          // journal: journal,
+          // year: year,
+          // citations: citations,
+          // citationsLink: citationsLink,
           doi: doi,
           abstractText: abstractText,
           links: links,
@@ -137,9 +152,10 @@ exports.MicrosoftAcademicTS = function MicrosoftAcademicTS(req, res) {
         };
       });
 
-      res.status(200).send(JSON.stringify(getDetail));
-    }
+      await res.status(200).send(JSON.stringify(await getDetail()));
 
-    await browser.close();
+      await browser.close();
+    }
   }
 }
+
