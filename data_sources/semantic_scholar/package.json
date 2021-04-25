@@ -1,0 +1,28 @@
+{
+  "name": "semantic_scholar_scraper",
+  "description": "Scrapes Microsoft Academic for papes",
+  "version": "1.0.0",
+  "contributors": [
+    {
+      "name": "JDRanpariya",
+      "email": "jdatel.code@gmail.com",
+      "web": "jdranpariya.vercel.app"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "JDRanpariya",
+      "email": "jdatel.code@gmail.com",
+      "web": "jdranpariya.vercel.app"
+    }
+  ],
+  "dependencies": {
+    "puppeteer": "^9.0.0"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/pranavAbe/Rescholar.git"
+    }
+  ]
+}

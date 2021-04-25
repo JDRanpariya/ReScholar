@@ -71,10 +71,10 @@ class _LibraryState extends State<Library> {
                   onTap: () async {
                     dynamic user = await _auth.signInWithGoogle();
                     if (user == null) {
-                      print("Error signing in google!");
+                      print("DEBUG: Error signing in with Google");
                     } else {
-                      print("User has signed in successfully!");
-                      print(user);
+                      print("DEBUG: Google user has signed in successfully");
+                      print("DEBUG: $user");
                     }
                   },
                   child: Container(

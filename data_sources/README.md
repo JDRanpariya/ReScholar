@@ -11,7 +11,7 @@
 3) *snippet*  
 4) *citations*  
 5) *citationsLink*
-6) *deepLink  `<NoneString>`*  
+6) *detailsLink  `<NoneString>`*  
 
 ### Extra Attributes
 
@@ -31,13 +31,13 @@
 3) *snippet*  
 4) *citations*  
 5) *citationsLink*
-6) *deepLink  `<NoneString>`*  
+6) *detailsLink*  
 
 ### Extra Attributes
 
 1) doi  
 2) institutions  
-3) abstract  
+3) abstractText  
 4) links  `<ListOfStrings>`  
 5) pdfLinks  `<ListOfStrings>`  
 6) references  
@@ -58,12 +58,12 @@
 3) *snippet*  
 4) *citations*  
 5) citationsLink
-6) *deepLink  `<NoneString>`*  
+6) *detailsLink*  
 
 ### Extra Attributes
 
 1) doi  
-2) abstract  
+2) abstractText  
 3) *links  `<ListOfStrings>`*  
 4) pdfLinks  `<ListOfStrings>`  
 5) references  
@@ -81,11 +81,11 @@
 3) *snippet*  
 4) citations  
 5) citationsLink
-6) *deepLink  `<NoneString>`*  
+6) *detailsLink*  
 
 ### Extra Attributes
 
-1) abstract  
+1) abstractText  
 2) pdfLinks  `<ListOfStrings>`
 3) versions  
 4) versionsLink  

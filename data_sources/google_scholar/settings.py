@@ -1,4 +1,4 @@
-BOT_NAME = 'GoogleScholarSpider'
+BOT_NAME = 'SearchResultsSpider'
 
 # SPIDER_MODULES = ['scholar.spiders']
 # NEWSPIDER_MODULE = 'scholar.spiders'

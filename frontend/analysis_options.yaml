@@ -13,6 +13,7 @@
         - avoid_types_as_parameter_names
         - avoid_unused_constructor_parameters
         - await_only_futures
+        - camel_case_extensions
         - camel_case_types
         - cancel_subscriptions
         - cascade_invocations
@@ -23,6 +24,7 @@
         - empty_catches
         - empty_constructor_bodies
         - empty_statements
+        - file_names
         - hash_and_equals
         - implementation_imports
         - invariant_booleans

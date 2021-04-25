@@ -1,0 +1,26 @@
+name: GCF Deploy - Semantic Scholar
+
+on:
+#   push:
+#     branches: [ main ]
+#     paths: 
+#       - data_sources/semantic_scholar/**
+
+  workflow_dispatch:
+
+jobs:
+  Deploy Function:
+    name: Deploy Function
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: google-github-actions/deploy-cloud-functions@v0.1.2
+        with:
+          credentials: ${{ secrets.GCF_ServiceAccount_Key }}
+          name: SemanticScholar
+          region: europe-west1
+          source_dir: data_sources/semantic_scholar/
+          entry_point: SemanticScholar
+          memory_mb: 512MB
+          runtime: nodejs14
