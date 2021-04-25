@@ -16,9 +16,8 @@ def getVersionLinks(url):
 
 
 def CiteSeerXPaperScraper():
-    # test urls, will come in handy
-    # url = "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.1090.7865"
     # url = "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.53.5438&rank=3&q=residual%20learning&osm=&ossid="
+    # url = "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.1090.7865"
 
     url = request.args.get('link')
 
@@ -28,12 +27,12 @@ def CiteSeerXPaperScraper():
     soup = BeautifulSoup(page.content, 'html.parser')
 
     #COMMON ATTRIBUTES
-    item["title"] = soup.find("h2").text
+    # item["title"] = soup.find("h2").text
 
-    authors_string = soup.find("div", id="docAuthors").text
-    authors_list = authors_string.split(',')
-    authors_list[0] = authors_list[0][11:].strip()
-    item["authors"] = [i.strip() for i in authors_list]
+    # authors_string = soup.find("div", id="docAuthors").text
+    # authors_list = authors_string.split(',')
+    # authors_list[0] = authors_list[0][11:].strip()
+    # item["authors"] = [i.strip() for i in authors_list]
 
     try:
         item["journal"] = soup.find("tr", id="docVenue").find_all("td")[1].text.title()
@@ -45,16 +44,17 @@ def CiteSeerXPaperScraper():
         item["year"] = "None"
     try:
         item["citations"] = str(int(soup.find("tr", id="docCites").find("a", title="number of citations").text.split()[0]))
+        item["citationsLink"] = domain + soup.find("div", id="docMenu", class_="submenu").find_all("a")[1]["href"]
     except: 
         item["citations"] = "None"
+        item["citationsLink"] = "None"
 
-    item["citationsLink"] = domain + soup.find("div", id="docMenu", class_="submenu").find_all("a")[1]["href"]
-    item["deepLink"] = "None"
-    item["snippet"] = "None"
+    item["detailsLink"] = "None"
+    # item["snippet"] = "None"
     
 
     #EXTRA ATTRIBUTES
-    item["abstract"] = soup.find("div", id="abstract").find("p").text
+    item["abstractText"] = soup.find("div", id="abstract").find("p").text
     
     pdfLinks = []
     for i in soup.find("ul", id="dlinks").find_all("li"):
@@ -65,7 +65,7 @@ def CiteSeerXPaperScraper():
     item["pdfLinks"] = pdfLinks
 
     version_url = domain + soup.find("div", id="docMenu", class_="submenu").find_all("a")[5]["href"]
-    item["versionLinks"] = getVersionLinks(version_url)
+    item["versionsLinks"] = getVersionLinks(version_url)
 
     item["versions"] = [str(i) for i in list(range(len(item["versionLinks"])))]
 
@@ -76,3 +76,6 @@ def CiteSeerXPaperScraper():
         item["related"] = "None"
 
     return json.dumps(item)
+
+
+print(CiteSeerXPaperScraper())
