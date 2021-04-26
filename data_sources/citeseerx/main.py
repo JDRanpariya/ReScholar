@@ -1,48 +1,28 @@
-'''
-The commented lines are there from old version, It is commented out in this file because it's already been scraped in the SearchResultsScraper. and it's redundant to scrape it again
-I just left it there cause if in case we refactor the code in future it might come in handy. 
--theUnrealSamurai
-'''
-
 import request
 from bs4 import BeautifulSoup
 import json
 
 
 def CiteSeerX(request):
-    
-    def getVersionLinks(url):
-    domain = "https://citeseerx.ist.psu.edu"
-    page = requests.get(url)
-    soup = BeautifulSoup(page.content, 'html.parser')
-
-    versionLinks = []
-    for version in soup.find("div", id="versions", class_="block").find_all("a"):
-        versionLinks.append(domain + version["href"])
-
-    return versionLinks
-
-
-    def scrape_data_from_div(soup_div):
-        item = {}
-        domain = "https://citeseerx.ist.psu.edu"
-
-        item["title"] = soup_div.find("a").text.strip()
-        item["link"] = domain + soup_div.find("a")['href']
-        item["authors"] = soup_div.find("span", class_="authors").text[2:].strip()
-        item["snippet"] = soup_div.find("div", class_="snippet").text[4:-4].strip()
-
-        try: 
-            item["citationLink"] = domain + soup_div.find("a", class_="citation remove")['href']
-            item["citations"] = soup_div.find("a", class_="citation remove").text.split(' ')[2]
-        except TypeError:
-            item["citationLink"] = "None"
-            item["citation"] = "None"
-        
-        return item
-
-
     def SearchResultsScraper(request):
+        def scrape_data_from_div(soup_div):
+            item = {}
+            domain = "https://citeseerx.ist.psu.edu"
+
+            item["title"] = soup_div.find("a").text.strip()
+            item["link"] = domain + soup_div.find("a")['href']
+            item["authors"] = soup_div.find("span", class_="authors").text[2:].strip()
+            item["snippet"] = soup_div.find("div", class_="snippet").text[4:-4].strip()
+
+            try: 
+                item["citationLink"] = domain + soup_div.find("a", class_="citation remove")['href']
+                item["citations"] = soup_div.find("a", class_="citation remove").text.split(' ')[2]
+            except TypeError:
+                item["citationLink"] = "None"
+                item["citation"] = "None"
+            
+            return item
+
         default_query = "residual learning"
         query = request.args.get('q') if request.args.get('q')!=None else default_query
         
@@ -59,11 +39,20 @@ def CiteSeerX(request):
             item = scrape_data_from_div(div)
             result.append(item)
         return json.dumps(result)
+        
+    def PaperDetailsScraper(request):
+        def getVersionLinks(url):
+            domain = "https://citeseerx.ist.psu.edu"
+            page = requests.get(url)
+            soup = BeautifulSoup(page.content, 'html.parser')
 
+            versionLinks = []
+            for version in soup.find("div", id="versions", class_="block").find_all("a"):
+                versionLinks.append(domain + version["href"])
 
+            return versionLinks
 
-    def PaperDetailsScraper():
-        # test urls, just keep it here it'll come in handy
+        # Test URLs (Keep these here, might come in handy)
         # url = "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.53.5438&rank=3&q=residual%20learning&osm=&ossid="
         # url = "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.1090.7865"
 
@@ -74,8 +63,6 @@ def CiteSeerX(request):
         page = requests.get(url)
         soup = BeautifulSoup(page.content, 'html.parser')
 
-
-        #COMMON ATTRIBUTES
         # item["title"] = soup.find("h2").text
 
         # authors_string = soup.find("div", id="docAuthors").text
@@ -101,8 +88,6 @@ def CiteSeerX(request):
         item["detailsLink"] = "None"
         # item["snippet"] = "None"
         
-
-        #EXTRA ATTRIBUTES
         item["abstractText"] = soup.find("div", id="abstract").find("p").text
         
         pdfLinks = []
@@ -126,4 +111,11 @@ def CiteSeerX(request):
 
         return json.dumps(item)
 
-    PaperDetailsScraper()
+    service = request.args.get('svc')
+    if service == 'search_results':
+        return SearchResultsScraper(request)
+    elif service == 'paper_details':
+        return PaperDetailsScraper(request)
+    else: 
+        return "ERROR: Service request invalid"
+    
