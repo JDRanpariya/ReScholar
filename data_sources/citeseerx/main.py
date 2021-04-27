@@ -42,7 +42,7 @@ def CiteSeerX(request):
                 item = scrape_data_from_div(div)
                 result.append(item)
         
-        return json.dumps(result)
+        return json.dumps(result[:number_of_results]])
         
     def PaperDetailsScraper(request):
         def getVersionLinks(url):
