@@ -43,7 +43,7 @@ class _BuildCardState extends State<BuildCard> {
                     child: Container(
                       width: screenWidth - 80,
                       child: Text(
-                        widget.data[0]['items'][widget.index]['title'],
+                        widget.data[widget.index]['title'],
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       ),
@@ -55,20 +55,20 @@ class _BuildCardState extends State<BuildCard> {
               Padding(
                 padding: EdgeInsets.only(bottom: 2),
                 child: Text(
-                  widget.data[0]['items'][widget.index]['authors'] +
+                  widget.data[widget.index]['authors'] +
                       " - " +
-                      widget.data[0]['items'][widget.index]['journal'] +
+                      widget.data[widget.index]['journal'] +
                       " - " +
-                      widget.data[0]['items'][widget.index]['year'] +
+                      widget.data[widget.index]['year'] +
                       " - " +
-                      widget.data[0]['items'][widget.index]['publisher'],
+                      widget.data[widget.index]['publisher'],
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 10,
                   ),
                 ),
               ),
-              Text(widget.data[0]['items'][widget.index]['snippet'],
+              Text(widget.data[widget.index]['snippet'],
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 12)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

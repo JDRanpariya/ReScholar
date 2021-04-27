@@ -1,7 +1,7 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:rescholar/widgets/build_card.dart';
+import 'package:rescholar/data/user_library.dart';
 
 class BuildCardList extends StatefulWidget {
   @override
@@ -9,21 +9,16 @@ class BuildCardList extends StatefulWidget {
 }
 
 class _BuildCardListState extends State<BuildCardList> {
+  final List<Map<String, dynamic>> items = userLibrary['items'];
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: DefaultAssetBundle.of(context)
-            .loadString('assets/data/library.json'),
-        builder: (context, snapshot) {
-          // Decode the JSON
-          var data = json.decode(snapshot.data.toString());
-          return ListView.builder(
-            // Build the ListView
-            itemBuilder: (BuildContext context, int index) {
-              return BuildCard(index: index, data: data);
-            },
-            itemCount: data == null ? 0 : data[0]['items'].length,
-          );
-        });
+    return ListView.builder(
+      // Build the ListView
+      itemBuilder: (BuildContext context, int index) {
+        return BuildCard(index: index, data: items);
+      },
+      itemCount: items == null ? 0 : items.length,
+    );
   }
 }
