@@ -1,5 +1,5 @@
-import requests
 from bs4 import BeautifulSoup
+import requests
 import json
 
 
@@ -10,16 +10,18 @@ def CiteSeerX(request):
             domain = "https://citeseerx.ist.psu.edu"
 
             item["title"] = soup_div.find("a").text.strip()
-            item["link"] = domain + soup_div.find("a")['href']
+            
             item["authors"] = soup_div.find("span", class_="authors").text[2:].strip()
             item["snippet"] = soup_div.find("div", class_="snippet").text[4:-4].strip()
 
             try: 
-                item["citationLink"] = domain + soup_div.find("a", class_="citation remove")['href']
                 item["citations"] = soup_div.find("a", class_="citation remove").text.split(' ')[2]
+                item["citationsLink"] = domain + soup_div.find("a", class_="citation remove")['href']
             except TypeError:
-                item["citationLink"] = "None"
-                item["citation"] = "None"
+                item["citations"] = "None"
+                item["citationsLink"] = "None"
+                
+            item["detailsLink"] = domain + soup_div.find("a")['href']
             
             return item
 
@@ -61,7 +63,7 @@ def CiteSeerX(request):
         # url = "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.53.5438&rank=3&q=residual%20learning&osm=&ossid="
         # url = "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.1090.7865"
 
-        url = request.args.get('link')
+        url = request.args.get('details_link')
 
         item = {}
         domain = "https://citeseerx.ist.psu.edu"
@@ -69,28 +71,25 @@ def CiteSeerX(request):
         soup = BeautifulSoup(page.content, 'html.parser')
 
         # item["title"] = soup.find("h2").text
-
         # authors_string = soup.find("div", id="docAuthors").text
         # authors_list = authors_string.split(',')
         # authors_list[0] = authors_list[0][11:].strip()
         # item["authors"] = [i.strip() for i in authors_list]
-
-        try:
-            item["journal"] = soup.find("tr", id="docVenue").find_all("td")[1].text.title()
-        except:
-            item["journal"] = "None" 
-        try:
-            item["year"] = str(int(soup.find("div", id="bibtex", class_="block").find("p").text[-6:-2]))
-        except:
-            item["year"] = "None"
+        # try:
+        #     item["journal"] = soup.find("tr", id="docVenue").find_all("td")[1].text.title()
+        # except:
+        #     item["journal"] = "None" 
+        # try:
+        #     item["year"] = str(int(soup.find("div", id="bibtex", class_="block").find("p").text[-6:-2]))
+        # except:
+        #     item["year"] = "None"
         # try:
         #     item["citations"] = str(int(soup.find("tr", id="docCites").find("a", title="number of citations").text.split()[0]))
         #     item["citationsLink"] = domain + soup.find("div", id="docMenu", class_="submenu").find_all("a")[1]["href"]
         # except: 
         #     item["citations"] = "None"
         #     item["citationsLink"] = "None"
-
-        item["detailsLink"] = "None"
+        # item["detailsLink"] = "None"
         # item["snippet"] = "None"
         
         item["abstractText"] = soup.find("div", id="abstract").find("p").text
@@ -104,18 +103,17 @@ def CiteSeerX(request):
         item["pdfLinks"] = pdfLinks
 
         version_url = domain + soup.find("div", id="docMenu", class_="submenu").find_all("a")[5]["href"]
-        item["versionsLinks"] = getVersionLinks(version_url)
-
-        item["versions"] = [str(i) for i in list(range(len(item["versionLinks"])))]
+        versions_links = getVersionLinks(version_url)
+        item["versions"] = [str(i) for i in list(range(len(versions_links)))]
+        item["versionsLinks"] = versions_links
 
         try: 
             keywords = [i.strip() for i in soup.find("div", id="keywords").find('p').text.split('\n')]
-            item["related"] = [i for i in keywords if i]
+            item["relatedTopics"] = [i for i in keywords if i]
         except:
-            item["related"] = "None"
+            item["relatedTopics"] = ["None"]
 
         return json.dumps(item)
-
 
     service = request.args.get('svc')
     if service == 'search_results':
