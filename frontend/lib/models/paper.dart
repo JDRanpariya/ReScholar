@@ -21,7 +21,7 @@ class Paper {
   String relatedLink = "None";
   String versions = "None";
   String versionsLink = "None";
-  String relatedTopics = "None";
+  List relatedTopics = ["None"];
 
   Paper({
     this.title,
