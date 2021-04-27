@@ -35,10 +35,10 @@ class _SignInState extends State<SignIn> {
                 onTap: () async {
                   dynamic user = await _auth.signInWithGoogle();
                   if (user == null) {
-                    print("DEBUG: Error signing in with Google");
+                    debugPrint("DEBUG: Error signing in with Google");
                   } else {
-                    print("DEBUG: Google user has signed in successfully");
-                    print("DEBUG: $user");
+                    debugPrint("DEBUG: Google user has signed in successfully");
+                    debugPrint("DEBUG: $user");
                   }
                 },
                 child: Container(
@@ -72,10 +72,10 @@ class _SignInState extends State<SignIn> {
                 onTap: () async {
                   dynamic user = await _auth.signInAnon();
                   if (user == null) {
-                    print("DEBUG: Error signing in as Guest");
+                    debugPrint("DEBUG: Error signing in as Guest");
                   } else {
-                    print("DEBUG: Guest user has signed in successfully");
-                    print("DEBUG: $user");
+                    debugPrint("DEBUG: Guest user has signed in successfully");
+                    debugPrint("DEBUG: $user");
                   }
                 },
                 child: Container(

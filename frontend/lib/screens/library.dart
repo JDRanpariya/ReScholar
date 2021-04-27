@@ -1,8 +1,8 @@
-import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rescholar/widgets/build_card_list.dart';
+import 'package:rescholar/models/custom_icons.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/widgets/navigation_drawer.dart';
 import 'package:rescholar/widgets/option_bar.dart';
@@ -27,8 +27,8 @@ class _LibraryState extends State<Library> {
       drawer: NavigationDrawer(),
       appBar: Header(
           Icon(
-            FluentSystemIcons.ic_fluent_library_filled,
-            size: 54,
+            CustomIcons.fluentuiiconsLibraryFilled,
+            size: 44,
           ),
           [
             const Color(0xFFFFA740),
@@ -71,10 +71,11 @@ class _LibraryState extends State<Library> {
                   onTap: () async {
                     dynamic user = await _auth.signInWithGoogle();
                     if (user == null) {
-                      print("DEBUG: Error signing in with Google");
+                      debugPrint("DEBUG: Error signing in with Google");
                     } else {
-                      print("DEBUG: Google user has signed in successfully");
-                      print("DEBUG: $user");
+                      debugPrint(
+                          "DEBUG: Google user has signed in successfully");
+                      debugPrint("DEBUG: $user");
                     }
                   },
                   child: Container(

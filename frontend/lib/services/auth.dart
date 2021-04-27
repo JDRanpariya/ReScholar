@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:rescholar/models/rescholar_user.dart';
@@ -31,7 +32,7 @@ class AuthService {
     try {
       return await _auth.signOut();
     } catch (e) {
-      print("DEBUG: " + e.toString());
+      debugPrint("DEBUG: " + e.toString());
       return null;
     }
   }
@@ -45,7 +46,7 @@ class AuthService {
       User guestUser = result.user;
       return _firebaseUser(guestUser);
     } catch (e) {
-      print("DEBUG: " + e.toString());
+      debugPrint("DEBUG: " + e.toString());
       return null;
     }
   }
@@ -74,14 +75,14 @@ class AuthService {
       return _firebaseUser(googleUser);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'account-exists-with-different-credential') {
-        print("DEBUG: An account exists with a different credential");
+        debugPrint("DEBUG: An account exists with a different credential");
         return null;
       } else if (e.code == 'invalid-credential') {
-        print("DEBUG: Invalid Credentials");
+        debugPrint("DEBUG: Invalid Credentials");
         return null;
       }
     } catch (e) {
-      print("DEBUG: " + e.toString());
+      debugPrint("DEBUG: " + e.toString());
       return null;
     }
   }
