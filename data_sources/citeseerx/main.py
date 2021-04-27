@@ -4,7 +4,7 @@ import json
 
 
 def CiteSeerX(request):
-    def SearchResultsScraper(request, number_of_results=10):
+    def SearchResultsScraper(request):
         def scrape_data_from_div(soup_div):
             item = {}
             domain = "https://citeseerx.ist.psu.edu"
@@ -25,10 +25,11 @@ def CiteSeerX(request):
 
         default_query = "residual learning"
         query = request.args.get('q') if request.args.get('q')!=None else default_query
+        item_count = request.args.get('item_count') if request.args.get('item_count')!=None else 10
 
         url = f"https://citeseerx.ist.psu.edu/search?q={query}"
 
-        no_of_pages = int(number_of_results/10) + 1
+        no_of_pages = int(item_count/10) + 1
         pages_url = [url+"&start="+str(i)+'0' for i in range(no_of_pages)]
 
         result = []
@@ -42,7 +43,7 @@ def CiteSeerX(request):
                 item = scrape_data_from_div(div)
                 result.append(item)
         
-        return json.dumps(result[:number_of_results]])
+        return json.dumps(result[:item_count])
         
     def PaperDetailsScraper(request):
         def getVersionLinks(url):
