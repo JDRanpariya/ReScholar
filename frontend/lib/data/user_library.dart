@@ -1,35 +1,33 @@
 Map<String, dynamic> userLibrary = {
-  "libraryItemCount": [
-    {
-      "All Papers": 0,
-      "Favourites": 0,
-      "Archive": 0,
-      "Recycle Bin": 0,
-    }
-  ],
+  "libraryItemCount": {
+    "All Papers": 30,
+    "Favourites": 0,
+    "Archive": 0,
+    "Recycle Bin": 0,
+  },
   "folderModel": [
     {
       "label": "Folders",
       "key": "ROOT",
-      "data": {"folderColour": "0xFF3D6BB8", "itemCount": "0"},
+      "data": {"folderColour": 0xFF3D6BB8, "itemCount": 0},
       "children": [
         {
           "label": "Medicine",
-          "data": {"folderColour": "0xFF3D6BB8", "itemCount": "0"},
+          "data": {"folderColour": 0xFF8BB6FF, "itemCount": 0},
           "children": [
             {
               "label": "Neuroscience",
-              "data": {"folderColour": "0xFF3D6BB8", "itemCount": "0"}
+              "data": {"folderColour": 0xFF8BB6FF, "itemCount": 0}
             }
           ]
         },
         {
           "label": "Machine Learning",
-          "data": {"folderColour": "0xFF3D6BB8", "itemCount": "0"},
+          "data": {"folderColour": 0xFF8BB6FF, "itemCount": 0},
           "children": [
             {
               "label": "Deep Learning",
-              "data": {"folderColour": "0xFF3D6BB8", "itemCount": "0"}
+              "data": {"folderColour": 0xFF8BB6FF, "itemCount": 0}
             }
           ]
         }
