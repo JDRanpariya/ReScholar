@@ -1,10 +1,10 @@
-import request
+import requests
 from bs4 import BeautifulSoup
 import json
 
 
 def CiteSeerX(request):
-    def SearchResultsScraper(request):
+    def SearchResultsScraper(request, number_of_results=10):
         def scrape_data_from_div(soup_div):
             item = {}
             domain = "https://citeseerx.ist.psu.edu"
@@ -25,19 +25,23 @@ def CiteSeerX(request):
 
         default_query = "residual learning"
         query = request.args.get('q') if request.args.get('q')!=None else default_query
-        
+
         url = f"https://citeseerx.ist.psu.edu/search?q={query}"
 
-        page = requests.get(url)
-
-        soup = BeautifulSoup(page.content, 'html.parser')
-        temp_soup = soup.find_all("div", class_="result")
+        no_of_pages = int(number_of_results/10) + 1
+        pages_url = [url+"&start="+str(i)+'0' for i in range(no_of_pages)]
 
         result = []
 
-        for div in temp_soup:
-            item = scrape_data_from_div(div)
-            result.append(item)
+        for url in pages_url:
+            page = requests.get(url)
+            soup = BeautifulSoup(page.content, 'html.parser')
+            temp_soup = soup.find_all("div", class_="result")
+
+            for div in temp_soup:
+                item = scrape_data_from_div(div)
+                result.append(item)
+        
         return json.dumps(result)
         
     def PaperDetailsScraper(request):
@@ -111,6 +115,7 @@ def CiteSeerX(request):
 
         return json.dumps(item)
 
+
     service = request.args.get('svc')
     if service == 'search_results':
         return SearchResultsScraper(request)
@@ -118,4 +123,3 @@ def CiteSeerX(request):
         return PaperDetailsScraper(request)
     else: 
         return "ERROR: Service request invalid"
-    
