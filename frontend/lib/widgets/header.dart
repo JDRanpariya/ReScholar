@@ -26,7 +26,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
           padding: EdgeInsets.only(left: 15.0),
           child: NavigationDrawerButton(leadingIcon, leadingIconGradient)),
       title: Padding(
-        padding: EdgeInsets.only(left: 15.0),
+        padding: EdgeInsets.only(left: 8.0),
         child: ShaderMask(
           shaderCallback: (rect) => LinearGradient(
                   begin: Alignment.centerLeft,
@@ -45,7 +45,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
       actions: withSearch
           ? <Widget>[
               Padding(
-                padding: EdgeInsets.only(right: 24.0),
+                padding: EdgeInsets.only(right: 24.0, top: 2.0),
                 child: SearchButton(searchGradient),
               )
             ]
