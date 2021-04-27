@@ -1,4 +1,3 @@
-import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
@@ -71,7 +70,7 @@ List<PersistentBottomNavBarItem> _navBarsItems(user) {
   return [
     PersistentBottomNavBarItem(
       icon: Icon(
-        FluentSystemIcons.ic_fluent_library_filled,
+        CustomIcons.fluentuiiconsLibraryFilled,
       ),
       title: ("Library"),
       activeColorPrimary: Color(0xFFFF9536),
