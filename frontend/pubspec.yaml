@@ -29,7 +29,7 @@ dependencies:
 
   firebase_core: ^1.0.3
   firebase_analytics: ^7.1.1
-  cloud_firestore: ^1.0.5
+  cloud_firestore: ^1.0.7
   firebase_auth: ^1.1.0
   google_sign_in: ^5.0.2
 
