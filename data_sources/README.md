@@ -45,7 +45,7 @@
 8) relatedLink  
 9) versions  
 10) versionsLink  
-11) relatedTopics
+11) relatedTopics `<ListOfStrings>`
 
 ---  
 
@@ -89,6 +89,6 @@
 2) pdfLinks  `<ListOfStrings>`
 3) versions  
 4) versionsLink  
-5) relatedTopics
+5) relatedTopics `<ListOfStrings>`
 
 ---
