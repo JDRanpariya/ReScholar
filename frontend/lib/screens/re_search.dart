@@ -14,7 +14,7 @@ class ReSearch extends StatefulWidget {
 
 class _ReSearchState extends State<ReSearch> {
   // String _query = "";
-  // String _itemCount = "";
+  // String _paperCount = "";
 
   @override
   Widget build(BuildContext context) {

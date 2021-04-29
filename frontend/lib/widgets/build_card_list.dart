@@ -9,16 +9,16 @@ class BuildCardList extends StatefulWidget {
 }
 
 class _BuildCardListState extends State<BuildCardList> {
-  final List<Map<String, dynamic>> items = userLibrary['items'];
+  final List<Map<String, dynamic>> papers = userLibrary['papers'];
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       // Build the ListView
       itemBuilder: (BuildContext context, int index) {
-        return BuildCard(index: index, data: items);
+        return BuildCard(index: index, data: papers);
       },
-      itemCount: items == null ? 0 : items.length,
+      itemCount: papers == null ? 0 : papers.length,
     );
   }
 }

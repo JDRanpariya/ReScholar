@@ -74,12 +74,12 @@ def GoogleScholar(request):
                                 authors.append(author) 
                             
                             position += 1
-                            item = {'title': title,  'authors': authors, 'journal': journal, 'year': year, 
+                            paper = {'title': title,  'authors': authors, 'journal': journal, 'year': year, 
                                     'snippet': snippet, 'detailsLink': "None", 'links': links, 'citations': citations, 'citationsLink': citations_link,
                                     'relatedLink': related_link, 'versions': versions, 'versionsLink': versions_link,}
                             
-                            output.append(item)
-                            yield item
+                            output.append(paper)
+                            yield paper
                             
                         next_page = response.xpath('//td[@align="left"]/a/@href').extract_first()
                         if next_page:
@@ -90,8 +90,8 @@ def GoogleScholar(request):
                 # Receive arguments from HTTP request
                 default_query = ['Residual learning']
                 query = request.args.get('q') if request.args.get('q')!=None else default_query
-                item_count = request.args.get('item_count') if request.args.get('item_count')!=None else 10
-                custom_settings = {'CLOSESPIDER_ITEMCOUNT':f'{item_count}',}
+                paper_count = request.args.get('paper_count') if request.args.get('paper_count')!=None else 10
+                custom_settings = {'CLOSESPIDER_ITEMCOUNT':f'{paper_count}',}
 
                 # Instantiate and run spider
                 process = CrawlerProcess(custom_settings)

@@ -34,7 +34,7 @@ class _LibraryState extends State<Library> {
             const Color(0xFFFFA740),
             const Color(0xFFFFCA8B),
           ],
-          "library",
+          "papers",
           [
             const Color(0xFFFFC27A),
             const Color(0xFF8BB6FF),

@@ -13,8 +13,8 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
-  String _selection = 'All Papers';
-  Map<String, int> libraryItemCount = userLibrary['libraryItemCount'];
+  String _selection = 'Papers';
+  Map<String, int> libraryPaperCount = userLibrary['libraryPaperCount'];
   TreeViewController _treeViewController = TreeViewController();
 
   TreeViewTheme _treeViewTheme = TreeViewTheme(
@@ -87,7 +87,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           horizontalTitleGap: 10.0,
           title: Text(node.label,
               style: TextStyle(fontSize: 16.0, color: Colors.white)),
-          trailing: Text("${node.data["itemCount"]}",
+          trailing: Text("${node.data["paperCount"]}",
               style: TextStyle(fontSize: 14.0, color: Color(0xFFB2B2B2))),
           contentPadding: EdgeInsets.only(left: 8.0, right: 16.0),
           visualDensity: VisualDensity(vertical: -3.0)),
@@ -123,7 +123,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                           },
                         ),
                       ),
-                      // TODO: Write logic for getting the item count inside each library sub-sections
+                      // TODO: Write logic for getting the paper count inside each library sub-sections
                       // TODO: Implement onTap routing to library sections
                       // TODO: Implement onLongPress menu & logic for folders sections
                       Container(
@@ -138,10 +138,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                         child: ListTile(
                             onTap: () {
                               setState(() {
-                                _selection = 'All Papers';
+                                _selection = 'Papers';
                               });
                             },
-                            selected: _selection == 'All Papers',
+                            selected: _selection == 'Papers',
                             tileColor: Color(0xFF1C1C1C),
                             selectedTileColor: Colors.transparent,
                             leading: Icon(
@@ -151,10 +151,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             ),
                             minLeadingWidth: 0.0,
                             horizontalTitleGap: 10.0,
-                            title: Text("All Papers",
+                            title: Text("Papers",
                                 style: TextStyle(
                                     fontSize: 16.0, color: Colors.white)),
-                            trailing: Text("${libraryItemCount["All Papers"]}",
+                            trailing: Text("${libraryPaperCount["Papers"]}",
                                 style: TextStyle(
                                     fontSize: 14.0, color: Color(0xFFB2B2B2))),
                             visualDensity: VisualDensity(vertical: -3.0)),
@@ -192,7 +192,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             title: Text("Favourites",
                                 style: TextStyle(
                                     fontSize: 16.0, color: Colors.white)),
-                            trailing: Text("${libraryItemCount["Favourites"]}",
+                            trailing: Text("${libraryPaperCount["Favourites"]}",
                                 style: TextStyle(
                                     fontSize: 14.0, color: Color(0xFFB2B2B2))),
                             visualDensity: VisualDensity(vertical: -3.0)),
@@ -227,7 +227,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             title: Text("Archive",
                                 style: TextStyle(
                                     fontSize: 16.0, color: Colors.white)),
-                            trailing: Text("${libraryItemCount["Archive"]}",
+                            trailing: Text("${libraryPaperCount["Archive"]}",
                                 style: TextStyle(
                                     fontSize: 14.0, color: Color(0xFFB2B2B2))),
                             visualDensity: VisualDensity(vertical: -3.0)),
@@ -262,7 +262,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             title: Text("Recycle Bin",
                                 style: TextStyle(
                                     fontSize: 16.0, color: Colors.white)),
-                            trailing: Text("${libraryItemCount["Recycle Bin"]}",
+                            trailing: Text(
+                                "${libraryPaperCount["Recycle Bin"]}",
                                 style: TextStyle(
                                     fontSize: 14.0, color: Color(0xFFB2B2B2))),
                             visualDensity: VisualDensity(vertical: -3.0)),

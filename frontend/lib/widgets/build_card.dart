@@ -36,36 +36,36 @@ class _BuildCardState extends State<BuildCard> {
         IconSlideAction(
           color: Color(0x4D4880DE),
           iconWidget: Icon(
-              widget.data[widget.index]['itemProperties']["isRead"]
+              widget.data[widget.index]['paperProperties']["isRead"]
                   ? Icons.remove_done
                   : Icons.done_rounded,
               size: 48.0,
               color: Color(0xFF4880DE)),
-          onTap: widget.data[widget.index]['itemProperties']["isRead"]
+          onTap: widget.data[widget.index]['paperProperties']["isRead"]
               ? () {}
               : () {},
         ),
         IconSlideAction(
           color: Color(0x4DFF9536),
           iconWidget: Icon(
-              widget.data[widget.index]['itemProperties']["isArchived"]
+              widget.data[widget.index]['paperProperties']["isArchived"]
                   ? Icons.unarchive_rounded
                   : Icons.archive,
               size: 48.0,
               color: Color(0xFFFF9536)),
-          onTap: widget.data[widget.index]['itemProperties']["isArchived"]
+          onTap: widget.data[widget.index]['paperProperties']["isArchived"]
               ? () {}
               : () {},
         ),
         IconSlideAction(
           color: Color(0x33EB5757),
           iconWidget: Icon(
-              widget.data[widget.index]['itemProperties']["isDeleted"]
+              widget.data[widget.index]['paperProperties']["isDeleted"]
                   ? Icons.settings_backup_restore_rounded
                   : Icons.delete_rounded,
               size: 48.0,
               color: Color(0xFFEB5757)),
-          onTap: widget.data[widget.index]['itemProperties']["isDeleted"]
+          onTap: widget.data[widget.index]['paperProperties']["isDeleted"]
               ? () {}
               : () {},
         ),
