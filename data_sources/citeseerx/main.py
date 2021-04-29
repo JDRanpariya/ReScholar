@@ -38,7 +38,7 @@ def CiteSeerX(request):
         default_query = "residual learning"
         query = request.args.get('q') if request.args.get('q')!=None else default_query
         item_count = request.args.get('item_count') if request.args.get('item_count')!=None else 10
-
+        item_count = int(item_count)
 
         url = f"https://citeseerx.ist.psu.edu/search?q={query}"
 
