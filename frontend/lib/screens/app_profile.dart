@@ -40,14 +40,14 @@ class AppProfile extends StatelessWidget {
             },
             style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(Size(125, 50)),
-                backgroundColor: MaterialStateProperty.all(Color(0x40BD2B4B)),
+                backgroundColor: MaterialStateProperty.all(Color(0x40EB5757)),
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30))))),
             child: Text(
               "Sign Out",
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color(0xFFBD2B4B),
+                color: Color(0xFFEB5757),
                 fontSize: 16,
               ),
             ),
