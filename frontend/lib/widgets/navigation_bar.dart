@@ -73,21 +73,26 @@ List<PersistentBottomNavBarItem> _navBarsItems(user) {
         CustomIcons.fluentuiiconsLibraryFilled,
       ),
       title: ("Library"),
+      textStyle: TextStyle(fontSize: 16.0),
       activeColorPrimary: Color(0xFFFF9536),
       inactiveColorPrimary: Colors.white70,
     ),
     PersistentBottomNavBarItem(
       icon: Icon(CustomIcons.heroiconsSolidSearchCircle),
       title: ("ReSearch"),
+      textStyle: TextStyle(fontSize: 16.0),
       activeColorPrimary: Color(0xFF4880DE),
       inactiveColorPrimary: Colors.white70,
     ),
     PersistentBottomNavBarItem(
+      // TODO: Cache user profile picture for quicker render
       icon: user.isAnonymous == false
-          ? Container(child: Image.network(user.profilePicture))
-          : Icon(Icons.account_circle_rounded),
+          ? CircleAvatar(
+              radius: 15.0, backgroundImage: NetworkImage(user.profilePicture))
+          : Container(child: Icon(Icons.account_circle_rounded, size: 30.0)),
       title: ("App Profile"),
-      activeColorPrimary: Color(0xFFFF9536),
+      textStyle: TextStyle(fontSize: 16.0),
+      activeColorPrimary: Color(0xFFEB5757),
       inactiveColorPrimary: Colors.white70,
     ),
   ];
