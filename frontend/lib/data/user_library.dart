@@ -62,7 +62,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     },
@@ -92,7 +92,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     },
@@ -123,7 +123,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     },
@@ -153,7 +153,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     },
@@ -184,7 +184,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     },
@@ -214,7 +214,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     },
@@ -246,7 +246,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     },
@@ -276,7 +276,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     },
@@ -306,7 +306,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     },
@@ -336,7 +336,7 @@ Map<String, dynamic> userLibrary = {
           "isFavourite": false,
           "isArchived": false,
           "isDeleted": false,
-          "folderPath": null
+          "folderPath": "None"
         }
       ]
     }
