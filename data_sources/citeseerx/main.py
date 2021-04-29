@@ -14,7 +14,7 @@ def CiteSeerX(request):
 
             item["authors"] = [i.strip() for i in soup_div.find("span", class_="authors").text[2:].strip().split(',')]
             try:
-                item["journal"] = soup_div.find("span", class_="pubvenue").text[1:].strip()
+                item["journal"] = soup_div.find("span", class_="pubvenue").text[1:].strip().title()
             except AttributeError:
                 item["journal"] = "None"
             try:
