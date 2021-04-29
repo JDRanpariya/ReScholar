@@ -15,11 +15,11 @@ def CiteSeerX(request):
             item["authors"] = [i.strip() for i in soup_div.find("span", class_="authors").text[2:].strip().split(',')]
             try:
                 item["journal"] = soup_div.find("span", class_="pubvenue").text[1:].strip().title()
-            except AttributeError:
+            except:
                 item["journal"] = "None"
             try:
                 item["year"] = soup_div.find("span", class_="pubyear").text[1:].strip()
-            except AttributeError:
+            except:
                 item["year"] = "None"
                 
             item["snippet"] = soup_div.find("div", class_="snippet").text[4:-4].strip()
@@ -27,7 +27,7 @@ def CiteSeerX(request):
             try: 
                 item["citations"] = soup_div.find("a", class_="citation remove").text.split(' ')[2]
                 item["citationsLink"] = domain + soup_div.find("a", class_="citation remove")['href']
-            except (TypeError, AttributeError):
+            except:
                 item["citations"] = "None"
                 item["citationsLink"] = "None"
 
