@@ -138,17 +138,3 @@ def CiteSeerX(request):
         return PaperDetailsScraper(request)
     else: 
         return "ERROR: Service request invalid"
-
-
-
-# commite note:
-# authors now returns a list of strings not a single string
-# journal and year are being scraped in the search results page itself.
-# versions is not a list of numbers, it's just a single number representing the max number of versions
-# little bugfixes on how the program handles navigating the next page
-
-def avg(a):
-    if int(a/10) == a/10:
-        return int(item_count/10)
-    else
-        return int(item_count/10) + 1
