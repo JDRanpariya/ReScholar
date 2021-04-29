@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-// Import the firebase_core and cloud_firestore plugin
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:rescholar/services/re_search_engine.dart';
-import 'package:rescholar/models/papers_list.dart';
+// import 'package:rescholar/services/re_search_engine.dart';
+// import 'package:rescholar/models/papers_list.dart';
 
 class ReSearch extends StatefulWidget {
   ReSearch({Key key}) : super(key: key);
@@ -14,8 +13,8 @@ class ReSearch extends StatefulWidget {
 }
 
 class _ReSearchState extends State<ReSearch> {
-  String _query = "";
-  String _itemCount = "";
+  // String _query = "";
+  // String _itemCount = "";
 
   @override
   Widget build(BuildContext context) {
