@@ -121,8 +121,7 @@ def CiteSeerX(request):
         version_url = domain + soup.find("div", id="docMenu", class_="submenu").find_all("a")[5]["href"]
         versions_link = getVersionsLink(version_url)
         item["versions"] = str(len(versions_link))
-        item["versionsLink"] = versions_link
-        
+        item["versionsLink"] = version_url
 
         try: 
             keywords = [i.strip() for i in soup.find("div", id="keywords").find('p').text.split('\n')]
