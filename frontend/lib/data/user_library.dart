@@ -54,17 +54,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "55",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=9281510746729853742&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2021-04-25 11:19:48.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2021-04-25 11:19:48.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      },
     },
     {
       "position": 2,
@@ -84,17 +82,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "12",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=15309277317698115764&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2021-04-20 01:19:48.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2021-04-20 01:19:48.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      }
     },
     {
       "position": 3,
@@ -115,17 +111,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "10",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=8389787286584772945&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2021-04-20 12:39:48.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2021-04-20 12:39:48.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      }
     },
     {
       "position": 4,
@@ -145,17 +139,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "6",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=17761286650218733012&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2021-04-20 11:19:42.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2021-04-20 11:19:42.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      }
     },
     {
       "position": 5,
@@ -176,17 +168,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "9",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=3453971945427589773&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2021-04-20 12:19:48.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2021-04-20 12:19:48.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      }
     },
     {
       "position": 6,
@@ -206,17 +196,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "5",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=10342250007176178945&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2021-04-20 11:14:48.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2021-04-20 11:14:48.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      }
     },
     {
       "position": 7,
@@ -238,17 +226,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "8",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=10166690979312408651&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2021-03-20 11:19:48.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2021-03-20 11:19:48.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      }
     },
     {
       "position": 8,
@@ -268,17 +254,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "6",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=15876293070143892688&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2020-04-20 11:19:48.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2020-04-20 11:19:48.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      }
     },
     {
       "position": 9,
@@ -298,17 +282,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "7",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=9205126634069501403&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2021-04-21 11:19:38.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2021-04-21 11:19:38.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      }
     },
     {
       "position": 10,
@@ -328,17 +310,15 @@ Map<String, dynamic> userLibrary = {
       "versionsCount": "3",
       "versionsLink":
           "https://scholar.google.com/scholar?cluster=4999453043062345763&hl=en&oe=ASCII&as_sdt=0,5",
-      "itemProperties": [
-        {
-          "source": "Google Scholar",
-          "timeStamp": "2021-06-20 11:19:48.592",
-          "isUnread": true,
-          "isFavourite": false,
-          "isArchived": false,
-          "isDeleted": false,
-          "folderPath": "None"
-        }
-      ]
+      "itemProperties": {
+        "source": "Google Scholar",
+        "timeStamp": "2021-06-20 11:19:48.592",
+        "isRead": false,
+        "isFavourite": false,
+        "isArchived": false,
+        "isDeleted": false,
+        "folderPath": "None"
+      }
     }
   ]
 };
