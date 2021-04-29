@@ -11,7 +11,17 @@ def CiteSeerX(request):
             domain = "https://citeseerx.ist.psu.edu"
 
             item["title"] = soup_div.find("a").text.strip()
+
             item["authors"] = [i.strip() for i in soup_div.find("span", class_="authors").text[2:].strip().split(',')]
+            try:
+                item["journal"] = soup_div.find("span", class_="pubvenue").text[1:].strip()
+            except AttributeError:
+                item["journal"] = "None"
+            try:
+                item["year"] = soup_div.find("span", class_="pubyear").text[1:].strip()
+            except AttributeError:
+                item["year"] = "None"
+                
             item["snippet"] = soup_div.find("div", class_="snippet").text[4:-4].strip()
 
             try: 
@@ -21,30 +31,20 @@ def CiteSeerX(request):
                 item["citations"] = "None"
                 item["citationsLink"] = "None"
 
-            try:
-                item["journal"] = soup_div.find("span", class_="pubvenue").text[1:].strip()
-            except AttributeError:
-                item["journal"] = "None"
-
-            try:
-                item["year"] = soup_div.find("span", class_="pubyear").text[1:].strip()
-            except AttributeError:
-                item["year"] = "None"
-
             item["detailsLink"] = domain + soup_div.find("a")['href']
 
             return item
 
         default_query = "residual learning"
         query = request.args.get('q') if request.args.get('q')!=None else default_query
-        item_count = request.args.get('item_count') if request.args.get('item_count')!=None else 1
+        item_count = request.args.get('item_count') if request.args.get('item_count')!=None else 10
 
 
         url = f"https://citeseerx.ist.psu.edu/search?q={query}"
 
-        if int(a/10) == a/10:
+        if int(item_count/10) == item_count/10:
             no_of_pages = int(item_count/10)
-        else
+        else: 
             no_of_pages =  int(item_count/10) + 1
 
         pages_url = [url+"&start="+str(i+1)+'0' for i in range(no_of_pages)]
@@ -52,7 +52,7 @@ def CiteSeerX(request):
         result = []
 
         for url in pages_url:
-            time.sleep(2)
+            # time.sleep(2)                 // Slow down scraping to precent IP block
             page = requests.get(url)
             soup = BeautifulSoup(page.content, 'html.parser')
             temp_soup = soup.find_all("div", class_="result")
@@ -64,16 +64,16 @@ def CiteSeerX(request):
         return json.dumps(result[:item_count])
         
     def PaperDetailsScraper(request):
-        def getVersionLinks(url):
+        def getVersionsLink(url):
             domain = "https://citeseerx.ist.psu.edu"
             page = requests.get(url)
             soup = BeautifulSoup(page.content, 'html.parser')
 
-            versionLinks = []
+            versionsLink = []
             for version in soup.find("div", id="versions", class_="block").find_all("a"):
-                versionLinks.append(domain + version["href"])
+                versionsLink.append(domain + version["href"])
 
-            return versionLinks
+            return versionsLink
 
         # Test URLs (Keep these here, might come in handy)
         # url = "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.53.5438&rank=3&q=residual%20learning&osm=&ossid="
@@ -119,9 +119,10 @@ def CiteSeerX(request):
         item["pdfLinks"] = pdfLinks
 
         version_url = domain + soup.find("div", id="docMenu", class_="submenu").find_all("a")[5]["href"]
-        versions_links = getVersionLinks(version_url)
-        item["versionsLinks"] = versions_links
-        item["versions"] = str(len(item["versionLinks"]))
+        versions_link = getVersionsLink(version_url)
+        item["versions"] = str(len(versions_link))
+        item["versionsLink"] = versions_link
+        
 
         try: 
             keywords = [i.strip() for i in soup.find("div", id="keywords").find('p').text.split('\n')]
