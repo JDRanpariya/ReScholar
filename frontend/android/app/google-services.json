@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "937566491439-3elpv1gd9me3qb5gise2q0mdevc7h54q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teamlightwork.rescholar",
+            "certificate_hash": "4b204c8a119bbc2b1744e04bce4e2a59780dca6f"
+          }
+        },
+        {
+          "client_id": "937566491439-jusltr2lrqgbj9dp78s28hu9d2s8b6vt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teamlightwork.rescholar",
+            "certificate_hash": "b23e154bf8e29f45a92a7e06a902cc39d945e957"
+          }
+        },
+        {
           "client_id": "937566491439-ojcld5e3ul6i8gpjqeqbvs69r4623lp6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
