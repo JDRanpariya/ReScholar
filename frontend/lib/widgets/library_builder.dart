@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:rescholar/widgets/build_card_list.dart';
+import 'package:rescholar/widgets/card_list_builder.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/widgets/navigation_drawer.dart';
 import 'package:rescholar/widgets/option_bar.dart';
@@ -56,7 +56,7 @@ class _LibraryBuilderState extends State<LibraryBuilder> {
                   ),
                 if (widget.folderBar != null) widget.folderBar,
                 if (widget.optionBar != null) widget.optionBar,
-                Expanded(child: BuildCardList(papers: widget.papers)),
+                Expanded(child: CardListBuilder(papers: widget.papers)),
               ],
             )
           : Center(
