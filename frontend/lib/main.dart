@@ -22,8 +22,7 @@ class ReScholar extends StatelessWidget {
       value: AuthService().user,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:
-            AuthWrapper(), // Wrapper checks for auth and decides if the user should be directed to the login/register screen or home screen
+        home: AuthWrapper(),
         theme: ThemeData(
           fontFamily: 'OpenSans',
           brightness: Brightness.dark,

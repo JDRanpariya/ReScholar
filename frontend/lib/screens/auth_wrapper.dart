@@ -5,6 +5,7 @@ import 'package:rescholar/screens/authentication/authenticate.dart';
 import 'package:rescholar/models/rescholar_user.dart';
 import 'package:rescholar/widgets/navigation_bar.dart';
 
+/// Checks for user authentication and decides whether user is directed to the home page or the authentication page
 class AuthWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
