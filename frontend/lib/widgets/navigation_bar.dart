@@ -1,8 +1,10 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:heroicons/heroicons.dart';
 
-import 'package:rescholar/models/custom_icons.dart';
 import 'package:rescholar/screens/app_profile.dart';
 import 'package:rescholar/screens/library.dart';
 import 'package:rescholar/screens/re_search.dart';
@@ -69,16 +71,18 @@ List<Widget> _buildScreens() {
 List<PersistentBottomNavBarItem> _navBarsItems(user) {
   return [
     PersistentBottomNavBarItem(
-      icon: Icon(
-        CustomIcons.fluentuiiconsLibraryFilled,
-      ),
+      icon: Icon(FluentIcons.library_20_filled, size: 28.0),
       title: ("Library"),
       textStyle: TextStyle(fontSize: 16.0),
       activeColorPrimary: Color(0xFFFF9536),
       inactiveColorPrimary: Colors.white70,
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(CustomIcons.heroiconsSolidSearchCircle),
+      icon: Transform(
+        alignment: Alignment.center,
+        transform: Matrix4.rotationY(pi),
+        child: HeroIcon(HeroIcons.searchCircle, solid: true, size: 32.0),
+      ),
       title: ("ReSearch"),
       textStyle: TextStyle(fontSize: 16.0),
       activeColorPrimary: Color(0xFF4880DE),

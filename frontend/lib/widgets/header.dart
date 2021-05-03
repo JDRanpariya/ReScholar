@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:rescholar/widgets/buttons.dart';
 
@@ -18,38 +19,38 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.black87,
-      toolbarHeight: 75,
-      automaticallyImplyLeading: false,
-      leading: Padding(
-          padding: EdgeInsets.only(left: 15.0),
-          child: NavigationDrawerButton(leadingIcon, leadingIconGradient)),
-      title: Padding(
-        padding: EdgeInsets.only(left: 8.0),
-        child: ShaderMask(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: AppBar(
+        backgroundColor: Colors.black87,
+        toolbarHeight: 75,
+        automaticallyImplyLeading: false,
+        leadingWidth: 50.0,
+        leading: NavigationDrawerButton(leadingIcon, leadingIconGradient),
+        title: ShaderMask(
           shaderCallback: (rect) => LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                   colors: titleGradient)
               .createShader(rect),
-          child: Text(
+          child: AutoSizeText(
             title,
+            maxLines: 1,
             style: TextStyle(
-              fontSize: 54,
+              fontSize: 48.0,
               fontWeight: FontWeight.w700,
             ),
           ),
         ),
+        actions: withSearch
+            ? <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 2.0),
+                  child: SearchButton(searchGradient),
+                )
+              ]
+            : null,
       ),
-      actions: withSearch
-          ? <Widget>[
-              Padding(
-                padding: EdgeInsets.only(right: 24.0, top: 2.0),
-                child: SearchButton(searchGradient),
-              )
-            ]
-          : null,
     );
   }
 }
