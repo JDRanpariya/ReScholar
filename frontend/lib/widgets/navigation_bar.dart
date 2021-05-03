@@ -10,6 +10,9 @@ import 'package:rescholar/screens/library.dart';
 import 'package:rescholar/screens/re_search.dart';
 import 'package:rescholar/models/rescholar_user.dart';
 
+/// Builds a persistent bottom navigation bar based on the PersistenBottomNavBar
+/// Flutter package with access to the three primary pages: [Library], [ReSearch],
+/// and the [AppProfile].
 class NavigationBar extends StatefulWidget {
   @override
   _NavigationBarState createState() => _NavigationBarState();

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
-// import 'package:rescholar/services/re_search_engine.dart';
+import 'package:rescholar/services/re_search_engine.dart';
 // import 'package:rescholar/models/papers_list.dart';
 
+/// Screen to interact with the [ReSearchEngine] service.
 class ReSearch extends StatefulWidget {
   ReSearch({Key key}) : super(key: key);
 

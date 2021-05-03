@@ -9,6 +9,9 @@ import 'package:rescholar/models/rescholar_user.dart';
 import 'package:rescholar/services/auth.dart';
 import 'package:rescholar/widgets/folder_bar.dart';
 
+/// Builds a Library page that displays a [Header], (optional) Greeting,
+/// (optional) [FolderBar], (optional) [OptionBar], and the list of papers present
+/// in the current library section.
 class LibraryBuilder extends StatefulWidget {
   final Header header;
   final bool renderGreeting;

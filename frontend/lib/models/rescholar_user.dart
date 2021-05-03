@@ -1,3 +1,4 @@
+/// Custom Data Model to condense the Firebase User object into essential attributes.
 class ReScholarUser {
   final String uid;
   final String profilePicture;

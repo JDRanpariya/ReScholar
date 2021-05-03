@@ -1,10 +1,17 @@
+/// User Library object containing user's library objects and data.
 Map<String, dynamic> userLibrary = {
+  /// Contains the paper count in the primary library sections.
   "libraryPaperCount": {
     "Papers": 30,
     "Favourites": 0,
     "Archive": 0,
     "Recycle Bin": 0,
   },
+
+  /// Primary FolderTree data where:
+  /// * Key: Folder Path
+  /// * Label: Folder Name
+  /// * Data: Additional properties of each folder, namely, the folder's colour and the count of papers within each folder
   "folderTree": [
     {
       "key": "ROOT/",
@@ -38,6 +45,8 @@ Map<String, dynamic> userLibrary = {
       ]
     }
   ],
+
+  /// List of all papers added to the library and state properties
   "papers": [
     {
       "position": 1,

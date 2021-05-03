@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:rescholar/widgets/buttons.dart';
 
+/// Builds an AppBar with a leading icon, title and an optional local search button.
 class Header extends StatelessWidget implements PreferredSizeWidget {
   final Icon leadingIcon;
   final List<Color> leadingIconGradient;

@@ -6,10 +6,13 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:rescholar/data/user_library.dart';
 import 'package:rescholar/widgets/custom_toast.dart';
 import 'package:rescholar/models/rescholar_user.dart';
+import 'package:rescholar/screens/library.dart';
 import 'package:rescholar/widgets/library_builder.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/widgets/folder_bar.dart';
 
+/// Builds a [NavigationDrawer] that enables routing between the primary sections
+/// of the Library and the [TreeView]-based Folder Tree.
 class NavigationDrawer extends StatefulWidget {
   @override
   _NavigationDrawerState createState() => _NavigationDrawerState();
@@ -167,6 +170,11 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             onTap: () {
                               setState(() {
                                 _selection = 'Papers';
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Library()));
                               });
                             },
                             selected: _selection == 'Papers',
@@ -201,6 +209,31 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                               if (user.isAnonymous == false) {
                                 setState(() {
                                   _selection = 'Favourites';
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LibraryBuilder(
+                                              header: Header(
+                                                  Icon(
+                                                    Icons.star_rounded,
+                                                    size: 54.0,
+                                                  ),
+                                                  [
+                                                    const Color(0xFFFFC000),
+                                                    const Color(0xFFFFE28A),
+                                                  ],
+                                                  "favourites",
+                                                  [
+                                                    const Color(0xFFFFE28A),
+                                                    const Color(0xFF9DD0FF),
+                                                  ],
+                                                  true,
+                                                  [
+                                                    const Color(0xFF9DD0FF),
+                                                    const Color(0xFF4880DE),
+                                                  ]),
+                                              papers: [])));
                                 });
                               } else {
                                 customToast(context,
@@ -239,6 +272,31 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                               if (user.isAnonymous == false) {
                                 setState(() {
                                   _selection = 'Archive';
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LibraryBuilder(
+                                              header: Header(
+                                                  Icon(
+                                                    Icons.archive_rounded,
+                                                    size: 54.0,
+                                                  ),
+                                                  [
+                                                    const Color(0xFFFF9536),
+                                                    const Color(0xFFFFBD82),
+                                                  ],
+                                                  "archive",
+                                                  [
+                                                    const Color(0xFFFFBD82),
+                                                    const Color(0xFF9DD0FF),
+                                                  ],
+                                                  true,
+                                                  [
+                                                    const Color(0xFF9DD0FF),
+                                                    const Color(0xFF4880DE),
+                                                  ]),
+                                              papers: [])));
                                 });
                               } else {
                                 customToast(context,
@@ -274,6 +332,31 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                               if (user.isAnonymous == false) {
                                 setState(() {
                                   _selection = 'Recycle Bin';
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LibraryBuilder(
+                                              header: Header(
+                                                  Icon(
+                                                    Icons.delete_rounded,
+                                                    size: 54.0,
+                                                  ),
+                                                  [
+                                                    const Color(0xFFEB5757),
+                                                    const Color(0xFFE98787),
+                                                  ],
+                                                  "recycle bin",
+                                                  [
+                                                    const Color(0xFFE98787),
+                                                    const Color(0xFF9DD0FF),
+                                                  ],
+                                                  true,
+                                                  [
+                                                    const Color(0xFF9DD0FF),
+                                                    const Color(0xFF4880DE),
+                                                  ]),
+                                              papers: [])));
                                 });
                               } else {
                                 customToast(context,

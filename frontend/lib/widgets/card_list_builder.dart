@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:rescholar/widgets/card_builder.dart';
 
+/// Calls the [CardBuilder] widget repeatedly to build a list of cards.
 class CardListBuilder extends StatefulWidget {
   final List<Map<String, dynamic>> papers;
 

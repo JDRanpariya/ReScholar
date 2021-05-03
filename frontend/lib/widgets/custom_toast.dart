@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 FToast fToast = FToast();
 
+/// Creates a custom toast message to notify users of an primary attention event.
 customToast(BuildContext context, String toastMessage) {
   fToast.init(context);
 

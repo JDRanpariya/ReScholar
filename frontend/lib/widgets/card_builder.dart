@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:rescholar/widgets/buttons.dart';
 
+/// Builds a card for display in the library or search results.
 class CardBuilder extends StatefulWidget {
   final int index;
   final dynamic data;

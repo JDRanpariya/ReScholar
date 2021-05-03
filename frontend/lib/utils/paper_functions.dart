@@ -3,19 +3,19 @@ import 'dart:convert';
 import 'package:rescholar/models/paper.dart';
 import 'package:rescholar/models/papers_list.dart';
 
-// Takes JSON string and returns an instance of PapersList() which is a list containing instances of Paper()
+/// Takes JSON string and returns an instance of [PapersList] which is a list containing instances of [Paper].
 PapersList getPapersListFromJSON(String jsonString) {
   final _jsonObject = jsonDecode(jsonString);
   return PapersList.fromJson(_jsonObject);
 }
 
-// Takes JSON string and returns an instance of Paper()
+/// Takes JSON string and returns an instance of [Paper].
 Paper getPaperFromJSON(String jsonString) {
   final _jsonObject = jsonDecode(jsonString);
   return Paper.fromJson(_jsonObject);
 }
 
-// Merges the data between two instances of Paper()
+/// Merges the data between two instances of [Paper].
 Paper detailsMerger(Paper selectedResult, Paper pageDetails) {
   selectedResult
     ..title = selectedResult.title == "None"

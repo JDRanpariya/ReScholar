@@ -7,7 +7,8 @@ import 'package:rescholar/models/rescholar_user.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // Create User object based on Firebase User
+  // FIREBASE USER
+  /// Creates a User object based on Firebase User
   ReScholarUser _firebaseUser(User user) {
     if (user != null) {
       return user.isAnonymous == false
@@ -20,14 +21,16 @@ class AuthService {
     }
   }
 
-  // Return changes in Auth State
+  // AUTH CHANGE HANDLER
+  /// Returns changes to the Auth State
   Stream<ReScholarUser> get user {
     return _auth
         .authStateChanges()
         .map(_firebaseUser); // (User user) => _firebaseUser(user) [Tear-off]
   }
 
-  // Signing out
+  // SIGN OUT HANDLER
+  /// Handles a sign out event irrespective of the account type.
   Future signOut() async {
     try {
       return await _auth.signOut();
@@ -39,7 +42,8 @@ class AuthService {
 
   ////// ACCOUNTS //////
 
-  // -- Guest Account
+  // GUEST USER
+  /// Handles a sign in event into a guest account.
   Future signInAnon() async {
     try {
       UserCredential result = await _auth.signInAnonymously();
@@ -51,7 +55,8 @@ class AuthService {
     }
   }
 
-  // -- Google Account
+  // GOOGLE USER
+  /// Handles a sign in event into a Google account.
   Future signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();

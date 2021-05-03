@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:rescholar/services/auth.dart';
 import 'package:rescholar/models/rescholar_user.dart';
 
+/// Page to access the settings page and all the other tertiary functionalities of the app.
 class AppProfile extends StatelessWidget {
   const AppProfile({Key key}) : super(key: key);
 

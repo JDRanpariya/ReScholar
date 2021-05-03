@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// NAVIGATION DRAWER BUTTON
+/// Handles the opening of the navigation drawer in the Library
 class NavigationDrawerButton extends StatelessWidget {
   final Icon leadingIcon;
   final List<Color> leadingIconGradient;
@@ -24,6 +24,7 @@ class NavigationDrawerButton extends StatelessWidget {
 }
 
 // SEARCH BUTTON
+/// Handles the search bar opening for local search.
 class SearchButton extends StatelessWidget {
   final List<Color> searchGradient;
 
@@ -49,6 +50,8 @@ class SearchButton extends StatelessWidget {
 }
 
 // POP-UP MENU BUTTON
+/// Handles the opening of the pop up menu for accessing the About This Paper section
+/// and opening it in a PDF/Book reader of the user's choice.
 class PopUpMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -59,6 +62,7 @@ class PopUpMenuButton extends StatelessWidget {
 }
 
 // ADD TO FOLDER
+/// Handles opening up the folder selection bottom sheet.
 class ToFolder extends StatefulWidget {
   @override
   _ToFolderState createState() => _ToFolderState();
@@ -88,6 +92,7 @@ class _ToFolderState extends State<ToFolder> {
 }
 
 // ADD TO FAVOURITES
+/// Handles adding a paper to the Favourites section of the Library.
 class ToFavourites extends StatefulWidget {
   @override
   _ToFavouritesState createState() => _ToFavouritesState();

@@ -5,6 +5,7 @@ import 'package:rescholar/widgets/library_builder.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/data/user_library.dart';
 
+/// Initial gateway into the Papers section of the [Library].
 class Library extends StatefulWidget {
   Library({Key key}) : super(key: key);
 

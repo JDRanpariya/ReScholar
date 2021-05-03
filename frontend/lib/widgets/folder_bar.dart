@@ -7,6 +7,11 @@ import 'package:rescholar/models/folder.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/widgets/library_builder.dart';
 
+/// Builds a [FolderBar] that contains a horizontal list of interactive [Folder]
+/// icons that can be used to navigate into the [Folder] children in the [FolderTree].
+///
+/// In addition to this, an interactible path view is also created to notify the
+/// user of their current position in the [FolderTree]
 class FolderBar extends StatefulWidget {
   final String selectedFolderKey;
 

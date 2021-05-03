@@ -1,3 +1,5 @@
+/// Data Model designed by Kevin Andre (from the Flutter TreeView package)
+
 import 'dart:convert';
 
 import 'package:rescholar/models/folder.dart';

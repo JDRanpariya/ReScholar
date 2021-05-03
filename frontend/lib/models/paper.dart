@@ -1,4 +1,4 @@
-// Model for a single research paper
+/// Data Model for mapping a research paper from a JSON object to a Dart [Map].
 class Paper {
   // Common Attributes (Used in card model)
   String title = "None";
@@ -10,7 +10,7 @@ class Paper {
   String citationsLink = "None";
   String detailsLink = "None";
 
-  // Extra Atrributes (Used in conjunction with Common Attributes to build details sheet)
+  // Extra Atrributes (Used in conjunction with Common Attributes to build the PaperDetails sheet)
   String doi = "None";
   String institutions = "None";
   String abstractText = "None";
@@ -45,6 +45,7 @@ class Paper {
     this.relatedTopics,
   });
 
+  /// Maps a single JSON object to a [Paper] object.
   factory Paper.fromJson(Map<String, dynamic> jsonString) {
     return Paper(
       title: jsonString['title'],

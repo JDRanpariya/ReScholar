@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:rescholar/services/auth.dart';
 
+/// Page requesting user sign in through one of the following methods:
+/// * Google
+/// * Email ID/Password
+/// * Guest (loses access to some user-specific features like the Library)
 class SignIn extends StatefulWidget {
   @override
   _SignInState createState() => _SignInState();
