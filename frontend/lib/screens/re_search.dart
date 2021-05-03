@@ -41,7 +41,7 @@ class _ReSearchState extends State<ReSearch> {
           Text("ReSearch Screen"),
           SizedBox(height: 15.0),
           ElevatedButton(
-            onPressed: () async {
+            onPressed: () /* async */ {
               // FutureBuilder<PapersList>(
               //   future: fetchFromGoogleScholar("osint", 5),
               //   builder: (context, snapshot) {
@@ -56,7 +56,7 @@ class _ReSearchState extends State<ReSearch> {
               // );
             },
             child: Text("Test Button"),
-          )
+          ),
         ],
       )),
     );
