@@ -5,27 +5,31 @@ Map<String, dynamic> userLibrary = {
     "Archive": 0,
     "Recycle Bin": 0,
   },
-  "folderModel": [
+  "folderTree": [
     {
+      "key": "ROOT/",
       "label": "Folders",
-      "key": "ROOT",
       "data": {"folderColour": 0xFF3D6BB8, "paperCount": 0},
       "children": [
         {
+          "key": "ROOT/Medicine/",
           "label": "Medicine",
           "data": {"folderColour": 0xFF8BB6FF, "paperCount": 0},
           "children": [
             {
+              "key": "ROOT/Medicine/Neuroscience/",
               "label": "Neuroscience",
               "data": {"folderColour": 0xFF8BB6FF, "paperCount": 0}
             }
           ]
         },
         {
+          "key": "ROOT/Machine Learning/",
           "label": "Machine Learning",
           "data": {"folderColour": 0xFF8BB6FF, "paperCount": 0},
           "children": [
             {
+              "key": "ROOT/Machine Learning/Deep Learning/",
               "label": "Deep Learning",
               "data": {"folderColour": 0xFF8BB6FF, "paperCount": 0}
             }
