@@ -21,13 +21,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  # Utility Packages
   provider: ^5.0.0
   persistent_bottom_nav_bar: any
   http: ^0.13.1
   fluttertoast: ^8.0.6
   flutter_treeview: ^0.9.0+1
   flutter_slidable: ^0.6.0
-
+  auto_size_text: ^2.1.0
+  
+  # Icon Packs
+  material_design_icons_flutter: ^4.0.5955
+  heroicons: ^0.2.0
+  fluentui_system_icons: ^1.1.121
+  
+  # Backend Interface Packages
   firebase_core: ^1.0.3
   firebase_analytics: ^7.1.1
   cloud_firestore: ^1.0.7
@@ -57,7 +66,3 @@ flutter:
         - asset: fonts/OpenSans-Regular.ttf
         - asset: fonts/OpenSans-SemiBold.ttf
         - asset: fonts/OpenSans-SemiBoldItalic.ttf
-
-    - family: CustomIcons
-      fonts:
-        - asset: assets/icons/custom_icons.ttf
