@@ -3,17 +3,17 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:rescholar/widgets/buttons.dart';
 
-class BuildCard extends StatefulWidget {
+class CardBuilder extends StatefulWidget {
   final int index;
   final dynamic data;
 
-  const BuildCard({Key key, this.index, this.data}) : super(key: key);
+  const CardBuilder({Key key, this.index, this.data}) : super(key: key);
 
   @override
-  _BuildCardState createState() => _BuildCardState();
+  _CardBuilderState createState() => _CardBuilderState();
 }
 
-class _BuildCardState extends State<BuildCard> {
+class _CardBuilderState extends State<CardBuilder> {
   bool onpress = false;
 
   _pressed() {
@@ -90,7 +90,7 @@ class _BuildCardState extends State<BuildCard> {
                         child: Text(
                           widget.data[widget.index]['title'],
                           style: TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 17),
+                              fontWeight: FontWeight.w600, fontSize: 15),
                         ),
                       ),
                     ),
@@ -109,13 +109,13 @@ class _BuildCardState extends State<BuildCard> {
                         widget.data[widget.index]['publisher'],
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 10,
+                      fontSize: 9,
                     ),
                   ),
                 ),
                 Text(widget.data[widget.index]['snippet'],
                     style:
-                        TextStyle(fontWeight: FontWeight.w600, fontSize: 12)),
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 11)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
