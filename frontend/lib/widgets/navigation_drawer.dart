@@ -1,11 +1,14 @@
 import 'package:flutter_treeview/tree_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'package:rescholar/models/custom_icons.dart';
 import 'package:rescholar/data/user_library.dart';
 import 'package:rescholar/widgets/custom_toast.dart';
 import 'package:rescholar/models/rescholar_user.dart';
+import 'package:rescholar/widgets/library_builder.dart';
+import 'package:rescholar/widgets/header.dart';
+import 'package:rescholar/widgets/folder_bar.dart';
 
 class NavigationDrawer extends StatefulWidget {
   @override
@@ -63,20 +66,45 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           onTap: () {
             setState(() {
               _selection = node.label;
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LibraryBuilder(
+                          header: Header(
+                              Icon(
+                                node.key == "ROOT/"
+                                    ? MdiIcons.folderHome
+                                    : Icons.folder_rounded,
+                                size: 54.0,
+                              ),
+                              [
+                                const Color(0xFF3D6BB8),
+                                const Color(0xFF738EBC),
+                              ],
+                              "${node.label.toLowerCase()}",
+                              [
+                                const Color(0xFF738EBC),
+                                const Color(0xFFE2EDFF),
+                              ],
+                              true,
+                              [
+                                const Color(0xFF9DD0FF),
+                                const Color(0xFF4880DE),
+                              ]),
+                          folderBar: FolderBar(selectedFolderKey: node.key),
+                          papers: [])));
             });
           },
           onLongPress: () {},
           selected: _selection == node.label,
           tileColor: Color(0xFF1C1C1C),
           selectedTileColor: Colors.transparent,
-          leading: node.key == "ROOT"
-              ? Padding(
-                  padding: const EdgeInsets.only(left: 2.0, right: 6.0),
-                  child: Icon(
-                    CustomIcons.mdiFolderHome,
-                    color: Color(node.data["folderColour"]),
-                    size: 20.0,
-                  ),
+          leading: node.key == "ROOT/"
+              ? Icon(
+                  MdiIcons.folderHome,
+                  color: Color(node.data["folderColour"]),
+                  size: 28.0,
                 )
               : Icon(
                   Icons.folder_rounded,
@@ -97,8 +125,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   @override
   void initState() {
     super.initState();
-    final List<Map<String, dynamic>> folderStruct = userLibrary['folderModel'];
-    _treeViewController = _treeViewController.loadMap(list: folderStruct);
+    _treeViewController =
+        _treeViewController.loadMap(list: userLibrary["folderTree"]);
   }
 
   @override
