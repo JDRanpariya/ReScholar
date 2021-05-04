@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:rescholar/services/re_search_engine.dart';
@@ -17,6 +16,7 @@ class ReSearch extends StatefulWidget {
 class _ReSearchState extends State<ReSearch> {
   // String _query = "";
   // String _paperCount = "";
+  ReSearchEngine getData = ReSearchEngine();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +36,9 @@ class _ReSearchState extends State<ReSearch> {
           SizedBox(height: 15.0),
           ElevatedButton(
             onPressed: () /* async */ {
+              var data =
+                  getData.fetchFromGoogleScholar("residual learning", 10);
+              print(data);
               // FutureBuilder<PapersList>(
               //   future: fetchFromGoogleScholar("osint", 5),
               //   builder: (context, snapshot) {
