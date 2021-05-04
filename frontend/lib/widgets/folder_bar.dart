@@ -5,7 +5,7 @@ import 'package:rescholar/data/user_library.dart';
 import 'package:rescholar/models/folder_tree.dart';
 import 'package:rescholar/models/folder.dart';
 import 'package:rescholar/widgets/header.dart';
-import 'package:rescholar/widgets/library_builder.dart';
+import 'package:rescholar/screens/library.dart';
 
 /// Builds a [FolderBar] that contains a horizontal list of interactive [Folder]
 /// icons that can be used to navigate into the [Folder] children in the [FolderTree].
@@ -71,7 +71,7 @@ class _FolderBarState extends State<FolderBar> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LibraryBuilder(
+                                      builder: (context) => Library(
                                           header: Header(
                                               Icon(
                                                 Icons.folder_rounded,

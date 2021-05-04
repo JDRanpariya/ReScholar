@@ -9,6 +9,8 @@ import 'package:rescholar/screens/app_profile.dart';
 import 'package:rescholar/screens/library.dart';
 import 'package:rescholar/screens/re_search.dart';
 import 'package:rescholar/models/rescholar_user.dart';
+import 'package:rescholar/data/user_library.dart';
+import 'package:rescholar/widgets/header.dart';
 
 /// Builds a persistent bottom navigation bar based on the PersistenBottomNavBar
 /// Flutter package with access to the three primary pages: [Library], [ReSearch],
@@ -64,8 +66,30 @@ class _NavigationBarState extends State<NavigationBar> {
 }
 
 List<Widget> _buildScreens() {
+  List<Map<String, dynamic>> papers = userLibrary["papers"];
   return [
-    Library(),
+    Library(
+        header: Header(
+            Icon(
+              FluentIcons.library_20_filled,
+              size: 54,
+            ),
+            [
+              const Color(0xFFFFA740),
+              const Color(0xFFFFCA8B),
+            ],
+            "papers",
+            [
+              const Color(0xFFFFC27A),
+              const Color(0xFF8BB6FF),
+            ],
+            true,
+            [
+              const Color(0xFF9DD0FF),
+              const Color(0xFF4880DE),
+            ]),
+        renderGreeting: true,
+        papers: papers),
     ReSearch(),
     AppProfile(),
   ];

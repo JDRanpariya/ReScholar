@@ -7,7 +7,7 @@ import 'package:rescholar/data/user_library.dart';
 import 'package:rescholar/widgets/custom_toast.dart';
 import 'package:rescholar/models/rescholar_user.dart';
 import 'package:rescholar/screens/library.dart';
-import 'package:rescholar/widgets/library_builder.dart';
+import 'package:rescholar/screens/library.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/widgets/folder_bar.dart';
 
@@ -73,7 +73,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => LibraryBuilder(
+                      builder: (context) => Library(
                           header: Header(
                               Icon(
                                 node.key == "ROOT/"
@@ -213,7 +213,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => LibraryBuilder(
+                                          builder: (context) => Library(
                                               header: Header(
                                                   Icon(
                                                     Icons.star_rounded,
@@ -276,7 +276,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => LibraryBuilder(
+                                          builder: (context) => Library(
                                               header: Header(
                                                   Icon(
                                                     Icons.archive_rounded,
@@ -336,7 +336,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => LibraryBuilder(
+                                          builder: (context) => Library(
                                               header: Header(
                                                   Icon(
                                                     Icons.delete_rounded,
