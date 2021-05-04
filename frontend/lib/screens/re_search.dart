@@ -21,10 +21,11 @@ class _ReSearchState extends State<ReSearch> {
   @override
   Widget build(BuildContext context) {
     // Create a CollectionReference called users that references the firestore collection // ref https://firebase.flutter.dev/docs/firestore/usage
-    CollectionReference library = FirebaseFirestore.instance.collection('library');
+    CollectionReference library =
+        FirebaseFirestore.instance.collection('library');
 
     // add userLibrary to firestore TODO: add some hook to trigger library.set after every 5 min
-    library.set(userLibrary);
+    library.add(userLibrary);
 
     return Container(
       child: Center(
