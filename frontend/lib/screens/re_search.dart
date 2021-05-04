@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:rescholar/services/re_search_engine.dart';
+import 'package:rescholar/data/user_library.dart';
 // import 'package:rescholar/models/papers_list.dart';
 
 /// Screen to interact with the [ReSearchEngine] service.
@@ -20,19 +21,10 @@ class _ReSearchState extends State<ReSearch> {
   @override
   Widget build(BuildContext context) {
     // Create a CollectionReference called users that references the firestore collection // ref https://firebase.flutter.dev/docs/firestore/usage
-    // CollectionReference users = FirebaseFirestore.instance.collection('users');
+    CollectionReference library = FirebaseFirestore.instance.collection('library');
 
-    // Future<void> addUser() {
-    // Call the user's CollectionReference to add a new user
-    //   return users
-    //       .add({
-    //         'full_name': fullName, // John Doe
-    //         'company': company, // Stokes and Sons
-    //         'age': age // 42
-    //       })
-    //       .then((value) => print("User Added"))
-    //       .catchError((error) => print("Failed to add user: $error"));
-    // }
+    // add userLibrary to firestore TODO: add some hook to trigger library.set after every 5 min
+    library.set(userLibrary);
 
     return Container(
       child: Center(
