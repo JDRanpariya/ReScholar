@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:rescholar/services/auth.dart';
 import 'package:rescholar/models/rescholar_user.dart';
-import 'package:rescholar/screens/auth_wrapper.dart';
+import 'package:rescholar/widgets/auth_wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
