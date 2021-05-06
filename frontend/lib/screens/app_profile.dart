@@ -19,7 +19,13 @@ class AppProfile extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Text("App Profile Screen"),
+            child: Text(
+              "App Profile",
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 30.0,
+              ),
+            ),
           ),
           user.isAnonymous == false
               ? Column(children: [
