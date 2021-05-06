@@ -71,7 +71,7 @@ def GoogleScholar(request):
                                 journal = ""
                             authors = []
                             for author in publisher_data.split("-")[0].split(","):
-                                authors.append(author) 
+                                authors.append(author.strip()) 
                             
                             position += 1
                             paper = {'title': title,  'authors': authors, 'journal': journal, 'year': year, 
