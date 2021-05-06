@@ -1,15 +1,15 @@
 import 'package:flutter_treeview/tree_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:rescholar/data/user_library.dart';
 import 'package:rescholar/widgets/custom_toast.dart';
 import 'package:rescholar/models/rescholar_user.dart';
-import 'package:rescholar/screens/library.dart';
-import 'package:rescholar/screens/library.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/widgets/folder_bar.dart';
+import 'package:rescholar/utils/library_functions.dart';
 
 /// Builds a [NavigationDrawer] that enables routing between the primary sections
 /// of the Library and the [TreeView]-based Folder Tree.
@@ -21,6 +21,7 @@ class NavigationDrawer extends StatefulWidget {
 class _NavigationDrawerState extends State<NavigationDrawer> {
   String _selection = 'Papers';
   Map<String, int> libraryPaperCount = userLibrary['libraryPaperCount'];
+  List<Map<String, dynamic>> papers = userLibrary["papers"];
   TreeViewController _treeViewController = TreeViewController();
 
   TreeViewTheme _treeViewTheme = TreeViewTheme(
@@ -70,33 +71,32 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             setState(() {
               _selection = node.label;
               Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Library(
-                          header: Header(
-                              Icon(
-                                node.key == "ROOT/"
-                                    ? MdiIcons.folderHome
-                                    : Icons.folder_rounded,
-                                size: 54.0,
-                              ),
-                              [
-                                const Color(0xFF3D6BB8),
-                                const Color(0xFF738EBC),
-                              ],
-                              "${node.label.toLowerCase()}",
-                              [
-                                const Color(0xFF738EBC),
-                                const Color(0xFFE2EDFF),
-                              ],
-                              true,
-                              [
-                                const Color(0xFF9DD0FF),
-                                const Color(0xFF4880DE),
-                              ]),
-                          folderBar: FolderBar(selectedFolderKey: node.key),
-                          papers: [])));
+              Navigator.pushNamed(context, "/library", arguments: {
+                "header": Header(
+                    Icon(
+                      node.key == "ROOT/"
+                          ? MdiIcons.folderHome
+                          : Icons.folder_rounded,
+                      size: 54.0,
+                    ),
+                    [
+                      const Color(0xFF3D6BB8),
+                      const Color(0xFF738EBC),
+                    ],
+                    "${node.label.toLowerCase()}",
+                    [
+                      const Color(0xFF738EBC),
+                      const Color(0xFFE2EDFF),
+                    ],
+                    true,
+                    [
+                      const Color(0xFF9DD0FF),
+                      const Color(0xFF4880DE),
+                    ]),
+                "folderBar": FolderBar(selectedFolderKey: node.key),
+                "papers":
+                    LibraryFunctions.getPapersInLibrary("Folders", node.key),
+              });
             });
           },
           onLongPress: () {},
@@ -154,8 +154,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                           },
                         ),
                       ),
-                      // TODO: Write logic for getting the paper count inside each library sub-sections
-                      // TODO: Implement onTap routing to library sections
                       // TODO: Implement onLongPress menu & logic for folders sections
                       Container(
                         margin: EdgeInsets.symmetric(
@@ -171,10 +169,32 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                               setState(() {
                                 _selection = 'Papers';
                                 Navigator.pop(context);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Library()));
+                                Navigator.pushNamed(context, "/library",
+                                    arguments: {
+                                      "header": Header(
+                                          Icon(
+                                            FluentIcons.library_20_filled,
+                                            size: 54,
+                                          ),
+                                          [
+                                            const Color(0xFFFFA740),
+                                            const Color(0xFFFFCA8B),
+                                          ],
+                                          "papers",
+                                          [
+                                            const Color(0xFFFFC27A),
+                                            const Color(0xFF8BB6FF),
+                                          ],
+                                          true,
+                                          [
+                                            const Color(0xFF9DD0FF),
+                                            const Color(0xFF4880DE),
+                                          ]),
+                                      "renderGreeting": true,
+                                      "papers":
+                                          LibraryFunctions.getPapersInLibrary(
+                                              "Papers"),
+                                    });
                               });
                             },
                             selected: _selection == 'Papers',
@@ -210,30 +230,31 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                 setState(() {
                                   _selection = 'Favourites';
                                   Navigator.pop(context);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Library(
-                                              header: Header(
-                                                  Icon(
-                                                    Icons.star_rounded,
-                                                    size: 54.0,
-                                                  ),
-                                                  [
-                                                    const Color(0xFFFFC000),
-                                                    const Color(0xFFFFE28A),
-                                                  ],
-                                                  "favourites",
-                                                  [
-                                                    const Color(0xFFFFE28A),
-                                                    const Color(0xFF9DD0FF),
-                                                  ],
-                                                  true,
-                                                  [
-                                                    const Color(0xFF9DD0FF),
-                                                    const Color(0xFF4880DE),
-                                                  ]),
-                                              papers: [])));
+                                  Navigator.pushNamed(context, "/library",
+                                      arguments: {
+                                        "header": Header(
+                                            Icon(
+                                              Icons.star_rounded,
+                                              size: 54.0,
+                                            ),
+                                            [
+                                              const Color(0xFFFFC000),
+                                              const Color(0xFFFFE28A),
+                                            ],
+                                            "favourites",
+                                            [
+                                              const Color(0xFFFFE28A),
+                                              const Color(0xFF9DD0FF),
+                                            ],
+                                            true,
+                                            [
+                                              const Color(0xFF9DD0FF),
+                                              const Color(0xFF4880DE),
+                                            ]),
+                                        "papers":
+                                            LibraryFunctions.getPapersInLibrary(
+                                                "Favourites"),
+                                      });
                                 });
                               } else {
                                 customToast(context,
@@ -273,30 +294,31 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                 setState(() {
                                   _selection = 'Archive';
                                   Navigator.pop(context);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Library(
-                                              header: Header(
-                                                  Icon(
-                                                    Icons.archive_rounded,
-                                                    size: 54.0,
-                                                  ),
-                                                  [
-                                                    const Color(0xFFFF9536),
-                                                    const Color(0xFFFFBD82),
-                                                  ],
-                                                  "archive",
-                                                  [
-                                                    const Color(0xFFFFBD82),
-                                                    const Color(0xFF9DD0FF),
-                                                  ],
-                                                  true,
-                                                  [
-                                                    const Color(0xFF9DD0FF),
-                                                    const Color(0xFF4880DE),
-                                                  ]),
-                                              papers: [])));
+                                  Navigator.pushNamed(context, "/library",
+                                      arguments: {
+                                        "header": Header(
+                                            Icon(
+                                              Icons.archive_rounded,
+                                              size: 54.0,
+                                            ),
+                                            [
+                                              const Color(0xFFFF9536),
+                                              const Color(0xFFFFBD82),
+                                            ],
+                                            "archive",
+                                            [
+                                              const Color(0xFFFFBD82),
+                                              const Color(0xFF9DD0FF),
+                                            ],
+                                            true,
+                                            [
+                                              const Color(0xFF9DD0FF),
+                                              const Color(0xFF4880DE),
+                                            ]),
+                                        "papers":
+                                            LibraryFunctions.getPapersInLibrary(
+                                                "Archive"),
+                                      });
                                 });
                               } else {
                                 customToast(context,
@@ -333,30 +355,31 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                 setState(() {
                                   _selection = 'Recycle Bin';
                                   Navigator.pop(context);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Library(
-                                              header: Header(
-                                                  Icon(
-                                                    Icons.delete_rounded,
-                                                    size: 54.0,
-                                                  ),
-                                                  [
-                                                    const Color(0xFFEB5757),
-                                                    const Color(0xFFE98787),
-                                                  ],
-                                                  "recycle bin",
-                                                  [
-                                                    const Color(0xFFE98787),
-                                                    const Color(0xFF9DD0FF),
-                                                  ],
-                                                  true,
-                                                  [
-                                                    const Color(0xFF9DD0FF),
-                                                    const Color(0xFF4880DE),
-                                                  ]),
-                                              papers: [])));
+                                  Navigator.pushNamed(context, "/library",
+                                      arguments: {
+                                        "header": Header(
+                                            Icon(
+                                              Icons.delete_rounded,
+                                              size: 54.0,
+                                            ),
+                                            [
+                                              const Color(0xFFEB5757),
+                                              const Color(0xFFE98787),
+                                            ],
+                                            "recycle bin",
+                                            [
+                                              const Color(0xFFE98787),
+                                              const Color(0xFF9DD0FF),
+                                            ],
+                                            true,
+                                            [
+                                              const Color(0xFF9DD0FF),
+                                              const Color(0xFF4880DE),
+                                            ]),
+                                        "papers":
+                                            LibraryFunctions.getPapersInLibrary(
+                                                "Recycle Bin"),
+                                      });
                                 });
                               } else {
                                 customToast(context,
