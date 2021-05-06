@@ -9,7 +9,7 @@ import 'package:rescholar/screens/app_profile.dart';
 import 'package:rescholar/screens/library.dart';
 import 'package:rescholar/screens/re_search.dart';
 import 'package:rescholar/models/rescholar_user.dart';
-import 'package:rescholar/data/user_library.dart';
+import 'package:rescholar/utils/library_functions.dart';
 import 'package:rescholar/widgets/header.dart';
 
 /// Builds a persistent bottom navigation bar based on the PersistenBottomNavBar
@@ -66,7 +66,6 @@ class _NavigationBarState extends State<NavigationBar> {
 }
 
 List<Widget> _buildScreens() {
-  List<Map<String, dynamic>> papers = userLibrary["papers"];
   return [
     Library(
         header: Header(
@@ -89,7 +88,7 @@ List<Widget> _buildScreens() {
               const Color(0xFF4880DE),
             ]),
         renderGreeting: true,
-        papers: papers),
+        papers: LibraryFunctions.getPapersInLibrary("Papers")),
     ReSearch(),
     AppProfile(),
   ];
@@ -98,12 +97,13 @@ List<Widget> _buildScreens() {
 List<PersistentBottomNavBarItem> _navBarsItems(user) {
   return [
     PersistentBottomNavBarItem(
-      icon: Icon(FluentIcons.library_20_filled, size: 28.0),
-      title: ("Library"),
-      textStyle: TextStyle(fontSize: 16.0),
-      activeColorPrimary: Color(0xFFFF9536),
-      inactiveColorPrimary: Colors.white70,
-    ),
+        icon: Icon(FluentIcons.library_20_filled, size: 28.0),
+        title: ("Library"),
+        textStyle: TextStyle(fontSize: 16.0),
+        activeColorPrimary: Color(0xFFFF9536),
+        inactiveColorPrimary: Colors.white70,
+        routeAndNavigatorSettings: RouteAndNavigatorSettings(
+            initialRoute: "/library", onGenerateRoute: _routes())),
     PersistentBottomNavBarItem(
       icon: Transform(
         alignment: Alignment.center,
@@ -127,4 +127,30 @@ List<PersistentBottomNavBarItem> _navBarsItems(user) {
       inactiveColorPrimary: Colors.white70,
     ),
   ];
+}
+
+RouteFactory _routes() {
+  return (settings) {
+    final Map<String, dynamic> arguments = settings.arguments;
+    Widget screen;
+    switch (settings.name) {
+      case "/library":
+        screen = Library(
+            header: arguments['header'],
+            renderGreeting: arguments['renderGreeting'],
+            folderBar: arguments['folderBar'],
+            optionBar: arguments['optionBar'],
+            papers: arguments['papers']);
+        break;
+      case "/re_search":
+        screen = ReSearch();
+        break;
+      case "/app_profile":
+        screen = AppProfile();
+        break;
+      default:
+        return null;
+    }
+    return MaterialPageRoute(builder: (BuildContext context) => screen);
+  };
 }
