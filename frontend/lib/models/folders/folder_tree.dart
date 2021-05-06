@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:rescholar/models/folder.dart';
+import 'package:rescholar/models/folders/folder.dart';
 
 /// Defines the insertion mode adding a new Folder to the FolderTree.
 enum InsertMode {

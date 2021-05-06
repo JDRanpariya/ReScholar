@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:rescholar/data/user_library.dart';
-import 'package:rescholar/models/folder_tree.dart';
-import 'package:rescholar/models/folder.dart';
+import 'package:rescholar/models/folders/folder_tree.dart';
+import 'package:rescholar/models/folders/folder.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/utils/library_functions.dart';
 

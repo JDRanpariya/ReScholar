@@ -1,4 +1,4 @@
-import 'package:rescholar/models/paper.dart';
+import 'package:rescholar/models/papers/paper.dart';
 
 /// Data Model for a list of research papers (eg. List of JSON objects returned in search results).
 class PapersList {

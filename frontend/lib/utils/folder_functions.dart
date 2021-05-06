@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:rescholar/models/folder.dart';
-import 'package:rescholar/models/folder_tree.dart';
+import 'package:rescholar/models/folders/folder.dart';
+import 'package:rescholar/models/folders/folder_tree.dart';
 
 /// Contains functions relevant to the [Folder] model.
 class FolderFunctions {

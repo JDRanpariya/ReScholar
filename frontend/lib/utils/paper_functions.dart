@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:rescholar/models/paper.dart';
-import 'package:rescholar/models/papers_list.dart';
+import 'package:rescholar/models/papers/paper.dart';
+import 'package:rescholar/models/papers/papers_list.dart';
 
 class PaperFunctions {
   /// Takes JSON string and returns an instance of [PapersList] which is a list containing instances of [Paper].
