@@ -5,7 +5,7 @@ import 'package:rescholar/data/user_library.dart';
 import 'package:rescholar/models/folder_tree.dart';
 import 'package:rescholar/models/folder.dart';
 import 'package:rescholar/widgets/header.dart';
-import 'package:rescholar/screens/library.dart';
+import 'package:rescholar/utils/library_functions.dart';
 
 /// Builds a [FolderBar] that contains a horizontal list of interactive [Folder]
 /// icons that can be used to navigate into the [Folder] children in the [FolderTree].
@@ -68,33 +68,35 @@ class _FolderBarState extends State<FolderBar> {
                         children: [
                           IconButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Library(
-                                          header: Header(
-                                              Icon(
-                                                Icons.folder_rounded,
-                                                size: 54.0,
-                                              ),
-                                              [
-                                                const Color(0xFF3D6BB8),
-                                                const Color(0xFF738EBC),
-                                              ],
-                                              "${_currentFolder.children[index].label.toLowerCase()}",
-                                              [
-                                                const Color(0xFF738EBC),
-                                                const Color(0xFFE2EDFF),
-                                              ],
-                                              true,
-                                              [
-                                                const Color(0xFF9DD0FF),
-                                                const Color(0xFF4880DE),
-                                              ]),
-                                          folderBar: FolderBar(
-                                              selectedFolderKey: _currentFolder
-                                                  .children[index].key),
-                                          papers: [])));
+                              Navigator.pushNamed(context, "/library",
+                                  arguments: {
+                                    "header": Header(
+                                        Icon(
+                                          Icons.folder_rounded,
+                                          size: 54.0,
+                                        ),
+                                        [
+                                          const Color(0xFF3D6BB8),
+                                          const Color(0xFF738EBC),
+                                        ],
+                                        "${_currentFolder.children[index].label.toLowerCase()}",
+                                        [
+                                          const Color(0xFF738EBC),
+                                          const Color(0xFFE2EDFF),
+                                        ],
+                                        true,
+                                        [
+                                          const Color(0xFF9DD0FF),
+                                          const Color(0xFF4880DE),
+                                        ]),
+                                    "folderBar": FolderBar(
+                                        selectedFolderKey:
+                                            _currentFolder.children[index].key),
+                                    "papers":
+                                        LibraryFunctions.getPapersInLibrary(
+                                            "Folders",
+                                            _currentFolder.children[index].key)
+                                  });
                             },
                             splashRadius: 1.0,
                             padding: EdgeInsets.all(0.0),
@@ -151,7 +153,7 @@ class _FolderBarState extends State<FolderBar> {
                   child: InkWell(
                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
                 onTap: () {
-                  /* TODO: Add routing logic to navigate backwards pages */
+                  /* TODO: Add routing logic to navigate back pages */
                 },
                 child: Row(
                   children: [
