@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:provider/provider.dart';
 
-import 'package:rescholar/data/user_library.dart';
 import 'package:rescholar/models/folders/folder_tree.dart';
 import 'package:rescholar/models/folders/folder.dart';
 import 'package:rescholar/widgets/header.dart';
-import 'package:rescholar/utils/library_functions.dart';
+import 'package:rescholar/models/user_library.dart';
 
 /// Builds a [FolderBar] that contains a horizontal list of interactive [Folder]
 /// icons that can be used to navigate into the [Folder] children in the [FolderTree].
@@ -23,28 +23,31 @@ class FolderBar extends StatefulWidget {
 
 class _FolderBarState extends State<FolderBar> {
   Folder _currentFolder;
-  FolderTree _currentFolderTree =
-      FolderTree().loadMap(list: userLibrary["folderTree"]);
+  FolderTree _currentFolderTree;
 
-  List _getParentLabels() {
-    List _parentLabels = ["Folders"];
+  List<Folder> _getParentFolders() {
+    List<Folder> _parentFolders = [_currentFolderTree.getFolder("ROOT/")];
     Folder _tempFolder = _currentFolder;
     while (_tempFolder.key != "ROOT/") {
-      _parentLabels.insert(1, _tempFolder.label);
+      _parentFolders.insert(1, _tempFolder);
       _tempFolder = _currentFolderTree.getParent(_tempFolder.key);
     }
-    return _parentLabels;
+    return _parentFolders;
   }
 
   @override
   void initState() {
     super.initState();
+    // If folderTree updates are not updating in the state properly, consider moving
+    // the declaration for _currentFolderTree out of initState()
+    _currentFolderTree =
+        FolderTree().loadMap(list: context.read<UserLibrary>().folderTree);
     _currentFolder = _currentFolderTree.getFolder(widget.selectedFolderKey);
   }
 
   @override
   Widget build(BuildContext context) {
-    List _parentLabels = _getParentLabels();
+    List<Folder> _parentFolders = _getParentFolders();
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -68,7 +71,7 @@ class _FolderBarState extends State<FolderBar> {
                         children: [
                           IconButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, "/library",
+                              Navigator.pushNamed(context, "/library_folders",
                                   arguments: {
                                     "header": Header(
                                         Icon(
@@ -92,9 +95,9 @@ class _FolderBarState extends State<FolderBar> {
                                     "folderBar": FolderBar(
                                         selectedFolderKey:
                                             _currentFolder.children[index].key),
-                                    "papers":
-                                        LibraryFunctions.getPapersInLibrary(
-                                            "Folders",
+                                    "papers": context
+                                        .read<UserLibrary>()
+                                        .getPapersInLibrary("Folders",
                                             _currentFolder.children[index].key)
                                   });
                             },
@@ -114,7 +117,7 @@ class _FolderBarState extends State<FolderBar> {
                               bottom: 10.0,
                               child: Container(
                                 child: Text(
-                                  "${_currentFolder.children[index].children.length}",
+                                  "${_currentFolder.children[index].data["paperCount"]}",
                                   style: TextStyle(
                                       fontSize: 10.0,
                                       fontWeight: FontWeight.w700,
@@ -146,43 +149,67 @@ class _FolderBarState extends State<FolderBar> {
           height: 30.0,
           padding: EdgeInsets.symmetric(horizontal: 15.0),
           child: ListView.builder(
-            itemCount: _parentLabels.length,
+            itemCount: _parentFolders.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                  child: InkWell(
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                onTap: () {
-                  /* TODO: Add routing logic to navigate back pages */
-                },
-                child: Row(
-                  children: [
-                    _parentLabels[index] == "Folders"
-                        ? Padding(
-                            padding: EdgeInsets.only(right: 8.0),
-                            child: Icon(
-                              MdiIcons.folderHome,
-                              size: 30.0,
-                              color: Color(_currentFolderTree
-                                  .getFolder("ROOT/")
-                                  .data["folderColour"]),
-                            ),
-                          )
-                        : Padding(
-                            padding: EdgeInsets.only(top: 3.0),
-                            child: Icon(
-                              Icons.chevron_right_rounded,
-                              size: 28.0,
-                              color: Color(0xFFB2B2B2),
-                            ),
+                  child: Row(
+                children: [
+                  _parentFolders[index].label == "Folders"
+                      ? Padding(
+                          padding: EdgeInsets.only(right: 8.0),
+                          child: Icon(
+                            MdiIcons.folderHome,
+                            size: 30.0,
+                            color: Color(
+                                _parentFolders[index].data["folderColour"]),
                           ),
-                    Text(
-                      "${_parentLabels[index]}",
+                        )
+                      : Padding(
+                          padding: EdgeInsets.only(top: 3.0),
+                          child: Icon(
+                            Icons.chevron_right_rounded,
+                            size: 28.0,
+                            color: Color(0xFFB2B2B2),
+                          ),
+                        ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/library_folders",
+                          arguments: {
+                            "header": Header(
+                                Icon(
+                                  Icons.folder_rounded,
+                                  size: 54.0,
+                                ),
+                                [
+                                  const Color(0xFF3D6BB8),
+                                  const Color(0xFF738EBC),
+                                ],
+                                "${_parentFolders[index].label.toLowerCase()}",
+                                [
+                                  const Color(0xFF738EBC),
+                                  const Color(0xFFE2EDFF),
+                                ],
+                                true,
+                                [
+                                  const Color(0xFF9DD0FF),
+                                  const Color(0xFF4880DE),
+                                ]),
+                            "folderBar": FolderBar(
+                                selectedFolderKey: _parentFolders[index].key),
+                            "papers": context
+                                .read<UserLibrary>()
+                                .getPapersInLibrary(
+                                    "Folders", _parentFolders[index].key)
+                          });
+                    },
+                    child: Text(
+                      "${_parentFolders[index].label}",
                       style: TextStyle(fontSize: 15.0),
                     ),
-                    // )
-                  ],
-                ),
+                  ),
+                ],
               ));
             },
           ),
