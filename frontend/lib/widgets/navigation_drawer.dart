@@ -1,15 +1,14 @@
 import 'package:flutter_treeview/tree_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:collection/collection.dart';
 
-import 'package:rescholar/data/user_library.dart';
 import 'package:rescholar/widgets/custom_toast.dart';
 import 'package:rescholar/models/rescholar_user.dart';
 import 'package:rescholar/widgets/header.dart';
 import 'package:rescholar/widgets/folder_bar.dart';
-import 'package:rescholar/utils/library_functions.dart';
+import 'package:rescholar/models/user_library.dart';
 
 /// Builds a [NavigationDrawer] that enables routing between the primary sections
 /// of the Library and the [TreeView]-based Folder Tree.
@@ -20,8 +19,6 @@ class NavigationDrawer extends StatefulWidget {
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
   String _selection = 'Papers';
-  Map<String, int> libraryPaperCount = userLibrary['libraryPaperCount'];
-  List<Map<String, dynamic>> papers = userLibrary["papers"];
   TreeViewController _treeViewController = TreeViewController();
 
   TreeViewTheme _treeViewTheme = TreeViewTheme(
@@ -58,51 +55,46 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   _nodeBuilder(BuildContext context, Node<dynamic> node) {
-    return Container(
-      margin: EdgeInsets.only(right: 5.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(15.0),
-        ),
-        color: Color(0x4D21629D),
-      ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15.0),
       child: ListTile(
           onTap: () {
             setState(() {
               _selection = node.label;
               Navigator.pop(context);
-              Navigator.pushNamed(context, "/library", arguments: {
-                "header": Header(
-                    Icon(
-                      node.key == "ROOT/"
-                          ? MdiIcons.folderHome
-                          : Icons.folder_rounded,
-                      size: 54.0,
-                    ),
-                    [
-                      const Color(0xFF3D6BB8),
-                      const Color(0xFF738EBC),
-                    ],
-                    "${node.label.toLowerCase()}",
-                    [
-                      const Color(0xFF738EBC),
-                      const Color(0xFFE2EDFF),
-                    ],
-                    true,
-                    [
-                      const Color(0xFF9DD0FF),
-                      const Color(0xFF4880DE),
-                    ]),
-                "folderBar": FolderBar(selectedFolderKey: node.key),
-                "papers":
-                    LibraryFunctions.getPapersInLibrary("Folders", node.key),
-              });
+              Navigator.pushNamedAndRemoveUntil(context, "/library_folders",
+                  ModalRoute.withName("/library_papers"),
+                  arguments: {
+                    "header": Header(
+                        Icon(
+                          node.key == "ROOT/"
+                              ? MdiIcons.folderHome
+                              : Icons.folder_rounded,
+                          size: 54.0,
+                        ),
+                        [
+                          const Color(0xFF3D6BB8),
+                          const Color(0xFF738EBC),
+                        ],
+                        "${node.label.toLowerCase()}",
+                        [
+                          const Color(0xFF738EBC),
+                          const Color(0xFFE2EDFF),
+                        ],
+                        true,
+                        [
+                          const Color(0xFF9DD0FF),
+                          const Color(0xFF4880DE),
+                        ]),
+                    "folderBar": FolderBar(selectedFolderKey: node.key),
+                    "librarySection": node.key
+                  });
             });
           },
           onLongPress: () {},
           selected: _selection == node.label,
           tileColor: Color(0xFF1C1C1C),
-          selectedTileColor: Colors.transparent,
+          selectedTileColor: Color(0x4D21629D),
           leading: node.key == "ROOT/"
               ? Icon(
                   MdiIcons.folderHome,
@@ -126,13 +118,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    _treeViewController =
-        _treeViewController.loadMap(list: userLibrary["folderTree"]);
-  }
-
-  @override
   Widget build(BuildContext context) {
     final user = Provider.of<ReScholarUser>(context);
 
@@ -144,6 +129,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           child: Drawer(
               child: Container(
                   color: Color(0xFF1C1C1C),
+                  padding: EdgeInsets.symmetric(horizontal: 5.0),
                   child: Column(
                     children: [
                       ListTile(
@@ -155,51 +141,22 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                         ),
                       ),
                       // TODO: Implement onLongPress menu & logic for folders sections
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 5.0, vertical: 0.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15.0),
-                          ),
-                          color: Color(0x4D21629D),
-                        ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
                         child: ListTile(
                             onTap: () {
                               setState(() {
                                 _selection = 'Papers';
                                 Navigator.pop(context);
-                                Navigator.pushNamed(context, "/library",
-                                    arguments: {
-                                      "header": Header(
-                                          Icon(
-                                            FluentIcons.library_20_filled,
-                                            size: 54,
-                                          ),
-                                          [
-                                            const Color(0xFFFFA740),
-                                            const Color(0xFFFFCA8B),
-                                          ],
-                                          "papers",
-                                          [
-                                            const Color(0xFFFFC27A),
-                                            const Color(0xFF8BB6FF),
-                                          ],
-                                          true,
-                                          [
-                                            const Color(0xFF9DD0FF),
-                                            const Color(0xFF4880DE),
-                                          ]),
-                                      "renderGreeting": true,
-                                      "papers":
-                                          LibraryFunctions.getPapersInLibrary(
-                                              "Papers"),
-                                    });
+                                Navigator.popUntil(
+                                  context,
+                                  ModalRoute.withName("/library_papers"),
+                                );
                               });
                             },
                             selected: _selection == 'Papers',
                             tileColor: Color(0xFF1C1C1C),
-                            selectedTileColor: Colors.transparent,
+                            selectedTileColor: Color(0x4D21629D),
                             leading: Icon(
                               Icons.article_rounded,
                               color: Colors.white,
@@ -210,27 +167,33 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             title: Text("Papers",
                                 style: TextStyle(
                                     fontSize: 16.0, color: Colors.white)),
-                            trailing: Text("${libraryPaperCount["Papers"]}",
-                                style: TextStyle(
-                                    fontSize: 14.0, color: Color(0xFFB2B2B2))),
+                            trailing:
+                                Selector<UserLibrary, Map<String, dynamic>>(
+                                    selector: (context, userLibrary) =>
+                                        userLibrary.libraryPaperCount,
+                                    shouldRebuild: (map1, map2) =>
+                                        DeepCollectionEquality()
+                                            .equals(map1, map2),
+                                    builder: (context, data, child) {
+                                      return Text("${data["Papers"]}",
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              color: Color(0xFFB2B2B2)));
+                                    }),
                             visualDensity: VisualDensity(vertical: -3.0)),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 5.0, vertical: 0.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15.0),
-                          ),
-                          color: Color(0x4D21629D),
-                        ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
                         child: ListTile(
                             onTap: () {
                               if (user.isAnonymous == false) {
                                 setState(() {
                                   _selection = 'Favourites';
                                   Navigator.pop(context);
-                                  Navigator.pushNamed(context, "/library",
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      "/library_favourites",
+                                      ModalRoute.withName("/library_papers"),
                                       arguments: {
                                         "header": Header(
                                             Icon(
@@ -251,9 +214,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                               const Color(0xFF9DD0FF),
                                               const Color(0xFF4880DE),
                                             ]),
-                                        "papers":
-                                            LibraryFunctions.getPapersInLibrary(
-                                                "Favourites"),
+                                        "librarySection": "Favourites"
                                       });
                                 });
                               } else {
@@ -263,7 +224,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             },
                             selected: _selection == 'Favourites',
                             tileColor: Color(0xFF1C1C1C),
-                            selectedTileColor: Colors.transparent,
+                            selectedTileColor: Color(0x4D21629D),
                             leading: Icon(
                               Icons.star_rounded,
                               size: 28.0,
@@ -274,27 +235,33 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             title: Text("Favourites",
                                 style: TextStyle(
                                     fontSize: 16.0, color: Colors.white)),
-                            trailing: Text("${libraryPaperCount["Favourites"]}",
-                                style: TextStyle(
-                                    fontSize: 14.0, color: Color(0xFFB2B2B2))),
+                            trailing:
+                                Selector<UserLibrary, Map<String, dynamic>>(
+                                    selector: (context, userLibrary) =>
+                                        userLibrary.libraryPaperCount,
+                                    shouldRebuild: (map1, map2) =>
+                                        DeepCollectionEquality()
+                                            .equals(map1, map2),
+                                    builder: (context, data, child) {
+                                      return Text("${data["Favourites"]}",
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              color: Color(0xFFB2B2B2)));
+                                    }),
                             visualDensity: VisualDensity(vertical: -3.0)),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 5.0, vertical: 0.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15.0),
-                          ),
-                          color: Color(0x4D21629D),
-                        ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
                         child: ListTile(
                             onTap: () {
                               if (user.isAnonymous == false) {
                                 setState(() {
                                   _selection = 'Archive';
                                   Navigator.pop(context);
-                                  Navigator.pushNamed(context, "/library",
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      "/library_archive",
+                                      ModalRoute.withName("/library_papers"),
                                       arguments: {
                                         "header": Header(
                                             Icon(
@@ -315,9 +282,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                               const Color(0xFF9DD0FF),
                                               const Color(0xFF4880DE),
                                             ]),
-                                        "papers":
-                                            LibraryFunctions.getPapersInLibrary(
-                                                "Archive"),
+                                        "librarySection": "Archive"
                                       });
                                 });
                               } else {
@@ -327,7 +292,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             },
                             selected: _selection == 'Archive',
                             tileColor: Color(0xFF1C1C1C),
-                            selectedTileColor: Colors.transparent,
+                            selectedTileColor: Color(0x4D21629D),
                             leading: Icon(Icons.archive_rounded,
                                 size: 28.0, color: Color(0xFFFF9536)),
                             minLeadingWidth: 0.0,
@@ -335,27 +300,31 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             title: Text("Archive",
                                 style: TextStyle(
                                     fontSize: 16.0, color: Colors.white)),
-                            trailing: Text("${libraryPaperCount["Archive"]}",
-                                style: TextStyle(
-                                    fontSize: 14.0, color: Color(0xFFB2B2B2))),
+                            trailing:
+                                Selector<UserLibrary, Map<String, dynamic>>(
+                                    selector: (context, userLibrary) =>
+                                        userLibrary.libraryPaperCount,
+                                    shouldRebuild: (map1, map2) =>
+                                        DeepCollectionEquality()
+                                            .equals(map1, map2),
+                                    builder: (context, data, child) {
+                                      return Text("${data["Archive"]}",
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              color: Color(0xFFB2B2B2)));
+                                    }),
                             visualDensity: VisualDensity(vertical: -3.0)),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 5.0, vertical: 0.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15.0),
-                          ),
-                          color: Color(0x4D21629D),
-                        ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
                         child: ListTile(
                             onTap: () {
                               if (user.isAnonymous == false) {
                                 setState(() {
                                   _selection = 'Recycle Bin';
                                   Navigator.pop(context);
-                                  Navigator.pushNamed(context, "/library",
+                                  Navigator.pushNamed(
+                                      context, "library_recycle_bin",
                                       arguments: {
                                         "header": Header(
                                             Icon(
@@ -376,9 +345,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                               const Color(0xFF9DD0FF),
                                               const Color(0xFF4880DE),
                                             ]),
-                                        "papers":
-                                            LibraryFunctions.getPapersInLibrary(
-                                                "Recycle Bin"),
+                                        "librarySection": "Recycle Bin"
                                       });
                                 });
                               } else {
@@ -388,7 +355,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             },
                             selected: _selection == 'Recycle Bin',
                             tileColor: Color(0xFF1C1C1C),
-                            selectedTileColor: Colors.transparent,
+                            selectedTileColor: Color(0x4D21629D),
                             leading: Icon(Icons.delete_rounded,
                                 size: 28.0, color: Color(0xFFEB5757)),
                             minLeadingWidth: 0.0,
@@ -396,10 +363,19 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             title: Text("Recycle Bin",
                                 style: TextStyle(
                                     fontSize: 16.0, color: Colors.white)),
-                            trailing: Text(
-                                "${libraryPaperCount["Recycle Bin"]}",
-                                style: TextStyle(
-                                    fontSize: 14.0, color: Color(0xFFB2B2B2))),
+                            trailing:
+                                Selector<UserLibrary, Map<String, dynamic>>(
+                                    selector: (context, userLibrary) =>
+                                        userLibrary.libraryPaperCount,
+                                    shouldRebuild: (map1, map2) =>
+                                        DeepCollectionEquality()
+                                            .equals(map1, map2),
+                                    builder: (context, data, child) {
+                                      return Text("${data["Recycle Bin"]}",
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              color: Color(0xFFB2B2B2)));
+                                    }),
                             visualDensity: VisualDensity(vertical: -3.0)),
                       ),
                       Divider(
@@ -409,15 +385,24 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                         indent: 12.0,
                         endIndent: 12.0,
                       ),
-                      Expanded(
-                        child: TreeView(
-                          controller: _treeViewController,
-                          allowParentSelect: false,
-                          onExpansionChanged: _expandNode,
-                          theme: _treeViewTheme,
-                          nodeBuilder: _nodeBuilder,
-                        ),
-                      )
+                      Selector<UserLibrary, List<Map<String, dynamic>>>(
+                          selector: (context, userLibrary) =>
+                              userLibrary.folderTree,
+                          shouldRebuild: (listOfMaps1, listOfMaps2) =>
+                              DeepCollectionEquality()
+                                  .equals(listOfMaps1, listOfMaps2),
+                          builder: (context, data, child) {
+                            return Expanded(
+                              child: TreeView(
+                                controller:
+                                    _treeViewController.loadMap(list: data),
+                                allowParentSelect: false,
+                                onExpansionChanged: _expandNode,
+                                theme: _treeViewTheme,
+                                nodeBuilder: _nodeBuilder,
+                              ),
+                            );
+                          }),
                     ],
                   )))),
     );
