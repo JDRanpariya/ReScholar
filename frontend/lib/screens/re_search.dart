@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:provider/provider.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:rescholar/services/re_search_engine.dart';
-import 'package:rescholar/data/user_library.dart';
 import 'package:rescholar/widgets/card_list_builder.dart';
+// import 'package:rescholar/models/user_library.dart';
 
 /// Screen to interact with the [ReSearchEngine] service.
 class ReSearch extends StatefulWidget {
@@ -14,8 +15,6 @@ class ReSearch extends StatefulWidget {
 }
 
 class _ReSearchState extends State<ReSearch> {
-  // String _query = "";
-  // String _paperCount = "";
   var _body;
   Widget _displaySearchResults() {
     return _body;
@@ -25,12 +24,13 @@ class _ReSearchState extends State<ReSearch> {
   Widget build(BuildContext context) {
     // Create a CollectionReference called users that references the firestore collection
     // Reference: https://firebase.flutter.dev/docs/firestore/usage
-    CollectionReference library =
-        FirebaseFirestore.instance.collection('library');
+    // CollectionReference library =
+    //     FirebaseFirestore.instance.collection('library');
 
+    // TODO: Sync the file present in AppData folder and not /rescholar/data/
     // TODO: Add hook to trigger library.set every 5 minutes
     // Add userLibrary to Firestore
-    library.add(userLibrary);
+    // library.add(userLibrary);
 
     return SafeArea(
       child: Column(
@@ -55,12 +55,14 @@ class _ReSearchState extends State<ReSearch> {
                           "search_results", "residual learning", 10),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
-                          return CardListBuilder(
-                            papers: snapshot.data,
-                            inLibrary: false,
+                          return Expanded(
+                            child: CardListBuilder(
+                              papers: snapshot.data,
+                              inLibrary: false,
+                            ),
                           );
                         } else if (snapshot.hasError) {
-                          return Text("${snapshot.error}");
+                          return Text("ERROR: ${snapshot.error}");
                         }
                         return CircularProgressIndicator();
                       },
@@ -113,7 +115,9 @@ class _ReSearchState extends State<ReSearch> {
           SizedBox(height: 5.0),
           ElevatedButton(
             onPressed: () {
-              setState(() {});
+              /* vvvvvvvvvvvvvvvvvvvvvvvvv */
+              /* vv Test Functions Here vv */
+              /* vvvvvvvvvvvvvvvvvvvvvvvvv */
             },
             style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(Size(125, 40)),
@@ -131,7 +135,7 @@ class _ReSearchState extends State<ReSearch> {
             ),
           ),
           SizedBox(height: 5.0),
-          if (_body != null) Expanded(child: _displaySearchResults()),
+          if (_body != null) _displaySearchResults(),
         ],
       ),
     );
