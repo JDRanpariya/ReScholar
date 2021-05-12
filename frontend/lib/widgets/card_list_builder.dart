@@ -5,7 +5,7 @@ import 'package:rescholar/widgets/card_builder.dart';
 /// Calls the [CardBuilder] widget repeatedly to build a list of cards.
 class CardListBuilder extends StatefulWidget {
   // final List<Map<String, dynamic>> papers;
-  final List<dynamic> papers;
+  final List<Map<String, dynamic>> papers;
   final bool inLibrary;
 
   CardListBuilder({Key key, @required this.papers, this.inLibrary = true})

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:collection/collection.dart';
 
 import 'package:rescholar/widgets/card_list_builder.dart';
 import 'package:rescholar/widgets/header.dart';
-import 'package:rescholar/widgets/navigation_drawer.dart';
 import 'package:rescholar/widgets/option_bar.dart';
+import 'package:rescholar/widgets/navigation_drawer.dart';
 import 'package:rescholar/models/rescholar_user.dart';
 import 'package:rescholar/services/auth.dart';
 import 'package:rescholar/widgets/folder_bar.dart';
+import 'package:rescholar/models/user_library.dart';
 
 /// Builds a Library page that displays a [Header], (optional) Greeting,
 /// (optional) [FolderBar], (optional) [OptionBar], and the list of papers present
@@ -17,7 +19,7 @@ class Library extends StatefulWidget {
   final bool renderGreeting;
   final FolderBar folderBar;
   final OptionBar optionBar;
-  final List<Map<String, dynamic>> papers;
+  final String librarySection;
 
   Library(
       {Key key,
@@ -25,7 +27,7 @@ class Library extends StatefulWidget {
       this.renderGreeting = false,
       this.folderBar,
       this.optionBar,
-      @required this.papers})
+      @required this.librarySection})
       : super(key: key);
 
   @override
@@ -33,6 +35,8 @@ class Library extends StatefulWidget {
 }
 
 class _LibraryState extends State<Library> {
+  List<Map<String, dynamic>> _papers;
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<ReScholarUser>(context);
@@ -43,24 +47,57 @@ class _LibraryState extends State<Library> {
       drawer: NavigationDrawer(),
       appBar: widget.header,
       body: user.isAnonymous == false
-          ? Column(
-              children: [
-                if (widget.renderGreeting == true)
-                  Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-                    child: Text(
-                      "What would you like to read about today, ${user.username}? ",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFFFFC27A)),
+          ? Selector<UserLibrary, List<Map<String, dynamic>>>(
+              selector: (context, userLibrary) => userLibrary.papers,
+              shouldRebuild: (listOfMaps1, listOfMaps2) =>
+                  DeepCollectionEquality().equals(listOfMaps1, listOfMaps2),
+              builder: (context, data, child) {
+                var _userLibrary = context.read<UserLibrary>();
+                if (widget.librarySection == "Papers" ||
+                    widget.librarySection == "Favourites" ||
+                    widget.librarySection == "Archive" ||
+                    widget.librarySection == "Recycle Bin") {
+                  _papers =
+                      _userLibrary.getPapersInLibrary(widget.librarySection);
+                } else
+                  _papers = _userLibrary.getPapersInLibrary(
+                      "Folders", widget.librarySection);
+
+                return _papers == null
+                    ? Center(child: Text("No papers have been added here."))
+                    : Column(children: [
+                        if (child != null) child,
+                        Expanded(child: CardListBuilder(papers: _papers)),
+                      ]);
+              },
+              child: Column(
+                children: [
+                  if (widget.renderGreeting == true)
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
+                      child: Text(
+                        "What would you like to read about today, ${user.username}? ",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFFFFC27A)),
+                      ),
                     ),
-                  ),
-                if (widget.folderBar != null) widget.folderBar,
-                if (widget.optionBar != null) widget.optionBar,
-                Expanded(child: CardListBuilder(papers: widget.papers)),
-              ],
+                  if (widget.folderBar != null)
+                    Selector<UserLibrary, List<Map<String, dynamic>>>(
+                      selector: (context, userLibrary) =>
+                          userLibrary.folderTree,
+                      shouldRebuild: (listOfMaps1, listOfMaps2) =>
+                          DeepCollectionEquality()
+                              .equals(listOfMaps1, listOfMaps2),
+                      builder: (context, data, child) {
+                        return widget.folderBar;
+                      },
+                    ),
+                  if (widget.optionBar != null) widget.optionBar,
+                ],
+              ),
             )
           : Center(
               child: Column(
