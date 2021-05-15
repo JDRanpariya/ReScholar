@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
+
+import 'package:rescholar/models/user_library.dart';
 
 /// Builds a card for display in the library or search results.
 class CardBuilder extends StatefulWidget {
@@ -137,19 +140,28 @@ class _CardBuilderState extends State<CardBuilder> {
                           size: 30,
                         ),
                         onPressed: () {
-                          /* TODO: Implement Add To Favourties logic */
+                          /* TODO: Implement Add To Folder logic & UI */
                         }),
                     IconButton(
                         padding: EdgeInsets.all(0),
                         icon: Icon(
-                          onpress
+                          widget.data[widget.index]['paperProperties']
+                                  ['isFavourite']
                               ? Icons.star_rounded
                               : Icons.star_border_rounded,
                           color: Color(0xFFFFC000),
                           size: 36,
                         ),
                         onPressed: () {
-                          /* TODO: Implement Add To Folder logic & UI */
+                          /* TODO: Implement Add To Favourties logic */
+                          widget.data[widget.index]['paperProperties']
+                                  ['isFavourite']
+                              ? context
+                                  .read<UserLibrary>()
+                                  .removeFromLibrary("Favourites", widget.index)
+                              : context.read<UserLibrary>().addToLibrary(
+                                  "Favourites",
+                                  indexInUserLibrary: widget.index);
                         }),
                   ],
                 ),
