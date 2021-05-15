@@ -46,7 +46,7 @@ class UserLibrary extends ChangeNotifier {
   ////// LIBRARY FUNCTIONS //////
   /// Returns the papers belonging to the specified library section.
   List<Map<String, dynamic>> getPapersInLibrary(String librarySection,
-      [String folderKey]) {
+      {String folderKey}) {
     List<Map<String, dynamic>> _filteredPapers = [];
     Map<String, dynamic> _item;
 
@@ -80,7 +80,7 @@ class UserLibrary extends ChangeNotifier {
       case "Recycle Bin":
         for (_item in _papers) {
           if (_item["paperProperties"]["folderKey"] == "None" &&
-              _item["paperProperties"]["isDeleted"] == false &&
+              _item["paperProperties"]["isDeleted"] == true &&
               _item["paperProperties"]["isArchived"] == false)
             _filteredPapers.add(_item);
         }
@@ -99,58 +99,65 @@ class UserLibrary extends ChangeNotifier {
     return _filteredPapers;
   }
 
+  // TODO: Handle incrementing/decrementing paper count when paper added/removed to folder
   /// Adds a new paper or an existing paper to a section of the [UserLibrary].
   void addToLibrary(String librarySection,
-      [Map<String, dynamic> paperToAdd,
+      {Map<String, dynamic> paperToAdd,
       int indexInUserLibrary,
-      String folderKey]) {
+      String folderKey}) {
     switch (librarySection) {
       case "Papers":
         _papers.add(paperToAdd);
+        _libraryPaperCount["Papers"]++;
         break;
       case "Favourites":
         _papers[indexInUserLibrary]["paperProperties"]["isFavourite"] = true;
+        _libraryPaperCount["Favourites"]++;
         break;
       case "Archive":
         _papers[indexInUserLibrary]["paperProperties"]["isArchived"] = true;
+        _libraryPaperCount["Archive"]++;
         break;
       case "Recycle Bin":
         _papers[indexInUserLibrary]["paperProperties"]["isDeleted"] = true;
-        break;
-      case "Folders":
-        _papers[indexInUserLibrary]["paperProperties"]["folderKey"] = folderKey;
+        _libraryPaperCount["Recycle Bin"]++;
         break;
       default:
     }
+    notifyListeners();
   }
 
   /// Removes a paper specified at index from the [UserLibrary].
   void removeFromLibrary(String librarySection, int indexInUserLibrary,
-      [String folderKey]) {
+      {String folderKey}) {
     switch (librarySection) {
       case "Papers":
-        _papers[indexInUserLibrary]["paperProperties"]["isDeleted"] = true;
+        addToLibrary("Recycle Bin", indexInUserLibrary: indexInUserLibrary);
         break;
       case "Favourites":
         _papers[indexInUserLibrary]["paperProperties"]["isFavourite"] = false;
+        _libraryPaperCount["Favourites"]--;
         break;
       case "Archive":
         _papers[indexInUserLibrary]["paperProperties"]["isArchived"] = false;
+        _libraryPaperCount["Archive"]--;
         break;
       case "Recycle Bin":
         _papers.removeAt(indexInUserLibrary);
+        _libraryPaperCount["Recycle Bin"]--;
         break;
-      case "Folders":
-        _papers[indexInUserLibrary]["paperProperties"]["folderKey"] = "None";
-        break;
-      default:
     }
+    notifyListeners();
+  }
+
+  void updateFolderTree(List<Map<String, dynamic>> newFolderTree) {
+    _folderTree = newFolderTree;
   }
 
   ////// TESTING FUNCTION //////
   /// Used for testing changes.
   void testChange() {
-    _papers[0]["title"] = "The title has changed again, bitches!";
+    // _papers[0]["title"] = "The title has changed again, bitches!";
     notifyListeners();
   }
 }
