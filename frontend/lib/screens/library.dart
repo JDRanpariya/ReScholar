@@ -19,7 +19,7 @@ class Library extends StatefulWidget {
   final bool renderGreeting;
   final FolderBar folderBar;
   final OptionBar optionBar;
-  final String librarySection;
+  final String folderKey;
 
   Library(
       {Key key,
@@ -27,7 +27,7 @@ class Library extends StatefulWidget {
       this.renderGreeting = false,
       this.folderBar,
       this.optionBar,
-      @required this.librarySection})
+      this.folderKey})
       : super(key: key);
 
   @override
@@ -44,7 +44,7 @@ class _LibraryState extends State<Library> {
 
     return Scaffold(
       backgroundColor: Colors.black87,
-      drawer: NavigationDrawer(),
+      drawer: NavigationDrawer(selection: widget.header.title),
       appBar: widget.header,
       body: user.isAnonymous == false
           ? Selector<UserLibrary, List<Map<String, dynamic>>>(
@@ -53,15 +53,10 @@ class _LibraryState extends State<Library> {
                   DeepCollectionEquality().equals(listOfMaps1, listOfMaps2),
               builder: (context, data, child) {
                 var _userLibrary = context.read<UserLibrary>();
-                if (widget.librarySection == "Papers" ||
-                    widget.librarySection == "Favourites" ||
-                    widget.librarySection == "Archive" ||
-                    widget.librarySection == "Recycle Bin") {
-                  _papers =
-                      _userLibrary.getPapersInLibrary(widget.librarySection);
-                } else
-                  _papers = _userLibrary.getPapersInLibrary(
-                      "Folders", widget.librarySection);
+                _papers = widget.folderKey != null
+                    ? _userLibrary.getPapersInLibrary("Folders",
+                        folderKey: widget.folderKey)
+                    : _userLibrary.getPapersInLibrary(widget.header.title);
 
                 return _papers == null
                     ? Center(child: Text("No papers have been added here."))
