@@ -87,7 +87,7 @@ List<Widget> _buildScreens(BuildContext context) {
             const Color(0xFFFFA740),
             const Color(0xFFFFCA8B),
           ],
-          "papers",
+          "Papers",
           [
             const Color(0xFFFFC27A),
             const Color(0xFF8BB6FF),
@@ -98,7 +98,6 @@ List<Widget> _buildScreens(BuildContext context) {
             const Color(0xFF4880DE),
           ]),
       renderGreeting: true,
-      librarySection: "Papers",
     ),
     ReSearch(),
     AppProfile(),
@@ -151,7 +150,7 @@ RouteFactory _routes() {
             renderGreeting: arguments['renderGreeting'],
             folderBar: arguments['folderBar'],
             optionBar: arguments['optionBar'],
-            librarySection: arguments['librarySection']);
+            folderKey: arguments['folderKey']);
         break;
       case "/library_favourites":
         screen = Library(
@@ -159,7 +158,7 @@ RouteFactory _routes() {
             renderGreeting: arguments['renderGreeting'],
             folderBar: arguments['folderBar'],
             optionBar: arguments['optionBar'],
-            librarySection: arguments['librarySection']);
+            folderKey: arguments['folderKey']);
         break;
       case "/library_archive":
         screen = Library(
@@ -167,7 +166,7 @@ RouteFactory _routes() {
             renderGreeting: arguments['renderGreeting'],
             folderBar: arguments['folderBar'],
             optionBar: arguments['optionBar'],
-            librarySection: arguments['librarySection']);
+            folderKey: arguments['folderKey']);
         break;
       case "/library_recycle_bin":
         screen = Library(
@@ -175,7 +174,7 @@ RouteFactory _routes() {
             renderGreeting: arguments['renderGreeting'],
             folderBar: arguments['folderBar'],
             optionBar: arguments['optionBar'],
-            librarySection: arguments['librarySection']);
+            folderKey: arguments['folderKey']);
         break;
       case "/library_folders":
         screen = Library(
@@ -183,7 +182,7 @@ RouteFactory _routes() {
             renderGreeting: arguments['renderGreeting'],
             folderBar: arguments['folderBar'],
             optionBar: arguments['optionBar'],
-            librarySection: arguments['librarySection']);
+            folderKey: arguments['folderKey']);
         break;
       case "/re_search":
         screen = ReSearch();
