@@ -43,7 +43,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                   colors: titleGradient)
               .createShader(rect),
           child: AutoSizeText(
-            title,
+            title.toLowerCase(),
             maxLines: 1,
             style: TextStyle(
               fontSize: 48.0,

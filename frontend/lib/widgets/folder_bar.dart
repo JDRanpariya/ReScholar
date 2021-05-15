@@ -82,7 +82,7 @@ class _FolderBarState extends State<FolderBar> {
                                           const Color(0xFF3D6BB8),
                                           const Color(0xFF738EBC),
                                         ],
-                                        "${_currentFolder.children[index].label.toLowerCase()}",
+                                        "${_currentFolder.children[index].label}",
                                         [
                                           const Color(0xFF738EBC),
                                           const Color(0xFFE2EDFF),
@@ -98,7 +98,8 @@ class _FolderBarState extends State<FolderBar> {
                                     "papers": context
                                         .read<UserLibrary>()
                                         .getPapersInLibrary("Folders",
-                                            _currentFolder.children[index].key)
+                                            folderKey: _currentFolder
+                                                .children[index].key)
                                   });
                             },
                             splashRadius: 1.0,
@@ -186,7 +187,7 @@ class _FolderBarState extends State<FolderBar> {
                                   const Color(0xFF3D6BB8),
                                   const Color(0xFF738EBC),
                                 ],
-                                "${_parentFolders[index].label.toLowerCase()}",
+                                "${_parentFolders[index].label}",
                                 [
                                   const Color(0xFF738EBC),
                                   const Color(0xFFE2EDFF),
@@ -200,8 +201,8 @@ class _FolderBarState extends State<FolderBar> {
                                 selectedFolderKey: _parentFolders[index].key),
                             "papers": context
                                 .read<UserLibrary>()
-                                .getPapersInLibrary(
-                                    "Folders", _parentFolders[index].key)
+                                .getPapersInLibrary("Folders",
+                                    folderKey: _parentFolders[index].key)
                           });
                     },
                     child: Text(
