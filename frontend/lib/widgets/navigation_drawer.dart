@@ -167,34 +167,34 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                               setState(() {
                                 widget.selection = 'Papers';
                                 Navigator.pop(context);
-                                // Navigator.popUntil(
-                                //   context,
-                                //   ModalRoute.withName("/library_papers"),
-                                // );
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context, "/library_papers", (_) => false,
-                                    arguments: {
-                                      "header": Header(
-                                          Icon(
-                                            FluentIcons.library_20_filled,
-                                            size: 54,
-                                          ),
-                                          [
-                                            const Color(0xFFFFA740),
-                                            const Color(0xFFFFCA8B),
-                                          ],
-                                          "Papers",
-                                          [
-                                            const Color(0xFFFFC27A),
-                                            const Color(0xFF8BB6FF),
-                                          ],
-                                          true,
-                                          [
-                                            const Color(0xFF9DD0FF),
-                                            const Color(0xFF4880DE),
-                                          ]),
-                                      "renderGreeting": true,
-                                    });
+                                Navigator.popUntil(
+                                  context,
+                                  ModalRoute.withName("/library_papers"),
+                                );
+                                // Navigator.pushNamedAndRemoveUntil(
+                                //     context, "/library_papers", (_) => false,
+                                //     arguments: {
+                                //       "header": Header(
+                                //           Icon(
+                                //             FluentIcons.library_20_filled,
+                                //             size: 54,
+                                //           ),
+                                //           [
+                                //             const Color(0xFFFFA740),
+                                //             const Color(0xFFFFCA8B),
+                                //           ],
+                                //           "Papers",
+                                //           [
+                                //             const Color(0xFFFFC27A),
+                                //             const Color(0xFF8BB6FF),
+                                //           ],
+                                //           true,
+                                //           [
+                                //             const Color(0xFF9DD0FF),
+                                //             const Color(0xFF4880DE),
+                                //           ]),
+                                //       "renderGreeting": true,
+                                //     });
                               });
                             },
                             selected: widget.selection == 'Papers',
